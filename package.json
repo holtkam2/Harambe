@@ -1,0 +1,28 @@
+{
+  "name": "Harambe",
+  "version": "0.0.1",
+  "description": "Workflow optimizing web portal",
+  "main": "index.js",
+  "author": "Jeff Bernstein, Jason Holtkamp, Patrik Korzinski, Roni Vegh",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HRR18-Harambe/Harambe.git"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "^6.6.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "browser-sync": "^1.5.7",
+    "chai": "^3.4.1",
+    "express": "^4.4.5",
+    "mocha": "^2.3.4",
+    "morgan": "^1.1.1",
+    "sinon": "^1.17.2",
+  }
+}
