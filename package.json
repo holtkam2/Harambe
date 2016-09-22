@@ -39,5 +39,8 @@
       "es2015",
       "react"
     ]
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.11.1"
   }
 }
