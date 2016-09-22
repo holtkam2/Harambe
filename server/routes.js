@@ -1,7 +1,10 @@
-const router = require('express').Router();
+const router = require('express').Router(); // eslint-disable-line new-cap
+
+// Stormpath for auth
+const stormpath = require('express-stormpath');
 
 // routes
-router.get('/', (req, res) => {
+router.get('/', stormpath.loginRequired, (req, res) => {
   res.send('Hello, Harambe!');
 });
 
