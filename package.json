@@ -10,8 +10,8 @@
     "url": "https://github.com/HRR18-Harambe/Harambe.git"
   },
   "scripts": {
-    "start": "node server/server.js",
-    "test": "mocha"
+    "start": "node ./server/server.js",
+    "test": "mocha ./spec/serverTests.js"
   },
   "engines": {
     "node": "^6.6.0"
