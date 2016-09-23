@@ -1,62 +1,107 @@
 var path = require('path');
-
-var assert = require('chai').assert;
-var expect = require('chai').expect;
-var should = require('chai').should();
-
-var server = require(path.join(__dirname, '..', './server/server.js'));
-var routes = require(path.join(__dirname, '..', './server/routes.js'));
-var config = require(path.join(__dirname, '..', './server/config.js'));
-
-xdescribe('Server', function () {
-  describe('server.js', function() {
-    'use strict';
-
-    it('exists', function () {
-      expect(SOMETHING_HERE).to.be.a('function');
-
-    });
-
-    it('does something', function () {
-      expect(true).to.equal(false);
-    });
-
-    it('does something else', function () {
-      expect(true).to.equal(false);
-    });
-  })
+// const assert = require('chai').assert;
+// const expect = require('chai').expect;
+// const should = require('chai').should();
+var request = require('supertest');
+//const server = require(path.join(__dirname, '..', './server/server.js'));
+// const routes = require(path.join(__dirname, '..', './server/routes.js'));
+// const config = require(path.join(__dirname, '..', './server/config.js'));
+describe('loading express', function () {
+ var server;
+ beforeEach(function () {
+   server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
+ });
+ afterEach(function (done) {
+   server.listen();
+   done();
+ });
+ it('responds to /', function (done) {
+   request(server)
+     .get('/')
+     .expect(200);
+     done();
+ });
+ it('404 bad path', function (done) {
+   console.log('test 404')
+   request(server)
+     .get('/foo/bar')
+     .expect(404);
+     done();
+ });
 });
 
-xdescribe('Routes', function () {
-  'use strict';
+// describe('Server', function () {
+//   describe('server.js', function() {
+//     'use strict';
 
-  it('exists', function () {
-    expect(SOMETHING_HERE).to.be.a('function');
+//     describe('Loading express', function() {
+//       let serverInstance;
 
-  });
+//       beforeEach(function() {
+//         serverInstance;
+//       });
+//       afterEach(function() {
+//         serverInstance.close();
+//       });
 
-  it('does something', function () {
-    expect(true).to.equal(false);
-  });
+//       it('responds to /', function(done) {
+//         request(server)
+//           .get('/')
+//           .expect(200, done);
+//       });
+//       it('404 everything else', function(done) {
+//         request(server)
+//           .get('/foo/bar')
+//           .expect(404, done);
+//       });
+//     });
+//   });
 
-  it('does something else', function () {
-    expect(true).to.equal(false);
-  });
-});
+//     xit('exists', function () {
+//       expect(SOMETHING_HERE).to.be.a('function');
 
-xdescribe('Config', function () {
-  'use strict';
+//     });
 
-  it('exists', function () {
-    expect(SOMETHING_HERE).to.be.a('function');
+//     xit('does something', function () {
+//       expect(true).to.equal(false);
+//     });
 
-  });
+//     xit('does something else', function () {
+//       expect(true).to.equal(false);
+//     });
+//   })
+// });
 
-  it('does something', function () {
-    expect(true).to.equal(false);
-  });
+// xdescribe('Routes', function () {
+//   'use strict';
 
-  it('does something else', function () {
-    expect(true).to.equal(false);
-  });
-});
+//   it('exists', function () {
+//     expect(SOMETHING_HERE).to.be.a('function');
+
+//   });
+
+//   it('does something', function () {
+//     expect(true).to.equal(false);
+//   });
+
+//   it('does something else', function () {
+//     expect(true).to.equal(false);
+//   });
+// });
+
+// xdescribe('Config', function () {
+//   'use strict';
+
+//   it('exists', function () {
+//     expect(SOMETHING_HERE).to.be.a('function');
+
+//   });
+
+//   it('does something', function () {
+//     expect(true).to.equal(false);
+//   });
+
+//   it('does something else', function () {
+//     expect(true).to.equal(false);
+//   });
+//});

@@ -11,6 +11,9 @@ router.get('/', stormpath.loginRequired, (req, res) => {
   });
 });
 
+router.get('*', (req, res) => {
+  res.status(404);
+});
 // routes needed
 // /login
 // /logout

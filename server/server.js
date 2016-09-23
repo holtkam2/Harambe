@@ -13,6 +13,7 @@ const stormpathConfig = require('./config.js').stormpathConfig;
 
 const app = express();
 const defaultPort = require('./config.js').DEFAULT_PORT;
+
 const port = process.env.PORT || defaultPort;
 
 app.set('port', port);
@@ -43,4 +44,4 @@ app.on('stormpath.ready', () => {
   console.log(`Harambe is listening on port ${app.get('port')}!`);
 });
 
-module.exports.app = app;
+module.exports = app;
