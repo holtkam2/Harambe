@@ -3,12 +3,12 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      "test": null
+      test: null
     };
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
   }
 
@@ -17,7 +17,7 @@ export default class App extends React.Component {
       <div>
         <div><RSSFeedList/></div>
         <div><NotificationList/></div>
-        <h1 className = 'greeting'>Welcome, (user name here)</h1>
+        <h1 className="greeting">Welcome, (user name here)</h1>
         <div><SearchBar/></div>
         <div><ButtonList/></div>
         <div><SettingsButton/></div>
@@ -25,7 +25,7 @@ export default class App extends React.Component {
     );
   }
 
-};
+}
 
 window.App = App;
 

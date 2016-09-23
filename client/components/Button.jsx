@@ -1,9 +1,9 @@
 import React from 'react';
 
-var Button = () => (
+const Button = () => (
   <div>
-    <button type = "button">button!!!1!!1</button>
+    <button type="button">button!!!1!!1</button>
   </div>
-)
+);
 
 window.Button = Button;

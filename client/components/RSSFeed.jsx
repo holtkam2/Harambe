@@ -1,9 +1,9 @@
 import React from 'react';
 
-var RSSFeed = () => (
+const RSSFeed = () => (
   <div>
     RSSFeed will go here!!!
   </div>
-)
+);
 
 window.RSSFeed = RSSFeed;

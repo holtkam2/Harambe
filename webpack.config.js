@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 var config = {
+  devtool: 'envify',
   entry: __dirname + "/client/index.js",
 
   output: {

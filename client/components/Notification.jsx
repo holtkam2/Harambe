@@ -1,9 +1,9 @@
 import React from 'react';
 
-var Notification = () => (
+const Notification = () => (
   <div>
     Your Notification here
   </div>
-)
+);
 
 window.Notification = Notification;
