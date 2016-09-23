@@ -3,3 +3,47 @@ body {
   background: #E8E8E8;
 }
 
+.buttonList {
+  margin: auto;
+  width: 50%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+
+.RSSFeedList {
+  margin: auto;
+  width: 50%;
+  border: 3px solid red;
+  padding: 10px;
+}
+
+.greeting {
+  color: grey;
+  text-align: center;
+}
+
+.notificationList {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.searchBar {
+  font-size: 24;
+  text-align:center;
+}
+
+.settingsButton {
+  float: right;
+  position: absolute;
+  bottom: 20;
+}
+
+
+
+
+
+
+
+
