@@ -34,7 +34,7 @@ app.use(morgan('dev'));
 app.use(parser.json());
 
 app.use('/', router);
-app.use(express.static(`${__dirname}/../public/build`));
+app.use(express.static(`${__dirname}/../client`));
 
 app.on('stormpath.ready', () => {
   console.log('Stormpath Ready!');
