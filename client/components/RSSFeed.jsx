@@ -6,4 +6,4 @@ const RSSFeed = () => (
   </div>
 );
 
-window.RSSFeed = RSSFeed;
+export default RSSFeed;

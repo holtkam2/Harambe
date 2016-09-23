@@ -1,4 +1,5 @@
 import React from 'react';
+import RSSFeed from './RSSFeed.jsx';
 
 const RSSFeedList = () => (
   <div className="RSSFeedList">
@@ -7,4 +8,4 @@ const RSSFeedList = () => (
   </div>
 );
 
-window.RSSFeedList = RSSFeedList;
+export default RSSFeedList;

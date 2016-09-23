@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button.jsx';
 
 const ButtonList = () => (
   <div className="buttonList">
@@ -8,4 +9,4 @@ const ButtonList = () => (
   </div>
 );
 
-window.ButtonList = ButtonList;
+export default ButtonList;
