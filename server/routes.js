@@ -1,11 +1,14 @@
 const router = require('express').Router(); // eslint-disable-line new-cap
+const path = require('path');
 
 // Stormpath for auth
 const stormpath = require('express-stormpath');
 
 // routes
 router.get('/', stormpath.loginRequired, (req, res) => {
-  res.send('Hello, Harambe!');
+  res.sendFile('index.html', {
+    root: path.resolve(__dirname, '.././client'),
+  });
 });
 
 module.exports = router;
