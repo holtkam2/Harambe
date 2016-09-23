@@ -15,7 +15,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        Hello world!!!
+        <div><RSSFeedList/></div>
+        <div><NotificationList/></div>
+        <h1 className = 'greeting'>Welcome, (user name here)</h1>
+        <div><SearchBar/></div>
+        <div><ButtonList/></div>
+        <div><SettingsButton/></div>
       </div>
     );
   }
