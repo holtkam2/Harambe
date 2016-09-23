@@ -6,4 +6,4 @@ const Button = () => (
   </div>
 );
 
-window.Button = Button;
+export default Button;
