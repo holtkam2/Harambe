@@ -6,4 +6,4 @@ const Notification = () => (
   </div>
 );
 
-window.Notification = Notification;
+export default Notification;

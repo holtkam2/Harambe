@@ -1,4 +1,5 @@
 import React from 'react';
+import Notification from './Notification.jsx';
 
 const NotificationList = () => (
   <div className="NotificationList">
@@ -6,4 +7,4 @@ const NotificationList = () => (
   </div>
 );
 
-window.NotificationList = NotificationList;
+export default NotificationList;

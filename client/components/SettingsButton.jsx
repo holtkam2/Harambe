@@ -6,4 +6,4 @@ const SettingsButton = () => (
   </div>
 );
 
-window.SettingsButton = SettingsButton;
+export default SettingsButton;

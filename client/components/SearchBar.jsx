@@ -6,4 +6,4 @@ const SearchBar = () => (
   </div>
 );
 
-window.SearchBar = SearchBar;
+export default SearchBar;
