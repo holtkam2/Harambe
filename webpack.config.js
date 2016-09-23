@@ -6,7 +6,7 @@ var config = {
   entry: __dirname + "/client/index.js",
 
   output: {
-    path:  __dirname + '/dist',
+    path:  __dirname + '/client/dist',
     filename: "bundle.js"
 
   },
