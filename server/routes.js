@@ -11,14 +11,6 @@ router.get('/', stormpath.loginRequired, (req, res) => {
   });
 });
 
-// router.get('/styles.css', (req, res) => {
-//   res sendFile('styles.css', )
-// })
-
-// router.get('*', (req, res) => {
-//   res.redirect('/');
-// });
-
 // routes needed
 // /login
 // /logout

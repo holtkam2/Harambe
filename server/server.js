@@ -5,14 +5,14 @@ const morgan = require('morgan');
 const parser = require('body-parser');
 
 // router
-const router = require('./routes.js');
+const router = require('./routes');
 
 // Stormpath for auth
 const stormpath = require('express-stormpath');
-const stormpathConfig = require('./config.js').stormpathConfig;
+const stormpathConfig = require('./config').stormpathConfig;
 
 const app = express();
-const defaultPort = require('./config.js').DEFAULT_PORT;
+const defaultPort = require('./config').DEFAULT_PORT;
 
 const port = process.env.PORT || defaultPort;
 

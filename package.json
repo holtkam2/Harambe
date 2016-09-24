@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node ./server/server.js",
-    "test": "eslint . | mocha ./spec/serverSpec.js",
+    "test": "eslint . && mocha -R spec spec/serverSpec.js",
     "frontTest": "live-server --open=./SpecRunner.html --port=8081"
   },
   "engines": {

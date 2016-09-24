@@ -1,33 +1,32 @@
-var path = require('path');
-// const assert = require('chai').assert;
-// const expect = require('chai').expect;
-// const should = require('chai').should();
-var request = require('supertest');
-//const server = require(path.join(__dirname, '..', './server/server.js'));
-// const routes = require(path.join(__dirname, '..', './server/routes.js'));
-// const config = require(path.join(__dirname, '..', './server/config.js'));
-describe('loading express', function () {
- var server;
- beforeEach(function () {
-   server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
- });
- afterEach(function (done) {
-   server.listen();
-   done();
- });
- it('responds to /', function (done) {
-   request(server)
-     .get('/')
-     .expect(200);
-     done();
- });
- it('404 bad path', function (done) {
-   console.log('test 404')
-   request(server)
-     .get('/foo/bar')
-     .expect(404);
-     done();
- });
+const path = require('path');
+const assert = require('chai').assert;
+const expect = require('chai').expect;
+const should = require('chai').should();
+const request = require('supertest');
+
+describe('loading express', function() {
+  let server;
+  beforeEach(function() {
+    server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
+  });
+  afterEach(function(done) {
+    server.listen();
+    done();
+  });
+
+  it('responds to /', function(done) {
+    request(server)
+      .get('/')
+      .expect(200);
+    done();
+  });
+  it('404 bad path', function(done) {
+    console.log('test 404')
+    request(server)
+      .get('/foo/bar')
+      .expect(404);
+    done();
+  });
 });
 
 // describe('Server', function () {

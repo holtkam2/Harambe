@@ -3,6 +3,7 @@
 # Ignore built files
 public/dist/*
 public/built/*
+client/dist/*
 
 # Ignore testing files
 spec/*
