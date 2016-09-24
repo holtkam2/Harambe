@@ -40,3 +40,4 @@ iisnode.yml
 .Spotlight-V100
 .Trashes
 server/config.js
+.env
