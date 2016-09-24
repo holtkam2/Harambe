@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 
 // middleware
@@ -9,23 +11,19 @@ const router = require('./routes');
 
 // Stormpath for auth
 const stormpath = require('express-stormpath');
-const stormpathConfig = require('./config').stormpathConfig;
 
 const app = express();
-const defaultPort = require('./config').DEFAULT_PORT;
 
-const port = process.env.PORT || defaultPort;
-
-app.set('port', port);
+app.set('port', process.env.PORT);
 
 // Stormpath init
 app.use(stormpath.init(app, {
   apiKey: {
-    id: stormpathConfig.STORMPATH_CLIENT_APIKEY_ID,
-    secret: stormpathConfig.STORMPATH_CLIENT_APIKEY_SECRET,
+    id: process.env.STORMPATH_CLIENT_APIKEY_ID,
+    secret: process.env.STORMPATH_CLIENT_APIKEY_SECRET,
   },
   application: {
-    href: stormpathConfig.STORMPATH_APPLICATION_HREF,
+    href: process.env.STORMPATH_APPLICATION_HREF,
   },
   website: true, // create /register /login & /logout routes
 }));
