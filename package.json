@@ -11,6 +11,7 @@
   },
   "scripts": {
     "start": "node ./server/server.js",
+    "postinstall": "webpack",
     "test": "eslint . && mocha -R spec spec/serverSpec.js",
     "frontTest": "live-server --open=./SpecRunner.html --port=8081"
   },
@@ -28,7 +29,8 @@
     "morgan": "^1.1.1",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "webpack": "^1.13.2"
   },
   "babel": {
     "presets": [
