@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 var config = {
   devtool: 'envify',
-  entry: __dirname + "/client/index.js",
+  entry: __dirname + "/client/components/App.jsx",
 
   output: {
     path:  __dirname + '/client/dist',
