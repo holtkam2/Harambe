@@ -1,6 +1,25 @@
-import React from 'react';
+/* eslint-env browser*/
 
-const { createStore } = Redux;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+
+// Reducer
+const App = (currentState = [{ displaySettings: false }], action) => {
+  switch (action.type) {
+    case 'TOGGLE_SETTINGS':
+      return [
+        {
+          displaySettings: !currentState[0].displaySettings,
+        },
+      ];
+
+    default:
+      return currentState;
+  }
+};
+
+const store = createStore(App);
 
 const SettingsButton = () => (
 
@@ -15,34 +34,6 @@ const SettingsButton = () => (
 );
 
 export default SettingsButton;
-
-// Reducer
-const App = (currentState = [{ displaySettings: false }], action) => {
-  switch (action.type) {
-    case 'TOGGLE_SETTINGS':
-
-      let tester = false;
-
-      if (currentState[0].displaySettings === false) {
-        tester = true;
-      } else {
-        tester = false;
-      }
-      const nextState = [
-
-        {
-          displaySettings: tester,
-        },
-      ];
-      return nextState;
-    break;
-
-    default:
-      return currentState;
-  }
-};
-
-const store = createStore(App);
 
 store.subscribe(() => {
   const currentState = store.getState();
