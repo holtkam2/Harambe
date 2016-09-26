@@ -5,9 +5,11 @@ const { createStore } = Redux;
 const SettingsButton = () => (
 
   <div className="settingsButton">
-    <button onClick={() => store.dispatch({
-      type: 'TOGGLE_SETTINGS'
-    })}>Settings</button>
+    <button
+      onClick={() => store.dispatch({
+        type: 'TOGGLE_SETTINGS',
+      })}
+    >Settings</button>
   </div>
 
 );
@@ -15,39 +17,37 @@ const SettingsButton = () => (
 export default SettingsButton;
 
 // Reducer
-const App = (currentState = {displaySettings: false}, action) => {
+const App = (currentState = [{ displaySettings: false }], action) => {
   switch (action.type) {
-
     case 'TOGGLE_SETTINGS':
-      if (currentState.displaySettings === false){
-        return [
-          {displaySettings: true}
-        ]
+
+      let tester = false;
+
+      if (currentState[0].displaySettings === false) {
+        tester = true;
       } else {
-        return [
-          {displaySettings: false}
-        ]
+        tester = false;
       }
+      const nextState = [
+
+        {
+          displaySettings: tester,
+        },
+      ];
+      return nextState;
+    break;
 
     default:
-      return currentState
+      return currentState;
   }
+};
 
-}
-
-const store = createStore(App)
+const store = createStore(App);
 
 store.subscribe(() => {
-  var currentState = store.getState()
-  console.log(currentState[0].displaySettings)
-  if (currentState[0].displaySettings === true){
-    ReactDOM.render(<div>Settings!!!1</div>, document.getElementById('settings'))
+  const currentState = store.getState();
+  console.log(currentState[0].displaySettings);
+  if (currentState[0].displaySettings === true) {
+    ReactDOM.render(<div>Settings!!!1</div>, document.getElementById('settings'));
   }
-})
-
-
-
-
-
-
-
+});
