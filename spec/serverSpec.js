@@ -4,28 +4,66 @@ const expect = require('chai').expect;
 const should = require('chai').should();
 const request = require('supertest');
 
-describe('loading express', function() {
+describe('loading express', () => {
   let server;
-  beforeEach(function() {
+  beforeEach((done) => {
     server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
+    done();
   });
-  afterEach(function(done) {
+  afterEach((done) => {
     server.listen();
     done();
   });
 
-  it('responds to /', function(done) {
+  it('responds to /', (done) => {
     request(server)
       .get('/')
-      .expect(200);
-    done();
+      .expect(302, done);
   });
-  it('404 bad path', function(done) {
-    console.log('test 404')
+  it('404 bad path', (done) => {
     request(server)
       .get('/foo/bar')
-      .expect(404);
+      .expect(404, done);
+  });
+});
+
+describe('database', () => {
+  let server;
+  beforeEach((done) => {
+    server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
+     done();
+  });
+  afterEach((done) => {
+    server.listen();
     done();
+  });
+
+  it('stores a user in database', (done) => {
+    let user = { userName: 'TestMan' };
+    request(server)
+      .post('/api/users')
+      .send(user)
+      .expect(201, done);
+  });
+
+  it('retrieves stored user from database', (done) => {
+    request(server)
+      .get('/api/users/TestMan')
+      .expect(200)
+      .expect(
+        (res) => { if (res.body.userName === 'TestMan') done(); }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  it('removes a user in database', (done) => {
+    let user = { userName: 'TestMan' };
+    request(server)
+      .delete('/api/users/TestMan')
+      .send(user)
+      .expect(204, done);
   });
 });
 
