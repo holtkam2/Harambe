@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node ./server/server.js",
     "postinstall": "webpack",
-    "test": "eslint --ext .js --ext .jsx . && mocha -R spec spec/serverSpec.js",
+    "test": "eslint --ext .js --ext .jsx . && mocha -t 12000 -R spec spec/serverSpec.js",
     "frontTest": "live-server --open=./SpecRunner.html --port=8081"
   },
   "engines": {
@@ -35,9 +35,9 @@
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
-    "sequelize": "^3.24.3",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
+    "sequelize": "^3.24.3",
     "webpack": "^1.13.2"
   },
   "babel": {
