@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import SettingsButton from '../components/SettingsButton.jsx';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch =>
+  ({
     toggleSubmit: () => {
-      dispatch(type: 'TOGGLE_SETTINGS');
-    }
-  }
-}
+      dispatch({ type: 'TOGGLE_SETTINGS' });
+    },
+  });
 
-export default connect(mapDispatchToProps)(SettingsButton)
+export default connect(mapDispatchToProps)(SettingsButton);
