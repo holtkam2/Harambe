@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import mapStateToProps from '../containers/settingsContainer.js'
 // (will need state eventually)
 // eslint-disable-next-line react/prefer-stateless-function
 class Settings extends Component {
-  // (will need state eventually)
-  // eslint-disable-next-line class-methods-use-this
-  render() {
+static propTypes = {
+    value: PropTypes.number.isRequired
+  }
+
+  // constructor(props){
+  //   super(props);
+  // }
+
+  render(){
+
     return (
-      <div>
-          Settings
-      </div>
+      <div>Heheheheheheh</div>
     );
+
   }
 }
 

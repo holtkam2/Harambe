@@ -1,44 +1,39 @@
 /* eslint-env browser*/
 
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import App from '../reducers/settingsButtonReducer.js';
+import { connect } from 'react-redux';
 
-// Reducer
-const App = (currentState = [{ displaySettings: false }], action) => {
-  switch (action.type) {
-    case 'TOGGLE_SETTINGS':
-      return [
-        {
-          displaySettings: !currentState[0].displaySettings,
-        },
-      ];
-
-    default:
-      return currentState;
+class SettingsButton extends Component {
+static propTypes = {
+    toggleSubmit: PropTypes.func.isRequired,
+    // value: PropTypes.boolean.isRequired
   }
-};
+  // constructor(props){
+  //   super(props);
+  // }
 
-const store = createStore(App);
+  render(){
+    // console.log(value)
+    const {toggleSubmit, value} = this.props;
+    console.log(value[0].displaySettings, 'this is value');
 
-const SettingsButton = () => (
+            if(value){
+    return (
+      <div className="settingsButton">
+        <button onClick={toggleSubmit}>Settings</button>
+      </div>
+      )
+    } else {
+      return (
+      <div className="settingsButton">
+        <button onClick={toggleSubmit}>Settings2</button>
+      </div>
+      )
+    }
 
-  <div className="settingsButton">
-    <button
-      onClick={() => store.dispatch({
-        type: 'TOGGLE_SETTINGS',
-      })}
-    >Settings</button>
-  </div>
-
-);
+  }
+}
 
 export default SettingsButton;
-
-store.subscribe(() => {
-  const currentState = store.getState();
-  console.log(currentState[0].displaySettings);
-  if (currentState[0].displaySettings === true) {
-    ReactDOM.render(<div>Settings!!!1</div>, document.getElementById('settings'));
-  }
-});
