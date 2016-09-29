@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Button = () => (
-  <div>
-    <button type="button">button!!!1!!1</button>
-  </div>
-);
+class SettingsButton extends Component {
 
-export default Button;
+   render() {
+    const { toggleSettings } = this.props;
+     return (
+          <div className="settingsButton">
+            <button onClick={toggleSettings}>Settings</button>
+          </div>
+          );
+  }
+}
+
+export default SettingsButton;
