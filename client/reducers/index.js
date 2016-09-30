@@ -3,10 +3,10 @@ import toggle from './toggle';
 import rssFeed from './rssFeed';
 import addButtonClick from './addButtonClick';
 
-const todoApp = combineReducers({
+const reducers = combineReducers({
   toggle,
   rssFeed,
   addButtonClick,
 });
 
-export default todoApp;
+export default reducers;

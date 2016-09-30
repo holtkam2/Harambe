@@ -6,7 +6,7 @@ class SettingDisp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { buttonName: 'HRR' };
+    this.state = { buttonName: 'HRR18' };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -28,7 +28,7 @@ class SettingDisp extends Component {
           Button Name:
           <input
             type="text"
-            buttonName={this.state.buttonName}
+            value={this.state.buttonName}
             onChange={this.handleChange} // add function to do this
           />
           <button onClick={addButtonClick}>Create button</button>
