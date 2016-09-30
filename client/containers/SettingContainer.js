@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import toggleSettings from '../actions';
+import { toggleSettings, addButtonClick } from '../actions';
 import SettingsButton from '../components/Button';
 
 const mapDispatchToProps = ({
   toggleSettings,
+  addButtonClick,
 });
 
 // const SettingsContainer = connect(

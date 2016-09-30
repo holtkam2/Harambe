@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+// import addButtonClick from '../reducers/addButtonClick';
 // shoud this be a class?Not sure yet, only creating
 // eslint-disable-next-line react/prefer-stateless-function
 class SettingDisp extends Component {
@@ -6,6 +7,7 @@ class SettingDisp extends Component {
   constructor(props) {
     super(props);
     this.state = { buttonName: 'HRR' };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -15,8 +17,9 @@ class SettingDisp extends Component {
   }
 
   render() {
-    const { active } = this.props;
-    console.log('settingsContainer: active is set to ', active);
+    const { addButtonClick, active } = this.props;
+//    console.log('settingsContainer: active is set to ', active);
+    console.log('PROPS', this.props);
     if (active) {
       return (
         <div className="settingsPanel">
@@ -26,14 +29,14 @@ class SettingDisp extends Component {
           <input
             type="text"
             buttonName={this.state.buttonName}
-            onChange={this.handleChange}
+            onChange={this.handleChange} // add function to do this
           />
-          <button>Create button</button>
+          <button onClick={addButtonClick}>Create button</button>
           Add a URL for this button to open:
           <input
             type="text"
             buttonName={this.state.URLName}
-            onChange={this.handleChange}
+            onChange={this.handleChange} // add function to do this
           />
           <button>add URL to this button</button>
         </div>
@@ -45,6 +48,7 @@ class SettingDisp extends Component {
 
 SettingDisp.propTypes = {
   active: PropTypes.bool,
+  addButtonClick: PropTypes.func,
 };
 
 export default SettingDisp;
