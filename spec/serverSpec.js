@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const assert = require('chai').assert;
 const expect = require('chai').expect;

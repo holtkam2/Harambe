@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node ./server/server.js",
     "postinstall": "webpack",
-    "test": "eslint --ext .js --ext .jsx . && mocha -t 12000 -R spec spec/serverSpec.js",
+    "test": "eslint --ext .js --ext .jsx --fix . && mocha -t 12000 -R spec spec/serverSpec.js",
     "frontTest": "live-server --open=./SpecRunner.html --port=8081"
   },
   "engines": {
@@ -43,7 +43,8 @@
   "babel": {
     "presets": [
       "es2015",
-      "react"
+      "react",
+      "stage-0"
     ]
   },
   "devDependencies": {
