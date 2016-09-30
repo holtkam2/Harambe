@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addButtonClick: (formInput) => {
-    console.log('DISPATCH', addButton);
+    console.log('DISPATCH', formInput);
     dispatch(addButton('HRRTEST'));
   },
 });

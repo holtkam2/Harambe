@@ -6,20 +6,22 @@ class SettingDisp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { buttonName: 'HRR18' };
+    this.state = { buttonName: '' };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
+    //console.log('HANDLECHANGE', this.getState(buttonName));
     this.setState({ buttonName: event.target.buttonName,
       URLName: event.target.URLName,
      });
   }
 
   render() {
-    const { addButtonClick, active } = this.props;
+    const { addButtonClick, active, buttonName } = this.props;
 //    console.log('settingsContainer: active is set to ', active);
     console.log('PROPS', this.props);
+    console.log('STATE', this.state);
     if (active) {
       return (
         <div className="settingsPanel">
@@ -49,6 +51,7 @@ class SettingDisp extends Component {
 SettingDisp.propTypes = {
   active: PropTypes.bool,
   addButtonClick: PropTypes.func,
+  buttonName: PropTypes.string,
 };
 
 export default SettingDisp;
