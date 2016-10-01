@@ -3,8 +3,10 @@ import RSSFeed from './RSSFeed.jsx';
 
 const RSSFeedList = ({ rssFeed }) => (
   <div className="RSSFeedList">
-    <RSSFeed rssFeed={rssFeed[0]} />
-    <RSSFeed rssFeed={rssFeed[1]} />
+    {
+      rssFeed.map(feed =>
+        <RSSFeed rssFeed={feed} />)
+    }
   </div>
 );
 
@@ -13,3 +15,6 @@ RSSFeedList.propTypes = {
 };
 
 export default RSSFeedList;
+
+    // <RSSFeed rssFeed={rssFeed[0]} />
+    // <RSSFeed rssFeed={rssFeed[1]} />
