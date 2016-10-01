@@ -19,7 +19,6 @@ const App = () => (
       <RSSHolder />
       <SearchBar />
       <ButtonList />
-      <MagicButton urls={['https://www.google.com', 'https://www.yahoo.com', 'https://www.bing.com']} />
       <Setting />
       <ThemeButton />
       <SettingDisp />
