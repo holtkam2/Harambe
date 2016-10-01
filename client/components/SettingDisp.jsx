@@ -11,7 +11,7 @@ class SettingDisp extends Component {
   }
 
   handleChange(event) {
-    //console.log('HANDLECHANGE', this.getState(buttonName));
+    // console.log('HANDLECHANGE', this.getState(buttonName));
     this.setState({ buttonName: event.target.buttonName,
       URLName: event.target.URLName,
      });
