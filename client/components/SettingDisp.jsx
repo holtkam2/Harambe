@@ -22,6 +22,7 @@ class SettingDisp extends Component {
 //    console.log('settingsContainer: active is set to ', active);
     console.log('PROPS', this.props);
     console.log('STATE', this.state);
+    console.log('test');
     if (active) {
       return (
         <div className="settingsPanel">
