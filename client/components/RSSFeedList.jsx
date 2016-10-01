@@ -1,10 +1,10 @@
 import React from 'react';
 import RSSFeed from './RSSFeed.jsx';
 
-const RSSFeedList = () => (
+const RSSFeedList = ({ rssFeed }) => (
   <div className="RSSFeedList">
-    <RSSFeed />
-    <RSSFeed />
+    <RSSFeed rssFeed={rssFeed[0]} />
+    <RSSFeed rssFeed={rssFeed[1]} />
   </div>
 );
 
