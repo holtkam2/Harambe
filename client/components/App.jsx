@@ -14,7 +14,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const App = () => (
-<<<<<<< 5b3cf64d99346768297f8b340183b17c1bb10ac0
   <MuiThemeProvider>
     <div>
       <RSSHolder />
@@ -25,15 +24,6 @@ const App = () => (
       <SettingDisp />
     </div>
   </MuiThemeProvider>
-=======
-  <div>
-    <RSSHolder />
-    <SearchBar />
-    <ButtonList />
-    <Setting />
-    <SettingDisp />
-  </div>
->>>>>>> add URL click now passes a url and a button name to reducer
 );
 
 export default App;
