@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class SettingsButton extends Component {
 
   render() {
