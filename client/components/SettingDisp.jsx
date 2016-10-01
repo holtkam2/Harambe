@@ -24,7 +24,7 @@ class SettingDisp extends Component {
   }
 
   onAddURLClick() {
-    this.props.addURLClick(this.state.URLName, this.state.buttonName);
+    this.props.addURLClick(this.state.buttonName, this.state.URLName);
   }
 
   render() {
