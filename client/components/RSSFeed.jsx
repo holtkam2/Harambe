@@ -7,7 +7,7 @@ const RSSFeed = ({ rssFeed }) => (
 );
 
 RSSFeed.propTypes = {
-  rssFeed: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rssFeed: PropTypes.string.isRequired,
 };
 
 export default RSSFeed;
