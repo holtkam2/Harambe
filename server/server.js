@@ -1,21 +1,18 @@
 require('dotenv').config();
 
 const express = require('express');
-
 // middleware
 const morgan = require('morgan');
 const parser = require('body-parser');
-
+const helmet = require('helmet');
 // router
 const router = require('./routes');
-
 // Stormpath for auth
 const stormpath = require('express-stormpath');
 
 const app = express();
 
 app.set('port', process.env.PORT);
-
 // Stormpath init
 app.use(stormpath.init(app, {
   apiKey: {
@@ -31,6 +28,10 @@ app.use(stormpath.init(app, {
 // logging & parsing
 app.use(morgan('dev'));
 app.use(parser.json());
+
+// Helmet to secure express with various http headers
+// Expand later with specific rules for each module
+app.use(helmet());
 
 app.use('/', router);
 app.use(express.static(`${__dirname}/../client`));
