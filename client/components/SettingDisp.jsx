@@ -10,12 +10,12 @@ class SettingDisp extends Component {
   }
 
   onInputChange(event) {
-    console.log('')
+    console.log('');
     this.setState({ buttonName: event.target.value });
   }
 
   onAddButtonClick() {
-    this.props.addButtonClick(this.state.buttonName)
+    this.props.addButtonClick(this.state.buttonName);
   }
 
   render() {
