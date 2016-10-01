@@ -54,7 +54,6 @@ body {
  overflow: hidden;
  position: relative;
  /*border: red dotted 1px;*/
- z-index: 1000000;
 }
 .rssF1 {
  position: absolute;
