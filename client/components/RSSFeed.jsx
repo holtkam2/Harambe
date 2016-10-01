@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const RSSFeed = props => (
-  <li>
+  <li className="rssF1">
     {props.rssFeed.text}
   </li>
 );

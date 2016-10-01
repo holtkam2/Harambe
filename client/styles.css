@@ -49,7 +49,50 @@ body {
   z-index:100;
 }
 
-
+.rssF1 {
+ height: 50px;
+ overflow: hidden;
+ position: relative;
+ /*border: red dotted 1px;*/
+ z-index: 1000000;
+}
+.rssF1 {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: -20;
+ line-height: 50px;
+ text-align: left;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);
+ transform:translateX(100%);
+ /* Apply animation to this element */
+ -moz-animation: rssF1 15s linear infinite;
+ -webkit-animation: rssF1 15s linear infinite;
+ animation: rssF1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes rssF1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes rssF1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes rssF1 {
+ 0%   {
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%);
+ }
+ 100% {
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%);
+ }
+}
 
 
 
