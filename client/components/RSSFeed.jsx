@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 
-const RSSFeed = ({ rssFeed }) => (
-  <div>
-    {rssFeed}
-  </div>
+const RSSFeed = props => (
+  <li>
+    {props.rssFeed.text}
+  </li>
 );
 
 RSSFeed.propTypes = {
-  rssFeed: PropTypes.string.isRequired,
+  rssFeed: PropTypes.shape({
+    text: PropTypes.string,
+  }).isRequired,
 };
 
 export default RSSFeed;

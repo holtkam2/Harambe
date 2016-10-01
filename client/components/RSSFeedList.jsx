@@ -5,13 +5,13 @@ const RSSFeedList = ({ rssFeed }) => (
   <div className="RSSFeedList">
     {
       rssFeed.map(feed =>
-        <RSSFeed rssFeed={feed} />)
+        <RSSFeed key={feed.key} rssFeed={feed} />)
     }
   </div>
 );
 
 RSSFeedList.propTypes = {
-  rssFeed: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rssFeed: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default RSSFeedList;
