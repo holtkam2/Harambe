@@ -5,7 +5,6 @@ import RSSHolder from '../containers/RSSHolder';
 import SearchBar from '../components/SearchBar';
 import ButtonList from '../components/ButtonList';
 import LinkButton from '../components/LinkButton';
-import MagicButton from '../components/MagicButton.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
