@@ -4,26 +4,37 @@ class SettingDisp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { buttonName: '' };
+    this.state = { buttonName: '', URLName: '' };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onURLInputChange = this.onURLInputChange.bind(this)
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
+    this.onAddURLClick = this.onAddURLClick.bind(this);
   }
 
   onInputChange(event) {
-    console.log('');
     this.setState({ buttonName: event.target.value });
+  }
+
+  onURLInputChange(event) {
+    this.setState({ URLName: event.target.value})
   }
 
   onAddButtonClick() {
     this.props.addButtonClick(this.state.buttonName);
   }
 
+  onAddURLClick() {
+    this.props.addURLClick(this.state.URLName, this.state.buttonName);
+  }
+
   render() {
-    const { addButtonClick, active, buttonName } = this.props;
+    const { addButtonClick, addURLClick, active, buttonName, URLName } = this.props;
     if (active) {
       return (
         <div className="settingsPanel">
           <h1>Settings</h1>
+
+
           <h5>Configure a new button</h5>
           Button Name:
           <input
@@ -32,12 +43,20 @@ class SettingDisp extends Component {
             value={this.state.buttonName}
           />
           <button onClick={this.onAddButtonClick}>Create button</button>
+
+
+
           Add a URL for this button to open:
           <input
-            type="text"
+          type="text"
+          onChange={this.onURLInputChange}
+          value={this.state.URLName}
           />
-          <button>add URL to this button</button>
+          <button onClick={this.onAddURLClick}>add URL to this button</button>
         </div>
+
+
+
       );
     }
     return (<div />);
@@ -48,6 +67,7 @@ SettingDisp.propTypes = {
   active: PropTypes.bool,
   addButtonClick: PropTypes.func,
   buttonName: PropTypes.string,
+  addURLClick: PropTypes.func,
 };
 
 export default SettingDisp;

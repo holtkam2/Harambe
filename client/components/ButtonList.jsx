@@ -1,11 +1,12 @@
 import React from 'react';
-import Button from './Button.jsx';
+import LinkButton from './LinkButton.jsx';
 
 const ButtonList = () => (
   <div className="buttonList">
-    <Button />
-    <Button />
-    <Button />
+    <LinkButton />
+    <LinkButton />
+    <LinkButton />
+    <LinkButton />
   </div>
 );
 

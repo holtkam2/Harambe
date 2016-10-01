@@ -10,3 +10,10 @@ export function toggleSettings() {
     type: 'SETTINGS_TOGGLE',
   };
 }
+
+export function addURL(URL, Button ) {
+  return {
+    type: 'ADD_URL_CLICK',
+    payload: [URL, Button],
+  }
+}
