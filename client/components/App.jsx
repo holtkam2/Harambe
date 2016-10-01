@@ -5,7 +5,7 @@ import RSSHolder from '../containers/RSSHolder';
 import SearchBar from '../components/SearchBar';
 import ButtonList from '../components/ButtonList';
 import LinkButton from '../components/LinkButton';
-import MagicButton from '../components/MagicButton';
+import MagicButton from '../components/MagicButton.jsx';
 
 const App = () => (
   <div>
