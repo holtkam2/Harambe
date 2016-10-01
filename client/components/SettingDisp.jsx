@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 class SettingDisp extends Component {
 
@@ -42,7 +44,7 @@ class SettingDisp extends Component {
             onChange={this.onInputChange}
             value={this.state.buttonName}
           />
-          <button onClick={this.onAddButtonClick}>Create button</button>
+          <RaisedButton onClick={this.onAddButtonClick}>Create button</RaisedButton>
 
 
 
@@ -52,7 +54,7 @@ class SettingDisp extends Component {
           onChange={this.onURLInputChange}
           value={this.state.URLName}
           />
-          <button onClick={this.onAddURLClick}>add URL to this button</button>
+          <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
         </div>
 
 

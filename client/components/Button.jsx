@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class SettingsButton extends Component {
@@ -7,7 +8,7 @@ class SettingsButton extends Component {
     const { toggleSettings } = this.props;
     return (
       <div className="settingsButton">
-        <button onClick={toggleSettings}>Settings</button>
+        <RaisedButton onClick={toggleSettings}>Settings</RaisedButton>
       </div>
     );
   }
