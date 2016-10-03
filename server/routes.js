@@ -13,11 +13,17 @@ const stormpath = require('express-stormpath');
 // routes
 router.get('/', stormpath.loginRequired, helper.getSlash);
 
+// test routes
+router.get('/api/tests', helper.getAllTests);
+router.post('/api/tests', helper.createTest);
+router.get('/api/tests/:testname', helper.getTest);
+router.delete('/api/tests/:testname', helper.deleteTest);
+
 // user routes
-router.get('/api/users', helper.getAllUsers);
-router.post('/api/users', helper.createUser);
-router.get('/api/users/:username', helper.getUser);
-router.delete('/api/users/:username', helper.deleteUser);
+// router.get('/api/users', helper.getAllUsers);
+// router.post('/api/users', helper.createUser);
+// router.get('/api/users/:username', helper.getUser);
+// router.delete('/api/users/:username', helper.deleteUser);
 // router.put('/api/users/:username', helper.updateUser);
 
 // button routes
