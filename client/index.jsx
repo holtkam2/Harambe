@@ -8,13 +8,16 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 import App from './components/App.jsx';
 import reducer from './reducers/index.js';
+import addURL from './actions/index.js';
 
 const logger = createLogger();
 const store = createStore(
   reducer,
   applyMiddleware(thunk, promise, logger),
 );
-
+// $.get('/api/state', data => {
+//   store.dispatch(addURL('testButtonFrom Async', ['http://google.com']));
+// });
 render(
   <Provider store={store}>
     <App />
