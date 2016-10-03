@@ -45,6 +45,14 @@ const getUser = (username) => {
     });
 };
 
+const saveToUser = (state) => {
+  db.user.find({ where: { userName: state.username } })
+    .then((result) => {
+      console.log('updating user, ', result);
+      // update what need updating, leave rest alone
+    });
+};
+
 module.exports = {
   getSlash: (req, res) => {
     console.log('HERE', req.user);
@@ -62,12 +70,13 @@ module.exports = {
   getState: (req, res) => {
     console.log('getState');
     const state = getUser(req.params.username);
-    res.json(state);
+    res.status().json(state);
   },
 
   saveState: (req, res) => {
     console.log('saveState');
-    res.send('haha');
+    saveToUser(req.body);
+    res.status().send('haha');
   },
 
   // Testing functions
