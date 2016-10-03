@@ -13,38 +13,27 @@ const Test = db.define('Test', {
 
 const User = db.define('User', {
   userName: { type: Sequelize.STRING, unique: true },
-  interests: Sequelize.INTEGER,
-  buttons: Sequelize.INTEGER,
+  firstName: Sequelize.STRING,
+  LastName: Sequelize.STRING,
+  isAdmin: Sequelize.BOOLEAN,
 });
 
-const UserInterests = db.define('UserInterests', {});
-const UserButtons = db.define('UserButtons', {});
+const UserInterest = db.define('UserInterest', {});
+const UserButton = db.define('UserButton', {});
 
 const InterestList = db.define('InterestList', {
   interestName: Sequelize.STRING,
-  interestList: Sequelize.INTEGER,
-});
-
-const RSSFeed = db.define('RSSFeed', {
-  RSSName: Sequelize.STRING,
-  RSSUrl: Sequelize.STRING,
+  // the name is set by Sequelize:
+  // eslint-disable-next-line new-cap
+  RSSFeeds: Sequelize.ARRAY(Sequelize.STRING),
 });
 
 const Button = db.define('Button', {
   buttonName: Sequelize.STRING,
-  linkList: Sequelize.INTEGER,
+  // the name is set by Sequelize:
+  // eslint-disable-next-line new-cap
+  links: Sequelize.ARRAY(Sequelize.STRING),
 });
-
-const Link = db.define('Link', {
-  linkName: Sequelize.STRING,
-  linkUrl: Sequelize.STRING,
-});
-
-Link.belongsTo(Button);
-Button.hasMany(Link);
-
-RSSFeed.belongsTo(InterestList);
-InterestList.hasMany(RSSFeed);
 
 Button.belongsToMany(User, { through: 'UserButtons' });
 InterestList.belongsToMany(User, { through: 'UserInterests' });
@@ -53,7 +42,7 @@ User.belongsToMany(Button, { through: 'UserButtons' });
 User.belongsToMany(InterestList, { through: 'UserInterests' });
 
 // sync all tables
-[Test, User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
+[Test, User, Button, InterestList, UserButton, UserInterest]
   .forEach(table => table.sync({ logging: false }));
 // [User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
 //   .forEach(table =>
@@ -61,4 +50,4 @@ User.belongsToMany(InterestList, { through: 'UserInterests' });
 //       .then(syncedTable => console.log(`${syncedTable} successfully synced`))
 //       .catch(err => console.error(err)));
 
-module.exports = { Test, User, Button, Link, UserButtons, UserInterests };
+module.exports = { Test, User, Button, UserButton, UserInterest };
