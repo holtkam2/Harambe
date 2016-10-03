@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
 class SettingDisp extends Component {
 
   constructor(props) {
@@ -11,6 +10,7 @@ class SettingDisp extends Component {
     this.onURLInputChange = this.onURLInputChange.bind(this)
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddURLClick = this.onAddURLClick.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   onInputChange(event) {
@@ -29,13 +29,19 @@ class SettingDisp extends Component {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
   }
 
+  onSaveButtonClick(){
+    console.log(this.props.state);
+    $.post( "/api/state", this.props.state, function( data ) {
+      console.log(data);
+    }, "json");
+  }
+
   render() {
-    const { addButtonClick, addURLClick, active, buttonName, URLName } = this.props;
+    const { addButtonClick, addURLClick, active, buttonName, URLName, state } = this.props;
     if (active) {
       return (
         <div className="settingsPanel">
           <h1>Settings</h1>
-
 
           <h5>Configure a new button</h5>
           Button Name:
@@ -46,8 +52,6 @@ class SettingDisp extends Component {
           />
           <RaisedButton onClick={this.onAddButtonClick}>Create button</RaisedButton>
 
-
-
           Add a URL for this button to open:
           <input
           type="text"
@@ -55,9 +59,9 @@ class SettingDisp extends Component {
           value={this.state.URLName}
           />
           <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
+
+          <RaisedButton onClick={this.onSaveButtonClick}>Save</RaisedButton>
         </div>
-
-
 
       );
     }
