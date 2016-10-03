@@ -53,7 +53,8 @@ body {
  height: 50px;
  overflow: hidden;
  position: relative;
- /*border: red dotted 1px;*/
+ border: red dotted 1px;
+ z-index: -1;
 }
 .rssF1 {
  position: absolute;

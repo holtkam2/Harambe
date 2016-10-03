@@ -7,18 +7,21 @@ class ButtonList extends Component {
     super(props);
     this.state = props.buttonListState.buttons;
     // this gets an object back with key: btn name value [] of links
+    console.log(this.state, 'ButttonList');
   }
 
   render() {
     let name = '';
     let links = [];
-    for( let key in this.state){
-      name = key;
-      links = this.state[key];
-    return (
-      <LinkButton name={name} urls={links} />
+    for (const key in this.state) {
+      if (this.state.hasOwnProperty(key)) {
+        name = key;
+        links = this.state[key];
+        return (
+          <LinkButton name={name} urls={links} />
     );
-  }
+      }
+    }
   }
 }
 

@@ -1,4 +1,7 @@
-const addButtonClick = (state = { buttons: {} }, action) => {
+const addButtonClick = (state = { buttons:
+  { test: ['www.google.com', 'cnn.com'],
+    testBtn2: ['www.hn.com', 'www.bing.com'] },
+ }, action) => {
   console.log('HERE', { ...state });
   const newState = { ...state };
   if (Array.isArray(action.payload)) {
