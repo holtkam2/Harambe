@@ -1,5 +1,4 @@
 const router = require('express').Router(); // eslint-disable-line new-cap
-// const path = require('path');
 const helper = require('./helpers');
 // Stormpath for auth
 const stormpath = require('express-stormpath');
@@ -10,27 +9,16 @@ const stormpath = require('express-stormpath');
 //   console.log(req.method, req.url);
 // });
 
-// routes
+// Main routes
 router.get('/', stormpath.loginRequired, helper.getSlash);
 
-// test routes
+router.get('/api/state', stormpath.loginRequired, helper.getState);
+router.post('/api/state', stormpath.loginRequired, helper.saveState);
+
+// Test routes
 router.get('/api/tests', helper.getAllTests);
 router.post('/api/tests', helper.createTest);
 router.get('/api/tests/:testname', helper.getTest);
 router.delete('/api/tests/:testname', helper.deleteTest);
-
-// user routes
-// router.get('/api/users', helper.getAllUsers);
-// router.post('/api/users', helper.createUser);
-// router.get('/api/users/:username', helper.getUser);
-// router.delete('/api/users/:username', helper.deleteUser);
-// router.put('/api/users/:username', helper.updateUser);
-
-// button routes
-// router.get('/api/buttons', helper.getAllButtons);
-// router.post('/api/buttons', helper.createButton);
-// router.get('/api/buttons/:buttonname', helper.getButton);
-// router.delete('/api/buttons/:buttonname', helper.deleteButton);
-// router.put('/api/buttons/:buttonname', helper.updateButton);
 
 module.exports = router;
