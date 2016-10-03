@@ -6,6 +6,11 @@ const db = new Sequelize(process.env.DATABASE_URL, {
   },
 });
 
+const Test = db.define('Test', {
+  testName: { type: Sequelize.STRING, unique: true },
+  stuff: Sequelize.STRING,
+});
+
 const User = db.define('User', {
   userName: { type: Sequelize.STRING, unique: true },
   interests: Sequelize.INTEGER,
@@ -48,7 +53,7 @@ User.belongsToMany(Button, { through: 'UserButtons' });
 User.belongsToMany(InterestList, { through: 'UserInterests' });
 
 // sync all tables
-[User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
+[Test, User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
   .forEach(table => table.sync({ logging: false }));
 // [User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
 //   .forEach(table =>
@@ -56,4 +61,4 @@ User.belongsToMany(InterestList, { through: 'UserInterests' });
 //       .then(syncedTable => console.log(`${syncedTable} successfully synced`))
 //       .catch(err => console.error(err)));
 
-module.exports = { User, Button, Link, UserButtons, UserInterests };
+module.exports = { Test, User, Button, Link, UserButtons, UserInterests };

@@ -33,27 +33,29 @@ describe('database', () => {
   let server;
   beforeEach((done) => {
     server = require(path.join(__dirname, '..', './server/server.js'), { bustCache: true });
-     done();
+      done();
   });
   afterEach((done) => {
     server.listen();
     done();
   });
 
-  it('stores a user in database', (done) => {
-    let user = { userName: 'TestMan' };
+  it('stores a test in database', (done) => {
+    let test = { testName: 'TestMan' };
     request(server)
-      .post('/api/users')
-      .send(user)
+      .post('/api/tests')
+      .send(test)
       .expect(201, done);
   });
 
   it('retrieves stored user from database', (done) => {
     request(server)
-      .get('/api/users/TestMan')
+      .get('/api/tests/TestMan')
       .expect(200)
       .expect(
-        (res) => { if (res.body.userName === 'TestMan') done(); }
+        (res) => {
+          console.log('HERE', res.body);
+          if (res.body.testName === 'TestMan') done(); }
       )
       .catch((err) => {
         console.log(err);
@@ -61,10 +63,10 @@ describe('database', () => {
   });
 
   it('removes a user in database', (done) => {
-    let user = { userName: 'TestMan' };
+    let test = { testName: 'TestMan' };
     request(server)
-      .delete('/api/users/TestMan')
-      .send(user)
+      .delete('/api/tests/TestMan')
+      .send(test)
       .expect(204, done);
   });
 });
