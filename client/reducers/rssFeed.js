@@ -9,6 +9,9 @@ const rssFeed = (state = [{ key: 1, text: 'test feed right here' },
         ...state,
         action,
       ];
+    case 'GET_STATE_FROM_SERVER':
+      console.log('GET_STATE_FROM_SERVER was called in RSSFeed reducer');
+      console.log('The action.payload that was recieved by the reducer: ', action.payload)
     default:
       return state;
   }

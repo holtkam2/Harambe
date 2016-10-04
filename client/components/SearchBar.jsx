@@ -4,9 +4,7 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { searchTerm: '' };
-
+    this.state = { searchTerm: '', userName: "Roni" };
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -21,10 +19,22 @@ class SearchBar extends Component {
     this.setState({ searchTerm: '' });
   }
 
+  componentDidMount(){
+    $.ajax({
+      url: '/api/state',
+      dataType: 'json',
+      method: 'GET',
+      cache: false,
+      success: function(data) {
+        this.setState({userName: data.firstName})
+      }.bind(this)
+    });
+  }
+
   render() {
     return (
       <div className="searchBar">
-        <div>Hello, User</div>
+        <div>Hello, {this.state.userName}</div>
         <form className="input-group" onSubmit={this.onFormSubmit}>
           <input
             className="form-control"

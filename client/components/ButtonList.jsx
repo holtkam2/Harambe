@@ -7,9 +7,13 @@ class ButtonList extends Component {
     super(props);
   }
 
+  componentDidMount(){
+    this.props.updateStateFromServer();
+  }
+
   render() {
     const buttons = this.props.buttonListState.buttons;
-    console.log(buttons)
+    const { updateStateFromServer } = this.props;
     var buttonNames = [];
 
     for (var i in buttons){
@@ -33,6 +37,3 @@ class ButtonList extends Component {
 
 export default ButtonList;
 
-// <div>
-//  <LinkButton name = {buttonNames[0]} urls = {buttons[ButtonNames[0]]} />
-// </div>
