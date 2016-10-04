@@ -1,3 +1,5 @@
+/* global _, $ */
+
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -30,13 +32,11 @@ class SettingDisp extends Component {
   }
 
   onSaveButtonClick() {
-    console.log(this.props);
+    console.log('SAVEBUTTON', this.props.state);
     const stateObj = {
-      // user: {
-      //   username: ,
-      //   firstname: ,
-      //   lastname: ,
-      // }
+      user: {
+         userName: this.props.state.currentUser.userName,
+      },
       buttons: {},
       interests: {},
     };

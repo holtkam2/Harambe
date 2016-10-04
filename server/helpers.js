@@ -85,6 +85,7 @@ module.exports = {
           result.user = {
             firstName: foundUser.firstName,
             lastName: foundUser.lastName,
+            userName: foundUser.userName
           };
           result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
             // console.log(buttonKey.buttonName, buttonKey.links);
