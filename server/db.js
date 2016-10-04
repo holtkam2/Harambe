@@ -18,9 +18,6 @@ const User = db.define('User', {
   isAdmin: Sequelize.BOOLEAN,
 });
 
-const UserInterest = db.define('UserInterest', {});
-const UserButton = db.define('UserButton', {});
-
 const InterestList = db.define('InterestList', {
   interestName: Sequelize.STRING,
   // the name is set by Sequelize:
@@ -35,14 +32,14 @@ const Button = db.define('Button', {
   links: Sequelize.ARRAY(Sequelize.STRING),
 });
 
-Button.belongsToMany(User, { through: 'UserButtons' });
-InterestList.belongsToMany(User, { through: 'UserInterests' });
+Button.belongsTo(User);
+InterestList.belongsTo(User);
 
-User.belongsToMany(Button, { through: 'UserButtons' });
-User.belongsToMany(InterestList, { through: 'UserInterests' });
+User.hasMany(Button);
+User.hasMany(InterestList);
 
 // sync all tables
-[Test, User, Button, InterestList, UserButton, UserInterest]
+[Test, User, Button, InterestList]
   .forEach(table => table.sync({ logging: false }));
 // [User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
 //   .forEach(table =>
@@ -50,4 +47,4 @@ User.belongsToMany(InterestList, { through: 'UserInterests' });
 //       .then(syncedTable => console.log(`${syncedTable} successfully synced`))
 //       .catch(err => console.error(err)));
 
-module.exports = { Test, User, Button, UserButton, UserInterest };
+module.exports = { Test, User, Button, InterestList };
