@@ -88,9 +88,46 @@ module.exports = {
   },
 
   saveState: (req, res) => {
-    console.log('saveState');
-    saveToUser(req.body);
-    res.status(202).send('haha');
+    db.User.find({ where: { userName: req.user.username } })
+      .then((foundUser) => {
+        // convert object into array
+        const buttons = Object.keys(req.body.buttons)
+          .map(buttonKey => ({
+            UserId: foundUser.id,
+            buttonName: buttonKey,
+            links: req.body.buttons[buttonKey],
+          }));
+
+        // convert object into array
+        const interests = Object.keys(req.body.interests)
+          .map(interestKey => ({
+            UserId: foundUser.id,
+            interestName: interestKey,
+            RSSFeeds: req.body.interests[interestKey],
+          }));
+
+        // refresh all Buttons
+        db.Button.destroy({
+          where: {
+            UserId: foundUser.id,
+            buttonName: buttons.map(button => button.buttonName),
+          },
+        })
+        .then(() => db.Button.bulkCreate(buttons))
+        .catch(error => res.status(500).send(error));
+
+        // refresh all InterestLists
+        db.InterestList.destroy({
+          where: {
+            UserId: foundUser.id,
+            interestName: interests.map(interest => interest.interestName),
+          },
+        })
+        .then(() => db.InterestList.bulkCreate(interests))
+        .then(() => res.status(202).send('haha'))
+        .catch(error => res.status(500).send(error));
+      })
+      .catch(error => res.status(404).send(error));
   },
 
   // Testing functions
