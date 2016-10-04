@@ -7,6 +7,7 @@ class SettingsButton extends Component {
     $.ajax({
       url: '/api/state',
       dataType: 'json',
+      method: 'GET',
       cache: false,
       success: function(data) {
         console.log(data, 'from get state')
