@@ -17,3 +17,23 @@ export function addURL(Button, URL) {
     payload: [Button, URL],
   }
 }
+
+export function updateStateFromServer(){
+  return (dispatch) => {
+    $.get('api/state')
+    .then(res => {
+      dispatch(gotState(res))
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  }
+}
+
+const gotState = (res) => {
+  return {
+    type:'GET_STATE_FROM_SERVER',
+    payload: res,
+  }
+}
+
