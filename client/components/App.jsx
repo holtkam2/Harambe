@@ -20,8 +20,8 @@ const App = () => (
       <SearchBar />
       <ButtonListContainer />
       <Setting />
-      <ThemeButton />
       <SettingDisp />
+      <ThemeButton />
     </div>
   </MuiThemeProvider>
 );
