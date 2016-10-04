@@ -15,9 +15,12 @@ const store = createStore(
   reducer,
   applyMiddleware(thunk, promise, logger),
 );
-// $.get('/api/state', data => {
+
+// $.get('/api/state', (data, status) => {
+//   console.log('get Async', status);
 //   store.dispatch(addURL('testButtonFrom Async', ['http://google.com']));
 // });
+
 render(
   <Provider store={store}>
     <App />

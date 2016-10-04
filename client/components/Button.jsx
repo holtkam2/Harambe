@@ -3,6 +3,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class SettingsButton extends Component {
 
+  componentDidMount() {
+    $.ajax({
+      url: '/api/state',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        console.log(data, 'from get state')
+        this.setState({rssFeed: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  }
   render() {
     const { toggleSettings } = this.props;
     return (
