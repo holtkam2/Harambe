@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
 class SettingsButton extends Component {
 
@@ -7,7 +8,9 @@ class SettingsButton extends Component {
     const { toggleSettings } = this.props;
     return (
       <div className="settingsButton">
-        <RaisedButton onClick={toggleSettings}>Settings</RaisedButton>
+        <FlatButton onClick={toggleSettings}>
+          <SettingsIcon />
+        </FlatButton>
       </div>
     );
   }
@@ -15,7 +18,6 @@ class SettingsButton extends Component {
 
 SettingsButton.propTypes = { toggleSettings: PropTypes.func };
 export default SettingsButton;
-
 
 // $.ajax({
 //   url: '/api/state',
