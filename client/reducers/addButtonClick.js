@@ -19,8 +19,9 @@ const addButtonClick = (state = {
       return newState;
     case 'GET_STATE_FROM_SERVER':
       // console.log('GET_STATE_FROM_SERVER was called in addButtonClick reducer');
-     //  console.log('The action.payload that was recieved by the reducer: ', action.payload);
-      newState.userName = action.payload.userName;
+      console.log('The action.payload that was recieved by the reducer: ', action.payload);
+      newState.userName = action.payload.user.userName;
+      console.log('NEWSTATE', newState);
       return newState;
     default:
       return state;
