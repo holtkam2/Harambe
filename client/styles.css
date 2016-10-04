@@ -158,7 +158,7 @@ input:checked + .slider:before {
   float: left;
   position: fixed;
   bottom: 20;
-  right: 20;
+  right: 24;
 }
 
 
