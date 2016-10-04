@@ -23,12 +23,17 @@ const addButtonClick = (state = {
       return { ...state };
 
     case 'GET_STATE_FROM_SERVER':
+<<<<<<< d72509c0e20026f90c37e85332b41f6d06b3c8f1
 
       // console.log('GET_STATE_FROM_SERVER was called in addButtonClick reducer');
       console.log('The action.payload that was recieved by the reducer: ', action.payload);
       newState.userName = action.payload.user.userName;
       console.log('NEWSTATE', newState);
       return newState;
+=======
+      state.userName = action.payload.user.firstName;
+      return { ...state };
+>>>>>>> took out some console logs because there were too many and it was confusing
 
 
     default:

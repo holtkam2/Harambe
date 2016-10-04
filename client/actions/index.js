@@ -43,6 +43,9 @@ export function updateStateFromServer() {
   return (dispatch) => {
     $.get('api/state')
     .then((res) => {
+
+      console.log('UPDATEFROMSERVER', res);
+
       dispatch(gotState(res));
     })
     .catch((err) => {
