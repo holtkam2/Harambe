@@ -7,7 +7,7 @@ class SettingDisp extends Component {
     super(props);
     this.state = { buttonName: '', URLName: '' };
     this.onInputChange = this.onInputChange.bind(this);
-    this.onURLInputChange = this.onURLInputChange.bind(this)
+    this.onURLInputChange = this.onURLInputChange.bind(this);
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddURLClick = this.onAddURLClick.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
@@ -18,7 +18,7 @@ class SettingDisp extends Component {
   }
 
   onURLInputChange(event) {
-    this.setState({ URLName: event.target.value})
+    this.setState({ URLName: event.target.value });
   }
 
   onAddButtonClick() {
@@ -29,8 +29,32 @@ class SettingDisp extends Component {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
   }
 
-  onSaveButtonClick(){
-    $.post( "/api/state", this.props.state, function( data ) {
+  onSaveButtonClick() {
+    console.log(this.props);
+    const stateObj = {
+      // user: {
+      //   username: ,
+      //   firstname: ,
+      //   lastname: ,
+      // }
+      buttons: {},
+      interests: {},
+    };
+    // Please rename 'AddButtonClick' to 'buttons' or something
+    _.each(this.props.state.addButtonClick.buttons, (value, key) => {
+      stateObj.buttons[key] = value;
+    });
+    // Please add a 'feeds' object to state that then contains 'name': [urls] pairs for feeds.
+    _.each(this.props.state.feeds, (value, key) => {
+      stateObj.interests[key] = value;
+    });
+
+    $.post('/api/state', stateObj, (err, data) => {
+      if (err) {
+
+      } else {
+
+      }
     });
   }
 
@@ -52,9 +76,9 @@ class SettingDisp extends Component {
 
           Add a URL for this button to open:
           <input
-          type="text"
-          onChange={this.onURLInputChange}
-          value={this.state.URLName}
+            type="text"
+            onChange={this.onURLInputChange}
+            value={this.state.URLName}
           />
           <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
 

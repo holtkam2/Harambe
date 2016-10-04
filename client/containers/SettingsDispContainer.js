@@ -4,7 +4,7 @@ import { addButton, addURL } from '../actions/index';
 
 const mapStateToProps = state => ({
   active: state.toggle,
-  state: state,
+  state,
 });
 
 const mapDispatchToProps = dispatch => ({

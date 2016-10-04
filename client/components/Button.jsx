@@ -17,12 +17,6 @@ SettingsButton.propTypes = { toggleSettings: PropTypes.func };
 export default SettingsButton;
 
 
-
-
-
-
-
-
 // $.ajax({
 //   url: '/api/state',
 //   dataType: 'json',

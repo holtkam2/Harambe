@@ -7,33 +7,31 @@ class ButtonList extends Component {
     super(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.updateStateFromServer();
   }
 
   render() {
     const buttons = this.props.buttonListState.buttons;
     const { updateStateFromServer } = this.props;
-    var buttonNames = [];
+    const buttonNames = [];
 
-    for (var i in buttons){
-      if (i !== "undefined"){
-        buttonNames.push(i)
+    for (const i in buttons) {
+      if (i !== 'undefined') {
+        buttonNames.push(i);
       }
     }
 
     return (
       <div>
         {
-          buttonNames.map(name => {
-            return <LinkButton name = {name} urls = {buttons[name]} />
+          buttonNames.map((name) => {
+            return <LinkButton name={name} urls={buttons[name]} />;
           })
         }
       </div>
-    )
-
+    );
   }
 }
 
 export default ButtonList;
-
