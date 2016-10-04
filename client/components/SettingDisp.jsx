@@ -30,10 +30,8 @@ class SettingDisp extends Component {
   }
 
   onSaveButtonClick(){
-    console.log(this.props.state);
     $.post( "/api/state", this.props.state, function( data ) {
-      console.log(data);
-    }, "json");
+    });
   }
 
   render() {
