@@ -76,7 +76,38 @@ module.exports = {
     //   res.status(200).json(state);
     // }
     db.User.find({ where: { userName: req.user.username } })
-      .then((result) => {
+      .then((foundUser) => {
+        const result = {};
+
+        // refresh all Buttons
+        db.Button.findAll({ where: { UserId: foundUser.id } })
+        .then((buttonKeys) => {
+          result.user = {
+            firstName: foundUser.firstName,
+            lastName: foundUser.lastName,
+          };
+          result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
+            // console.log(buttonKey.buttonName, buttonKey.links);
+            buttons[buttonKey.buttonName] = buttonKey.links;
+            return buttons;
+          }, {});
+        })
+        .then(() => {
+          db.InterestList.findAll({ where: { UserId: foundUser.id } })
+            .then((interestKeys) => {
+              result.interests = interestKeys.reduce((interests, interestKey) => {
+                // console.log(interestKey.interestName, interestKey.RSSFeeds);
+                interests[interestKey.interestName] = interestKey.RSSFeeds;
+                return interests;
+              }, {});
+            })
+            .then(() => res.status(200).json(result));
+        })
+        .catch(error => res.status(500).send(error));
+      })
+      .catch(error => res.status(404).send(error));
+
+      /* .then((result) => {
         if (!result) {
           res.sendStatus(204);
         } else {
@@ -84,7 +115,7 @@ module.exports = {
         }
         console.log('found user ', result);
         // return result;
-      });
+      });*/
   },
 
   saveState: (req, res) => {
