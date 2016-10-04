@@ -37,13 +37,13 @@ const createUser = (user) => {
   db.User.setInterestLists([]);
 };
 
-const getUser = (username) => {
-  db.User.find({ where: { userName: username } })
-    .then((result) => {
-      console.log('found user ', username);
-      return result;
-    });
-};
+// const getUser = (username) => {
+//   db.User.find({ where: { userName: username } })
+//     .then((result) => {
+//       console.log('found user ', username);
+//       return result;
+//     });
+// };
 
 const saveToUser = (state) => {
   db.User.find({ where: { userName: state.username } })
@@ -69,12 +69,22 @@ module.exports = {
 
   getState: (req, res) => {
     console.log('getState');
-    const state = getUser(req.user.username);
-    if (!state) {
-      res.sendStatus(204);
-    } else {
-      res.status(200).json(state);
-    }
+    // const state = getUser(req.user.username);
+    // if (!state) {
+    //   res.sendStatus(204);
+    // } else {
+    //   res.status(200).json(state);
+    // }
+    db.User.find({ where: { userName: req.user.username } })
+      .then((result) => {
+        if (!result) {
+          res.sendStatus(204);
+        } else {
+          res.status(200).json(result);
+        }
+        console.log('found user ', result);
+        // return result;
+      });
   },
 
   saveState: (req, res) => {
