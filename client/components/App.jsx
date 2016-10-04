@@ -10,15 +10,20 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import ThemeButton from '../components/ThemeButton.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import Paper from 'material-ui/Paper';
 
 injectTapEventPlugin();
 
 const App = () => (
   <MuiThemeProvider>
     <div>
-      <RSSHolder />
-      <SearchBar />
-      <ButtonListContainer />
+      <Paper className="RSSHolder" zDepth={2}>
+        <RSSHolder />
+      </Paper>
+      <SearchBar className="SearchBar" />
+      <Paper className="ButtonListContainer" zDepth={1}>
+        <ButtonListContainer />
+      </Paper>
       <Setting />
       <SettingDisp />
       <ThemeButton />

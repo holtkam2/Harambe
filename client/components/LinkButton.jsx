@@ -1,5 +1,6 @@
 /* eslint-env browser*/
 import React, { Component, PropTypes } from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class LinkButton extends Component {
   constructor(props) {
@@ -35,13 +36,11 @@ class LinkButton extends Component {
 
   render() {
     return (
-      <div className="linkButton">
-        <button
-          onClick={this.onClick}
-          onMouseMove={this.onMouseMove}
-        >{this.props.name}
-        </button>
-      </div>
+      <RaisedButton primary={true}
+        onClick={this.onClick}
+        onMouseMove={this.onMouseMove}
+      >{this.props.name}
+      </RaisedButton>
     );
   }
 }
