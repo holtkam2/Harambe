@@ -54,6 +54,19 @@ class SettingDisp extends Component {
 
   onRSSFeedURLClick() {
     this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
+    this.setState({ interestName: event.target.value })
+  }
+
+  onRSSFeedNameChange(event) {
+    this.setState({ RSSFeedURL: event.target.value })
+  }
+
+  onInterestInputBoxClick(){
+    this.props.interestNameClick(this.state.interestName)
+  }
+
+  onRSSFeedURLClick(){
+    this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName)
   }
 
   onSaveButtonClick() {
@@ -158,6 +171,48 @@ class SettingDisp extends Component {
               <RaisedButton primary={true} onClick={this.onRSSFeedURLClick}>add</RaisedButton>
             </div>
           </Dialog>
+            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick
+          } = this.props;
+
+    if (active) {
+      return (
+        <div className="settingsPanel">
+          <h1>Settings</h1>
+
+          <h5>Configure a new button</h5>
+          Button Name:
+          <input
+            type="text"
+            onChange={this.onInputChange}
+            value={this.state.buttonName}
+          />
+          <RaisedButton onClick={this.onAddButtonClick}>Create button</RaisedButton>
+
+          Add a URL for this button to open:
+          <input
+            type="text"
+            onChange={this.onURLInputChange}
+            value={this.state.URLName}
+          />
+          <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
+
+
+          <input
+            type = "text"
+            onChange={this.onInterestNameChange}
+            value={this.state.interestName}
+          />
+          <RaisedButton onClick={this.onInterestInputBoxClick}>add a new interest</RaisedButton>
+
+          <input
+            type = "text"
+            onChange={this.onRSSFeedNameChange}
+            value={this.state.RSSFeedURL}
+          />
+          <RaisedButton onClick={this.onRSSFeedURLClick}>add a new RSS URL to the interest</RaisedButton>
+
+
+          <RaisedButton onClick={this.onSaveButtonClick}>Save</RaisedButton>
         </div>
       );
     }
