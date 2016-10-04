@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
+
 
 class SettingsButton extends Component {
 
@@ -8,9 +9,9 @@ class SettingsButton extends Component {
     const { toggleSettings } = this.props;
     return (
       <div className="settingsButton">
-        <FlatButton onClick={toggleSettings}>
+        <IconButton onClick={toggleSettings}>
           <SettingsIcon />
-        </FlatButton>
+        </IconButton>
       </div>
     );
   }
