@@ -45,13 +45,13 @@ const createUser = (user) => {
 //     });
 // };
 
-const saveToUser = (state) => {
-  db.User.find({ where: { userName: state.username } })
-    .then((result) => {
-      console.log('updating user, ', result);
-      // update what needs updating, leave rest alone
-    });
-};
+// const saveToUser = (state) => {
+//   db.User.find({ where: { userName: state.username } })
+//     .then((result) => {
+//       console.log('updating user, ', result);
+//       // update what needs updating, leave rest alone
+//     });
+// };
 
 module.exports = {
   getSlash: (req, res) => {
@@ -88,6 +88,8 @@ module.exports = {
           };
           result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
             // console.log(buttonKey.buttonName, buttonKey.links);
+            // we are using the reduce to build up properties:
+            // eslint-disable-next-line no-param-reassign
             buttons[buttonKey.buttonName] = buttonKey.links;
             return buttons;
           }, {});
@@ -97,6 +99,8 @@ module.exports = {
             .then((interestKeys) => {
               result.interests = interestKeys.reduce((interests, interestKey) => {
                 // console.log(interestKey.interestName, interestKey.RSSFeeds);
+                // we are using the reduce to build up properties:
+                // eslint-disable-next-line no-param-reassign
                 interests[interestKey.interestName] = interestKey.RSSFeeds;
                 return interests;
               }, {});
