@@ -23,10 +23,10 @@ class ButtonList extends Component {
     }
 
     return (
-      <div>
+      <div className="NavButtonContainer">
         {
           buttonNames.map((name) => {
-            return <LinkButton name={name} urls={buttons[name]} />;
+            return <div className="NavButton"><LinkButton name={name} urls={buttons[name]} /></div>;
           })
         }
       </div>

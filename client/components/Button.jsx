@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
-
 class SettingsButton extends Component {
 
   render() {
