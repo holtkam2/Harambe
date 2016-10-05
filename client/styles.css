@@ -31,17 +31,19 @@ body {
 .searchBar {
   font-size: 24;
   text-align:center;
+  position: absolute;
+  top: 32%;
 }
 
 .input-group {
   width: 60%;
   position: relative;
-  top: 30%;
+  top: 28%;
   margin: 10 auto;
 }
 
 .input-group-btn {
-  bottom: 8px;
+  bottom: 0;
 }
 
 .settingsButton {
@@ -180,7 +182,7 @@ input:checked + .slider:before {
   text-align: center;
   white-space: nowrap;
   margin: auto;
-  top: 50%;
+  top: 56%;
   position: absolute;
   left: 0;
   right: 0;
@@ -203,11 +205,6 @@ input:checked + .slider:before {
   height: 61px;
   z-index: 10;
   position: relative;
-}
-
-.SearchBar {
-  position: absolute;
-  top: 35%;
 }
 
 .setPadding {
