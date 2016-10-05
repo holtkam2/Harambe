@@ -26,6 +26,11 @@ const addButtonClick = (state = {
       state.userName = action.payload.user.userName;
       return { ...state };
 
+    case 'SET_INITIAL_STATE':
+      //console.log("SET_INITIAL_STATE called in the reducer! Here's the action.payload: ");
+      //console.log(action.payload);
+      state.buttons = action.payload.buttons;
+      return { ...state };
 
     default:
       return state;

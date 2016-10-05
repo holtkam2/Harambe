@@ -2,7 +2,7 @@ import React from 'react';
 import Setting from '../containers/SettingContainer';
 import SettingDisp from '../containers/SettingsDispContainer.js';
 import RSSHolder from '../containers/RSSHolder';
-import SearchBar from '../components/SearchBar';
+import SearchBarContainer from '../containers/searchBarContainer';
 import ButtonListContainer from '../containers/ButtonListContainer';
 import LinkButton from '../components/LinkButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -27,7 +27,8 @@ const App = () => (
           <img className="logoText" src="logo_text.png" />
         </div>
       </Paper>
-      <SearchBar className="SearchBar" />
+      <Paper className="logo swick" zDepth={1} />
+      <SearchBarContainer className="SearchBar" />
       <div className="ButtonListContainer">
         <ButtonListContainer />
       </div>

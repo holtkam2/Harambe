@@ -28,12 +28,15 @@ class SearchBar extends Component {
       method: 'GET',
       cache: false,
       success: function (data) {
+        this.props.sendState(data);
         this.setState({ userName: data.user.firstName });
       }.bind(this),
     });
   }
 
   render() {
+    const { sendState } = this.props;
+
     return (
       <div className="searchBar">
         <div>Hello, {this.state.userName}</div>

@@ -50,3 +50,10 @@ export function updateStateFromServer() {
     });
   };
 }
+
+export function setInitialState(data) {
+  return {
+    type: 'SET_INITIAL_STATE',
+    payload: data,
+  };
+}
