@@ -11,6 +11,7 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import ThemeButton from '../components/ThemeButton.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Paper from 'material-ui/Paper';
+import About from '../components/About';
 
 injectTapEventPlugin();
 
@@ -32,6 +33,7 @@ const App = () => (
       </div>
       <Setting />
       <SettingDisp />
+      <About />
       <ThemeButton />
     </div>
   </MuiThemeProvider>

@@ -69,7 +69,6 @@ body {
  height: 50px;
  overflow: hidden;
  position: relative;
- border: red dotted 1px;
  z-index: 10;
 }
 .rssF1 {
@@ -244,7 +243,6 @@ input:checked + .slider:before {
  height: 50px;
  overflow: hidden;
  position: relative;
- border: red dotted 1px;
  z-index: 10;
 }
 .rssF12 {
@@ -364,4 +362,10 @@ input:checked + .slider:before {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
   }
+}
+
+.AboutBTN {
+  position: absolute;
+  bottom: 20px;
+  left: 48%;
 }
