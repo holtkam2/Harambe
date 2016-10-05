@@ -43,12 +43,6 @@ export function updateStateFromServer() {
   return (dispatch) => {
     $.get('api/state')
     .then((res) => {
-<<<<<<< 32a336491033eedbc43c81652dd794bea42b87a7
-
-      console.log('UPDATEFROMSERVER', res);
-
-=======
->>>>>>> removed some console logs and cleaned some code in reducer
       dispatch(gotState(res));
     })
     .catch((err) => {
