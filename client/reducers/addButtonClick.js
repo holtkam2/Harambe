@@ -4,7 +4,6 @@ const addButtonClick = (state = {
     testBtn2: ['www.hn.com', 'www.bing.com'],
   },
 }, action) => {
-
   switch (action.type) {
     case 'ADD_BUTTON_CLICK':
       state.buttons[action.payload] = [];
@@ -16,7 +15,7 @@ const addButtonClick = (state = {
 
 
     case 'ADD_URL_CLICK':
-      return { ...state }
+      return { ...state };
 
     case 'GET_STATE_FROM_SERVER':
       state.userName = action.payload.user.userName;
@@ -27,8 +26,8 @@ const addButtonClick = (state = {
       return { ...state };
 
     case 'SET_INITIAL_STATE':
-      //console.log("SET_INITIAL_STATE called in the reducer! Here's the action.payload: ");
-      //console.log(action.payload);
+      // console.log("SET_INITIAL_STATE called in the reducer! Here's the action.payload: ");
+      // console.log(action.payload);
       state.buttons = action.payload.buttons;
       return { ...state };
 

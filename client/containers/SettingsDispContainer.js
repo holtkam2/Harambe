@@ -18,11 +18,11 @@ const mapDispatchToProps = dispatch => ({
   },
 
   interestNameClick: (interestName) => {
-    dispatch(addInterest(interestName))
+    dispatch(addInterest(interestName));
   },
 
   RSSFeedURLClick: (RSSFeedURL, interestName) => {
-    dispatch(addRSSFeedToInterest(RSSFeedURL, interestName))
+    dispatch(addRSSFeedToInterest(RSSFeedURL, interestName));
   },
 
 });

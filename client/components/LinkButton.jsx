@@ -36,7 +36,7 @@ class LinkButton extends Component {
 
   render() {
     return (
-      <RaisedButton primary={true}
+      <RaisedButton primary
         onClick={this.onClick}
         onMouseMove={this.onMouseMove}
       >{this.props.name}

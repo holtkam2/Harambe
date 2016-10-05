@@ -29,14 +29,14 @@ export function addInterest(interestName) {
   return {
     type: 'ADD_INTEREST_CLICK',
     payload: interestName,
-  }
+  };
 }
 
-export function addRSSFeedToInterest(RSSFeedURL, interestName){
+export function addRSSFeedToInterest(RSSFeedURL, interestName) {
   return {
     type: 'ADD_RSSFEED_TO_INTEREST',
     payload: [RSSFeedURL, interestName],
-  }
+  };
 }
 
 export function updateStateFromServer() {
