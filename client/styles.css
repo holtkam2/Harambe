@@ -177,7 +177,7 @@ input:checked + .slider:before {
   text-align: center;
   white-space: nowrap;
   margin: auto;
-  top: 47%;
+  top: 50%;
   position: absolute;
   left: 0;
   right: 0;
@@ -204,7 +204,7 @@ input:checked + .slider:before {
 
 .SearchBar {
   position: absolute;
-  top: 27%;
+  top: 35%;
 }
 
 .setPadding {
