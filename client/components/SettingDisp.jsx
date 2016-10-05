@@ -94,7 +94,7 @@ class SettingDisp extends Component {
   render() {
     const {
             addButtonClick, addURLClick, active, buttonName, URLName,
-            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen,
+            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings,
           } = this.props;
 
     const actions = [
@@ -168,6 +168,7 @@ SettingDisp.propTypes = {
   addButtonClick: PropTypes.func,
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
+  toggleSettings: PropTypes.func,
 };
 
 export default SettingDisp;

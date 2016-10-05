@@ -197,7 +197,9 @@ input:checked + .slider:before {
 }
 
 .RSSHolder {
-  height: 30px;
+  height: 61px;
+  z-index: 10;
+  position: relative;
 }
 
 .SearchBar {
@@ -219,6 +221,10 @@ input:checked + .slider:before {
   border: red dotted 1px;
 }
 
-.settingsField {
-
+.logo {
+  height: 61px;
+  width: 183px;
+  top: 50px;
+  left: 0;
+  z-index: 1;
 }
