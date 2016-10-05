@@ -40,6 +40,10 @@ body {
   margin: 10 auto;
 }
 
+.input-group-btn {
+  bottom: 8px;
+}
+
 .settingsButton {
   float: right;
   position: fixed;

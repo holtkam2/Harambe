@@ -1,5 +1,7 @@
 /* eslint-env browser*/
 import React, { Component } from 'react';
+import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -36,15 +38,16 @@ class SearchBar extends Component {
       <div className="searchBar">
         <div>Hello, {this.state.userName}</div>
         <form className="input-group" onSubmit={this.onFormSubmit}>
-          <input
-            className="form-control"
-            placeholder="Search Google!"
+          <TextField
+            hintText="what do you want to know?"
+            floatingLabelText="search the google"
+            fullWidth={true}
             onChange={this.onInputChange}
             value={this.state.searchTerm}
           />
-          <span className="input-group-btn">
-            <button className="btn btn-secondary" type="submit">Submit</button>
-          </span>
+          <div className="input-group-btn">
+            <FlatButton label="submit" primary={true} type="submit" />
+          </div>
         </form>
       </div>
     );
