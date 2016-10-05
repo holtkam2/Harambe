@@ -99,9 +99,13 @@ class SettingDisp extends Component {
 
     const actions = [
       <FlatButton
-        label="Close"
+        label="save"
         primary={true}
-        keyboardFocused={true}
+        onTouchTap={this.onSaveButtonClick}
+      />,
+      <FlatButton
+        label="close"
+        primary={true}
         onTouchTap={this.handleClose}
       />,
     ];
@@ -150,9 +154,6 @@ class SettingDisp extends Component {
                 value={this.state.RSSFeedURL}
               />
               <RaisedButton primary={true} onClick={this.onRSSFeedURLClick}>add</RaisedButton>
-            </div>
-            <div>
-              <RaisedButton primary={true} onClick={this.onSaveButtonClick}>Save</RaisedButton>
             </div>
           </Dialog>
         </div>
