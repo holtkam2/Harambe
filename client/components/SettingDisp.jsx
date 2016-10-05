@@ -2,12 +2,17 @@
 
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
 
 class SettingDisp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { buttonName: '', URLName: '' };
+    this.state = { buttonName: '', URLName: '', open: false };
     this.onInputChange = this.onInputChange.bind(this);
     this.onURLInputChange = this.onURLInputChange.bind(this);
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
@@ -36,19 +41,19 @@ class SettingDisp extends Component {
   }
 
   onInterestNameChange(event) {
-    this.setState({ interestName: event.target.value })
+    this.setState({ interestName: event.target.value });
   }
 
   onRSSFeedNameChange(event) {
-    this.setState({ RSSFeedURL: event.target.value })
+    this.setState({ RSSFeedURL: event.target.value });
   }
 
-  onInterestInputBoxClick(){
-    this.props.interestNameClick(this.state.interestName)
+  onInterestInputBoxClick() {
+    this.props.interestNameClick(this.state.interestName);
   }
 
-  onRSSFeedURLClick(){
-    this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName)
+  onRSSFeedURLClick() {
+    this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
   }
 
   onSaveButtonClick() {
@@ -78,53 +83,80 @@ class SettingDisp extends Component {
     });
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  }
+
+  handleClose = () => {
+    this.setState({ open: false });
+  }
+
   render() {
     const {
             addButtonClick, addURLClick, active, buttonName, URLName,
-            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick
+            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings,
           } = this.props;
+
+    const actions = [
+      <FlatButton
+        label="save"
+        primary={true}
+        onTouchTap={this.onSaveButtonClick}
+      />,
+      <FlatButton
+        label="close"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />,
+    ];
 
     if (active) {
       return (
-        <div className="settingsPanel">
-          <h1>Settings</h1>
-
-          <h5>Configure a new button</h5>
-          Button Name:
-          <input
-            type="text"
-            onChange={this.onInputChange}
-            value={this.state.buttonName}
-          />
-          <RaisedButton onClick={this.onAddButtonClick}>Create button</RaisedButton>
-
-          Add a URL for this button to open:
-          <input
-            type="text"
-            onChange={this.onURLInputChange}
-            value={this.state.URLName}
-          />
-          <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
-
-
-          <input
-            type = "text"
-            onChange={this.onInterestNameChange}
-            value={this.state.interestName}
-          />
-          <RaisedButton onClick={this.onInterestInputBoxClick}>add a new interest</RaisedButton>
-
-          <input
-            type = "text"
-            onChange={this.onRSSFeedNameChange}
-            value={this.state.RSSFeedURL}
-          />
-          <RaisedButton onClick={this.onRSSFeedURLClick}>add a new RSS URL to the interest</RaisedButton>
-
-
-          <RaisedButton onClick={this.onSaveButtonClick}>Save</RaisedButton>
+        <div className="listenBox" onMouseMove={this.handleOpen}>
+          <Dialog
+            title="settings"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+            autoScrollBodyContent={true}
+          >
+            <div>
+              <h5>configure a new button</h5>
+              <TextField
+                hintText="button name"
+                onChange={this.onInputChange}
+                value={this.state.buttonName}
+              />
+              <RaisedButton primary={true} onClick={this.onAddButtonClick}>create</RaisedButton>
+            </div>
+            <div>
+              <TextField
+                hintText="url"
+                onChange={this.onURLInputChange}
+                value={this.state.URLName}
+              />
+              <RaisedButton primary={true} onClick={this.onAddURLClick}>add</RaisedButton>
+            </div>
+            <div>
+              <h5>configure a new feed</h5>
+              <TextField
+                hintText="feed name"
+                onChange={this.onInterestNameChange}
+                value={this.state.interestName}
+              />
+              <RaisedButton primary={true} onClick={this.onInterestInputBoxClick}>create</RaisedButton>
+            </div>
+            <div>
+              <TextField
+                hintText="rss url"
+                onChange={this.onRSSFeedNameChange}
+                value={this.state.RSSFeedURL}
+              />
+              <RaisedButton primary={true} onClick={this.onRSSFeedURLClick}>add</RaisedButton>
+            </div>
+          </Dialog>
         </div>
-
       );
     }
     return (<div />);
@@ -136,6 +168,7 @@ SettingDisp.propTypes = {
   addButtonClick: PropTypes.func,
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
+  toggleSettings: PropTypes.func,
 };
 
 export default SettingDisp;

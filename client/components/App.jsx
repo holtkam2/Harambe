@@ -20,6 +20,11 @@ const App = () => (
       <Paper className="RSSHolder" zDepth={2}>
         <RSSHolder />
       </Paper>
+      <Paper className="logo" zDepth={1}>
+        <div>
+
+        </div>
+      </Paper>
       <SearchBar className="SearchBar" />
       <Paper className="ButtonListContainer" zDepth={1}>
         <ButtonListContainer />

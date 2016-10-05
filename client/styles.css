@@ -52,11 +52,12 @@ body {
 }
 
 .settingsPanel {
+  position: fixed;
+  bottom: 75px;
+  left: 75px;
   margin: auto;
   width: 75%;
-  border: 3px solid black;
   padding: 10px;
-  background: #E8E8E8;
   z-index:100;
 }
 
@@ -196,10 +197,34 @@ input:checked + .slider:before {
 }
 
 .RSSHolder {
-  height: 30px;
+  height: 61px;
+  z-index: 10;
+  position: relative;
 }
 
 .SearchBar {
   position: absolute;
   top: 27%;
+}
+
+.setPadding {
+  margin: 15px;
+}
+
+.listenBox {
+  height: 45px;
+  width: 45px;
+  float: right;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border: red dotted 1px;
+}
+
+.logo {
+  height: 61px;
+  width: 183px;
+  top: 50px;
+  left: 0;
+  z-index: 1;
 }
