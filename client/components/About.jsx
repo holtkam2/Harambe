@@ -30,6 +30,7 @@ export default class DialogExampleCustomWidth extends React.Component {
       <FlatButton
         label="Close"
         primary={true}
+        keyboardFocused={true}
         onTouchTap={this.handleClose}
       />,
     ];
@@ -40,13 +41,13 @@ export default class DialogExampleCustomWidth extends React.Component {
         <InfoIcon />
         </IconButton>
         <Dialog
-          title="Dialog With Custom Width"
+          title="about swick"
           actions={actions}
           modal={true}
           contentStyle={customContentStyle}
           open={this.state.open}
         >
-          This dialog spans the entire width of the screen.
+          Some really deep thoughts on the purpose of this app and the ragtag team behind it.
         </Dialog>
       </div>
     );
