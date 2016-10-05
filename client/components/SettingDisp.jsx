@@ -2,11 +2,11 @@
 
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
+// import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import IconButton from 'material-ui/IconButton';
+// import IconButton from 'material-ui/IconButton';
 
 class SettingDisp extends Component {
 
@@ -53,11 +53,12 @@ class SettingDisp extends Component {
   }
 
   onRSSFeedURLClick() {
+    // Name makes sense as such
+    // eslint-disable-next-line new-cap
     this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
   }
 
   onSaveButtonClick() {
-    console.log('SAVEBUTTON', this.props.state);
     const stateObj = {
       user: {
         userName: this.props.state.currentUser.userName,
@@ -95,9 +96,10 @@ class SettingDisp extends Component {
 
   render() {
     const {
-            addButtonClick, addURLClick, active, buttonName, URLName,
-            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings,
-          } = this.props;
+      // no-unused-vars max-len
+      // eslint-disable-next-line
+      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings,
+    } = this.props;
 
     const actions = [
       <FlatButton
@@ -171,6 +173,14 @@ SettingDisp.propTypes = {
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
   toggleSettings: PropTypes.func,
+  interestNameClick: PropTypes.func,
+  RSSFeedURLClick: PropTypes.func,
+  state: PropTypes.obj,
+  URLName: PropTypes.str,
+  interestName: PropTypes.str,
+  RSSFeedURL: PropTypes.str,
+  handleClose: PropTypes.func,
+  handleOpen: PropTypes.func,
 };
 
 export default SettingDisp;

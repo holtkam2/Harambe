@@ -10,8 +10,8 @@ const customContentStyle = {
 };
 
 /**
- * The dialog width has been set to occupy the full width of browser through the `contentStyle` property.
- */
+ The dialog width has been set to occupy the full width of browser
+ through the `contentStyle` property. */
 export default class DialogExampleCustomWidth extends React.Component {
   state = {
     open: false,
@@ -38,7 +38,7 @@ export default class DialogExampleCustomWidth extends React.Component {
     return (
       <div className="AboutBTN">
         <IconButton onTouchTap={this.handleOpen}>
-        <InfoIcon />
+          <InfoIcon />
         </IconButton>
         <Dialog
           title="about swick"

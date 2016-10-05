@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import React, { Component } from 'react';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import Toggle from 'material-ui/Toggle';
 
 const styles = {
@@ -9,8 +9,9 @@ const styles = {
   },
 };
 
+// eslint-disable-next-line react/prefer-stateless-function
 class ThemeButton extends Component {
-
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return (
       <div className="UISlider">

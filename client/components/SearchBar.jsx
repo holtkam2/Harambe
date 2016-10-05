@@ -1,5 +1,7 @@
 /* eslint-env browser*/
-import React, { Component } from 'react';
+/* global $ */
+
+import React, { Component, PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -9,6 +11,19 @@ class SearchBar extends Component {
     this.state = { searchTerm: '', userName: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: '/api/state',
+      dataType: 'json',
+      method: 'GET',
+      cache: false,
+      success: (data) => {
+        this.props.sendState(data);
+        this.setState({ userName: data.user.firstName });
+      },
+    });
   }
 
   onInputChange(event) {
@@ -21,20 +36,9 @@ class SearchBar extends Component {
     this.setState({ searchTerm: '' });
   }
 
-  componentDidMount() {
-    $.ajax({
-      url: '/api/state',
-      dataType: 'json',
-      method: 'GET',
-      cache: false,
-      success: function (data) {
-        this.props.sendState(data);
-        this.setState({ userName: data.user.firstName });
-      }.bind(this),
-    });
-  }
-
   render() {
+    // gets used in container
+    // eslint-disable-next-line no-unused-vars
     const { sendState } = this.props;
 
     return (
@@ -56,5 +60,9 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  sendState: PropTypes.func,
+};
 
 export default SearchBar;

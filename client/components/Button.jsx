@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
+// May become a class later on
+// eslint-disable-next-line react/prefer-stateless-function
 class SettingsButton extends Component {
-
   render() {
     const { toggleSettings } = this.props;
     return (
