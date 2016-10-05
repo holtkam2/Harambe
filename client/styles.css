@@ -80,9 +80,9 @@ body {
  -webkit-transform:translateX(100%);
  transform:translateX(100%);
  /* Apply animation to this element */
- -moz-animation: rssF1 15s linear infinite;
- -webkit-animation: rssF1 15s linear infinite;
- animation: rssF1 15s linear infinite;
+ -moz-animation: rssF1 13s linear infinite;
+ -webkit-animation: rssF1 13s linear infinite;
+ animation: rssF1 13s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes rssF1 {
@@ -234,4 +234,49 @@ input:checked + .slider:before {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 80%;
+}
+
+.rssF12 {
+ height: 50px;
+ overflow: hidden;
+ position: relative;
+ border: red dotted 1px;
+ z-index: 10;
+}
+.rssF12 {
+ position: absolute;
+ width: 100%;
+ height: 40px;
+ margin: 10;
+ line-height: 50px;
+ text-align: left;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);
+ transform:translateX(100%);
+ /* Apply animation to this element */
+ -moz-animation: rssF1 17s linear infinite;
+ -webkit-animation: rssF1 17s linear infinite;
+ animation: rssF1 17s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes rssF12 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes rssF12 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes rssF12 {
+ 0%   {
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%);
+ }
+ 100% {
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%);
+ }
 }
