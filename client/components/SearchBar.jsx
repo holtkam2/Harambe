@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchTerm: '', userName: 'Roni' };
+    this.state = { searchTerm: '', userName: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
@@ -26,7 +26,7 @@ class SearchBar extends Component {
       method: 'GET',
       cache: false,
       success: function (data) {
-        this.setState({ userName: data.firstName });
+        this.setState({ userName: data.user.firstName });
       }.bind(this),
     });
   }

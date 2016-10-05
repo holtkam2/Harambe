@@ -13,6 +13,10 @@ class SettingDisp extends Component {
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddURLClick = this.onAddURLClick.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onInterestNameChange = this.onInterestNameChange.bind(this);
+    this.onRSSFeedNameChange = this.onRSSFeedNameChange.bind(this);
+    this.onInterestInputBoxClick = this.onInterestInputBoxClick.bind(this);
+    this.onRSSFeedURLClick = this.onRSSFeedURLClick.bind(this);
   }
 
   onInputChange(event) {
@@ -29,6 +33,22 @@ class SettingDisp extends Component {
 
   onAddURLClick() {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
+  }
+
+  onInterestNameChange(event) {
+    this.setState({ interestName: event.target.value })
+  }
+
+  onRSSFeedNameChange(event) {
+    this.setState({ RSSFeedURL: event.target.value })
+  }
+
+  onInterestInputBoxClick(){
+    this.props.interestNameClick(this.state.interestName)
+  }
+
+  onRSSFeedURLClick(){
+    this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName)
   }
 
   onSaveButtonClick() {
@@ -59,7 +79,11 @@ class SettingDisp extends Component {
   }
 
   render() {
-    const { addButtonClick, addURLClick, active, buttonName, URLName, state } = this.props;
+    const {
+            addButtonClick, addURLClick, active, buttonName, URLName,
+            state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick
+          } = this.props;
+
     if (active) {
       return (
         <div className="settingsPanel">
@@ -81,6 +105,22 @@ class SettingDisp extends Component {
             value={this.state.URLName}
           />
           <RaisedButton onClick={this.onAddURLClick}>add URL to this button</RaisedButton>
+
+
+          <input
+            type = "text"
+            onChange={this.onInterestNameChange}
+            value={this.state.interestName}
+          />
+          <RaisedButton onClick={this.onInterestInputBoxClick}>add a new interest</RaisedButton>
+
+          <input
+            type = "text"
+            onChange={this.onRSSFeedNameChange}
+            value={this.state.RSSFeedURL}
+          />
+          <RaisedButton onClick={this.onRSSFeedURLClick}>add a new RSS URL to the interest</RaisedButton>
+
 
           <RaisedButton onClick={this.onSaveButtonClick}>Save</RaisedButton>
         </div>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SettingDisp from '../components/SettingDisp';
-import { addButton, addURL } from '../actions/index';
+import { addButton, addURL, addInterest, addRSSFeedToInterest } from '../actions/index';
 
 const mapStateToProps = state => ({
   active: state.toggle,
@@ -15,6 +15,14 @@ const mapDispatchToProps = dispatch => ({
 
   addURLClick: (URLName, buttonName) => {
     dispatch(addURL(URLName, buttonName));
+  },
+
+  interestNameClick: (interestName) => {
+    dispatch(addInterest(interestName))
+  },
+
+  RSSFeedURLClick: (RSSFeedURL, interestName) => {
+    dispatch(addRSSFeedToInterest(RSSFeedURL, interestName))
   },
 
 });
