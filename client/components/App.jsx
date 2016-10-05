@@ -27,7 +27,6 @@ const App = () => (
           <img className="logoText" src="logo_text.png" />
         </div>
       </Paper>
-      <Paper className="logo swick" zDepth={1} />
       <SearchBarContainer className="SearchBar" />
       <div className="ButtonListContainer">
         <ButtonListContainer />
