@@ -1,6 +1,7 @@
 const RSSFeedList = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_INTEREST_CLICK':
+    /* eslint no-param-reassign: ["error", { "props": false }]*/
       state[action.payload] = [];
       return { ...state };
 

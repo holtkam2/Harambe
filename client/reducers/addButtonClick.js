@@ -6,6 +6,7 @@ const addButtonClick = (state = {
 }, action) => {
   switch (action.type) {
     case 'ADD_BUTTON_CLICK':
+     /* eslint no-param-reassign: ["error", { "props": false }]*/
       state.buttons[action.payload] = [];
       return { ...state };
 
@@ -13,7 +14,7 @@ const addButtonClick = (state = {
       state.buttons[action.payload[0]].push(action.payload[1]);
       return { ...state };
 
-
+    /* eslint no-duplicate-case: ["error", {}]*/
     case 'ADD_URL_CLICK':
       return { ...state };
 
