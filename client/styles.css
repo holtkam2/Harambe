@@ -223,8 +223,15 @@ input:checked + .slider:before {
 
 .logo {
   height: 61px;
-  width: 183px;
-  top: 50px;
+  width: 140px;
+  top: 61px;
   left: 0;
   z-index: 1;
+}
+
+.swick {
+  background: url('swick_logo.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 80%;
 }
