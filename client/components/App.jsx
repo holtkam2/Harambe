@@ -22,9 +22,9 @@ const App = () => (
       </Paper>
       <Paper className="logo swick" zDepth={1} />
       <SearchBar className="SearchBar" />
-      <Paper className="ButtonListContainer" zDepth={1}>
+      <div className="ButtonListContainer">
         <ButtonListContainer />
-      </Paper>
+      </div>
       <Setting />
       <SettingDisp />
       <ThemeButton />
