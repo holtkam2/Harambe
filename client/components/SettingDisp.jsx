@@ -70,16 +70,18 @@ class SettingDisp extends Component {
       stateObj.buttons[key] = value;
     });
     // Please add a 'feeds' object to state that then contains 'name': [urls] pairs for feeds.
-    _.each(this.props.state.feeds, (value, key) => {
+    _.each(this.props.state.RSSFeedList, (value, key) => {
       stateObj.interests[key] = value;
     });
 
-    $.post('/api/state', stateObj, (err, data) => {
-      if (err) {
+    // console.log('stateObj:', stateObj);
 
-      } else {
-
-      }
+    $.post({
+      url: '/api/state',
+      data: JSON.stringify(stateObj),
+      // success: success,
+      contentType: 'application/json',
+      dataType: 'json',
     });
   }
 
