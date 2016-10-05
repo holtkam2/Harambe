@@ -49,7 +49,7 @@ body {
 .settingsButton {
   float: right;
   position: fixed;
-  bottom: 20;
+  bottom: 10;
   left: 20;
 }
 
@@ -173,7 +173,7 @@ input:checked + .slider:before {
 .UISlider {
   float: left;
   position: fixed;
-  bottom: 20;
+  bottom: 10;
   right: 24;
 }
 
@@ -363,6 +363,6 @@ input:checked + .slider:before {
 
 .AboutBTN {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 48%;
 }
