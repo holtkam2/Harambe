@@ -109,13 +109,13 @@ class SettingDisp extends Component {
     if (active) {
       return (
         <div className="listenBox" onMouseMove={this.handleOpen}>
-
           <Dialog
             title="settings"
             actions={actions}
             modal={false}
             open={this.state.open}
             onRequestClose={this.handleClose}
+            autoScrollBodyContent={true}
           >
             <div>
               <h5>configure a new button</h5>
