@@ -88,7 +88,7 @@ class SettingDisp extends Component {
   }
 
   handleClose = () => {
-    this.setState({ open: false, active: false });
+    this.setState({ open: false });
   }
 
   render() {
@@ -109,7 +109,7 @@ class SettingDisp extends Component {
     if (active) {
       return (
         <div className="listenBox" onMouseMove={this.handleOpen}>
-          <FlatButton label="HERE" onTouchTap={this.handleOpen} />
+
           <Dialog
             title="settings"
             actions={actions}
