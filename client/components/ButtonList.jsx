@@ -1,37 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import LinkButton from './LinkButton.jsx';
 
 class ButtonList extends Component {
-
-  constructor(props) {
-    super(props);
-  }
+  // Constructor not currently needed
 
   componentDidMount() {
     this.props.updateStateFromServer();
   }
 
   render() {
-    const buttons = this.props.buttonListState.buttons;
-    const { updateStateFromServer } = this.props;
-    const buttonNames = [];
-
-    for (const i in buttons) {
-      if (i !== 'undefined') {
-        buttonNames.push(i);
-      }
-    }
+    const { buttons } = this.props.buttonListState;
+    const buttonNames = Object.keys(buttons);
 
     return (
       <div className="NavButtonContainer">
-        {
-          buttonNames.map((name) => {
-            return <div className="NavButton"><LinkButton name={name} urls={buttons[name]} /></div>;
-          })
-        }
+        {buttonNames.map(name => (
+          <div key={name} className="NavButton"><LinkButton name={name} urls={buttons[name]} /></div>
+        ))}
       </div>
     );
   }
 }
+
+ButtonList.propTypes = {
+  buttonListState: PropTypes.shape({
+    buttons: React.PropTypes.obj,
+  }),
+  updateStateFromServer: PropTypes.func,
+};
 
 export default ButtonList;
