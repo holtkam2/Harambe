@@ -44,12 +44,12 @@ class SearchBar extends Component {
           <TextField
             hintText="what do you want to know?"
             floatingLabelText="search the google"
-            fullWidth={true}
+            fullWidth
             onChange={this.onInputChange}
             value={this.state.searchTerm}
           />
           <div className="input-group-btn">
-            <FlatButton label="submit" primary={true} type="submit" />
+            <FlatButton label="submit" primary type="submit" />
           </div>
         </form>
       </div>

@@ -60,7 +60,7 @@ class SettingDisp extends Component {
     console.log('SAVEBUTTON', this.props.state);
     const stateObj = {
       user: {
-         userName: this.props.state.currentUser.userName,
+        userName: this.props.state.currentUser.userName,
       },
       buttons: {},
       interests: {},
@@ -102,12 +102,12 @@ class SettingDisp extends Component {
     const actions = [
       <FlatButton
         label="save"
-        primary={true}
+        primary
         onTouchTap={this.onSaveButtonClick}
       />,
       <FlatButton
         label="close"
-        primary={true}
+        primary
         onTouchTap={this.handleClose}
       />,
     ];
@@ -121,7 +121,7 @@ class SettingDisp extends Component {
             modal={false}
             open={this.state.open}
             onRequestClose={this.handleClose}
-            autoScrollBodyContent={true}
+            autoScrollBodyContent
           >
             <div>
               <h5>configure a new button</h5>
@@ -130,7 +130,7 @@ class SettingDisp extends Component {
                 onChange={this.onInputChange}
                 value={this.state.buttonName}
               />
-              <RaisedButton primary={true} onClick={this.onAddButtonClick}>create</RaisedButton>
+              <RaisedButton primary onClick={this.onAddButtonClick}>create</RaisedButton>
             </div>
             <div>
               <TextField
@@ -138,7 +138,7 @@ class SettingDisp extends Component {
                 onChange={this.onURLInputChange}
                 value={this.state.URLName}
               />
-              <RaisedButton primary={true} onClick={this.onAddURLClick}>add</RaisedButton>
+              <RaisedButton primary onClick={this.onAddURLClick}>add</RaisedButton>
             </div>
             <div>
               <h5>configure a new feed</h5>
@@ -147,7 +147,7 @@ class SettingDisp extends Component {
                 onChange={this.onInterestNameChange}
                 value={this.state.interestName}
               />
-              <RaisedButton primary={true} onClick={this.onInterestInputBoxClick}>create</RaisedButton>
+              <RaisedButton primary onClick={this.onInterestInputBoxClick}>create</RaisedButton>
             </div>
             <div>
               <TextField
@@ -155,7 +155,7 @@ class SettingDisp extends Component {
                 onChange={this.onRSSFeedNameChange}
                 value={this.state.RSSFeedURL}
               />
-              <RaisedButton primary={true} onClick={this.onRSSFeedURLClick}>add</RaisedButton>
+              <RaisedButton primary onClick={this.onRSSFeedURLClick}>add</RaisedButton>
             </div>
           </Dialog>
         </div>

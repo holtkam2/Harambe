@@ -1,5 +1,4 @@
 const RSSFeedList = (state = {}, action) => {
-
   switch (action.type) {
     case 'ADD_INTEREST_CLICK':
       state[action.payload] = [];

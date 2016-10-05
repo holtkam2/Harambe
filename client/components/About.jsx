@@ -29,8 +29,8 @@ export default class DialogExampleCustomWidth extends React.Component {
     const actions = [
       <FlatButton
         label="Close"
-        primary={true}
-        keyboardFocused={true}
+        primary
+        keyboardFocused
         onTouchTap={this.handleClose}
       />,
     ];
@@ -43,7 +43,7 @@ export default class DialogExampleCustomWidth extends React.Component {
         <Dialog
           title="about swick"
           actions={actions}
-          modal={true}
+          modal
           contentStyle={customContentStyle}
           open={this.state.open}
         >
