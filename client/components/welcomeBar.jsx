@@ -7,6 +7,7 @@ class WelcomeBar extends Component {
     this.state = { currentTime: '' };
   }
 
+// dynamic greeting functions
   greeting() {
     this.state.currentTime = new Date();
     const currentHour = this.state.currentTime.getHours();
