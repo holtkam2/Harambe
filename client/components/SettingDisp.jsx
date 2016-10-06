@@ -89,7 +89,7 @@ class SettingDisp extends Component {
     });
 
     // console.log('stateObj:', stateObj);
-    console.log(stateObj);
+    // console.log(stateObj);
 
     $.post({
       url: '/api/state',
@@ -198,10 +198,11 @@ SettingDisp.propTypes = {
   toggleSettings: PropTypes.func,
   interestNameClick: PropTypes.func,
   RSSFeedURLClick: PropTypes.func,
-  state: PropTypes.obj,
-  URLName: PropTypes.str,
-  interestName: PropTypes.str,
-  RSSFeedURL: PropTypes.str,
+  // eslint-disable-next-line react/forbid-prop-types
+  state: PropTypes.object,
+  URLName: PropTypes.string,
+  interestName: PropTypes.string,
+  RSSFeedURL: PropTypes.string,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
   deleteButtonClick: PropTypes.func,
