@@ -1,6 +1,6 @@
-const rssFeed = (state = [{ key: 1, text: 'test feed right here' },
-{ key: 2, text: '22' },
-{ key: 3, text: '33' }], action) => {
+const rssFeed = (state = [{ key: 1, text: 'Salesforce\'s Twitter Buyout May be Stymied by Investor Pressure' },
+{ key: 2, text: 'AT&T \'NetBonding\' With Cloud Leaders Amazon, IBM' },
+{ key: 3, text: 'Twitter Plunges 19%: More Downside Possible' }], action) => {
   switch (action.type) {
     case 'READ_ALL_RSS':
       return state;
