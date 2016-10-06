@@ -57,3 +57,15 @@ export function setInitialState(data) {
     payload: data,
   };
 }
+
+export function deleteButton(button){
+  return {
+    type: 'DELETE_BUTTON',
+    payload: button,
+  }
+}
+
+
+
+
+

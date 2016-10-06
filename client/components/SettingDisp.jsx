@@ -22,6 +22,8 @@ class SettingDisp extends Component {
     this.onRSSFeedNameChange = this.onRSSFeedNameChange.bind(this);
     this.onInterestInputBoxClick = this.onInterestInputBoxClick.bind(this);
     this.onRSSFeedURLClick = this.onRSSFeedURLClick.bind(this);
+    this.onButtonToDeleteChange = this.onButtonToDeleteChange.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
 
   onInputChange(event) {
@@ -56,6 +58,14 @@ class SettingDisp extends Component {
     // Name makes sense as such
     // eslint-disable-next-line new-cap
     this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
+  }
+
+  onButtonToDeleteChange(event) {
+    this.setState({ buttonToDelete: event.target.value })
+  }
+
+  onDeleteButtonClick() {
+    this.props.deleteButtonClick(this.state.buttonToDelete);
   }
 
   onSaveButtonClick() {
@@ -98,7 +108,7 @@ class SettingDisp extends Component {
     const {
       // no-unused-vars max-len
       // eslint-disable-next-line
-      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings,
+      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings, buttonToDelete, deleteButtonClick
     } = this.props;
 
     const actions = [
@@ -158,6 +168,15 @@ class SettingDisp extends Component {
                 value={this.state.RSSFeedURL}
               />
               <RaisedButton primary onClick={this.onRSSFeedURLClick}>add</RaisedButton>
+            </div>
+            <div>
+              <h5>delete a button</h5>
+              <TextField
+                hintText="button name"
+                onChange={this.onButtonToDeleteChange}
+                value={this.state.buttonToDelete}
+              />
+              <RaisedButton primary onClick={this.onDeleteButtonClick}>delete</RaisedButton>
             </div>
           </Dialog>
         </div>

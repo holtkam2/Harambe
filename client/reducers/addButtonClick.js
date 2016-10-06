@@ -12,7 +12,7 @@ const addButtonClick = (state = {
 
     case 'ADD_URL_CLICK':
       state.buttons[action.payload[0]].push(action.payload[1]);
-      return { ...state };
+      return newState;
 
     case 'GET_STATE_FROM_SERVER':
       newState.userName = action.payload.user.userName;
@@ -20,6 +20,11 @@ const addButtonClick = (state = {
 
     case 'SET_INITIAL_STATE':
       newState.buttons = action.payload.buttons;
+      return newState;
+
+    case 'DELETE_BUTTON':
+      var buttonToDelete = action.payload;
+      delete newState.buttons[buttonToDelete];
       return newState;
 
     default:
