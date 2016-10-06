@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 class WelcomeBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentTime: '' };
+    this.state = { currentTime: null };
   }
 
 // dynamic greeting functions
@@ -14,7 +14,7 @@ class WelcomeBar extends Component {
     let greetingPhrase = '';
     if (currentHour < 11) {
       greetingPhrase = 'Good morning, ';
-    } else if (currentHour >= 11 && this.state.currentHour < 19) {
+    } else if (currentHour >= 11 && currentHour < 19) {
       greetingPhrase = 'Hello, ';
     } else if (currentHour >= 19) {
       greetingPhrase = 'Good evening, ';
@@ -32,7 +32,8 @@ class WelcomeBar extends Component {
 }
 
 WelcomeBar.propTypes = {
-  welcomeBarState: PropTypes.obj,
+  // eslint-disable-next-line react/forbid-prop-types
+  welcomeBarState: PropTypes.object,
   firstName: PropTypes.string,
 };
 
