@@ -372,3 +372,12 @@ input:checked + .slider:before {
   margin: 0 auto;
   width: 98%;
 }
+
+.welcome-appear {
+  opacity: 0.01;
+}
+
+.welcome-appear.welcome-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}

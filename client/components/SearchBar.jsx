@@ -4,6 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -43,7 +44,12 @@ class SearchBar extends Component {
 
     return (
       <div className="searchBar">
-        <div>Hello, {this.state.userName}</div>
+        <ReactCSSTransitionGroup
+          transitionName="welcome"
+          transitionAppear
+          transitionAppearTimeout={2500}>
+          <div>Hello, {this.state.userName}</div>
+        </ReactCSSTransitionGroup>
         <form className="input-group" onSubmit={this.onFormSubmit}>
           <TextField
             hintText="what do you want to know?"

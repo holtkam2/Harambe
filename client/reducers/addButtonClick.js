@@ -1,8 +1,5 @@
 const addButtonClick = (state = {
-  buttons:
-  { test: ['www.google.com', 'cnn.com'],
-    testBtn2: ['www.hn.com', 'www.bing.com'],
-  },
+  buttons: {},
 }, action) => {
   const newState = { ...state };
   const buttonToDelete = action.payload;
