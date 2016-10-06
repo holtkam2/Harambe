@@ -17,7 +17,7 @@ body {
 .RSSFeedList {
   margin: auto;
   width: 50%;
-
+  overflow: hidden;
   padding: 10px;
 }
 
