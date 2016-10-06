@@ -21,12 +21,12 @@ const App = () => (
       <Paper className="RSSHolder" zDepth={2}>
         <RSSHolder />
       </Paper>
-      <Paper className="logo" zDepth={1}>
-        <div className="">
-          <img className="rotatingImage" src="logo_gfx.png" alt="S" />
-          <img className="logoText" src="logo_text.png" alt="swick" />
-        </div>
-      </Paper>
+
+      <div className="logo">
+        <img className="rotatingImage" src="logo_gfx.png" alt="S" />
+        <img className="logoText" src="logo_text.png" alt="swick" />
+      </div>
+
       <SearchBarContainer className="SearchBar" />
       <div className="ButtonListContainer">
         <ButtonListContainer />
