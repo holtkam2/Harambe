@@ -1,11 +1,6 @@
 import { connect } from 'react-redux';
-import SettingDisp from '../components/SettingDisp';
+import SettingsDisp from '../components/SettingsDisp.jsx';
 import { addButton, addURL, addInterest, addRSSFeedToInterest, deleteButton } from '../actions/index';
-
-const mapStateToProps = state => ({
-  active: state.toggle,
-  state,
-});
 
 const mapDispatchToProps = dispatch => ({
 
@@ -31,4 +26,9 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingDisp);
+const mapStateToProps = state => ({
+  active: state.toggle,
+  state,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsDisp);

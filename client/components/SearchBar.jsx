@@ -48,9 +48,9 @@ class SearchBar extends Component {
         <ReactCSSTransitionGroup
           transitionName="welcome"
           transitionAppear
-          transitionAppearTimeout={2500}
-          transitionEnterTimeout={2500}
-          transitionLeaveTimeout={2500}
+          transitionAppearTimeout={3000}
+          transitionEnterTimeout={3000}
+          transitionLeaveTimeout={3000}
         >
           <WelcomeBarContainer />
         </ReactCSSTransitionGroup>

@@ -6,10 +6,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-// import IconButton from 'material-ui/IconButton';
+import IconButton from 'material-ui/IconButton';
+import SettingsIcon from 'material-ui/svg-icons/action/settings';
 
-class SettingDisp extends Component {
-
+class SettingsDisp extends Component {
   constructor(props) {
     super(props);
     this.state = { buttonName: '', URLName: '', open: false };
@@ -112,7 +112,7 @@ class SettingDisp extends Component {
     const {
       // no-unused-vars max-len
       // eslint-disable-next-line
-      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings, buttonToDelete, deleteButtonClick
+      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings, buttonToDelete, deleteButtonClick,
     } = this.props;
 
     const actions = [
@@ -128,69 +128,71 @@ class SettingDisp extends Component {
       />,
     ];
 
-    if (active) {
-      return (
-        <div className="listenBox" onMouseMove={this.handleOpen}>
-          <Dialog
-            title="settings"
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-            autoScrollBodyContent
-          >
-            <div>
-              <h5>configure a new button</h5>
-              <TextField
-                hintText="button name"
-                onChange={this.onInputChange}
-                value={this.state.buttonName}
-              />
-              <RaisedButton primary onClick={this.onAddButtonClick}>create</RaisedButton>
-            </div>
-            <div>
-              <TextField
-                hintText="url"
-                onChange={this.onURLInputChange}
-                value={this.state.URLName}
-              />
-              <RaisedButton primary onClick={this.onAddURLClick}>add</RaisedButton>
-            </div>
-            <div>
-              <h5>configure a new feed</h5>
-              <TextField
-                hintText="feed name"
-                onChange={this.onInterestNameChange}
-                value={this.state.interestName}
-              />
-              <RaisedButton primary onClick={this.onInterestInputBoxClick}>create</RaisedButton>
-            </div>
-            <div>
-              <TextField
-                hintText="rss url"
-                onChange={this.onRSSFeedNameChange}
-                value={this.state.RSSFeedURL}
-              />
-              <RaisedButton primary onClick={this.onRSSFeedURLClick}>add</RaisedButton>
-            </div>
-            <div>
-              <h5>delete a button</h5>
-              <TextField
-                hintText="button name"
-                onChange={this.onButtonToDeleteChange}
-                value={this.state.buttonToDelete}
-              />
-              <RaisedButton primary onClick={this.onDeleteButtonClick}>delete</RaisedButton>
-            </div>
-          </Dialog>
+    return (
+      <div>
+        <div className="settingsButton">
+          <IconButton onClick={this.handleOpen}>
+            <SettingsIcon />
+          </IconButton>
         </div>
-      );
-    }
-    return (<div />);
+        <Dialog
+          title="settings"
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+          autoScrollBodyContent
+        >
+          <div>
+            <h5>configure a new button</h5>
+            <TextField
+              hintText="button name"
+              onChange={this.onInputChange}
+              value={this.state.buttonName}
+            />
+            <RaisedButton primary onClick={this.onAddButtonClick}>create</RaisedButton>
+          </div>
+          <div>
+            <TextField
+              hintText="url"
+              onChange={this.onURLInputChange}
+              value={this.state.URLName}
+            />
+            <RaisedButton primary onClick={this.onAddURLClick}>add</RaisedButton>
+          </div>
+          <div>
+            <h5>configure a new feed</h5>
+            <TextField
+              hintText="feed name"
+              onChange={this.onInterestNameChange}
+              value={this.state.interestName}
+            />
+            <RaisedButton primary onClick={this.onInterestInputBoxClick}>create</RaisedButton>
+          </div>
+          <div>
+            <TextField
+              hintText="rss url"
+              onChange={this.onRSSFeedNameChange}
+              value={this.state.RSSFeedURL}
+            />
+            <RaisedButton primary onClick={this.onRSSFeedURLClick}>add</RaisedButton>
+          </div>
+          <div>
+            <h5>delete a button</h5>
+            <TextField
+              hintText="button name"
+              onChange={this.onButtonToDeleteChange}
+              value={this.state.buttonToDelete}
+            />
+            <RaisedButton primary onClick={this.onDeleteButtonClick}>delete</RaisedButton>
+          </div>
+        </Dialog>
+      </div>
+    );
   }
 }
 
-SettingDisp.propTypes = {
+SettingsDisp.propTypes = {
   active: PropTypes.bool,
   addButtonClick: PropTypes.func,
   buttonName: PropTypes.string,
@@ -208,4 +210,4 @@ SettingDisp.propTypes = {
   deleteButtonClick: PropTypes.func,
 };
 
-export default SettingDisp;
+export default SettingsDisp;
