@@ -40,6 +40,7 @@ class SettingDisp extends Component {
 
   onAddURLClick() {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
+    this.state.URLName = "";
   }
 
   onInterestNameChange(event) {
@@ -58,6 +59,7 @@ class SettingDisp extends Component {
     // Name makes sense as such
     // eslint-disable-next-line new-cap
     this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
+    this.state.RSSFeedURL = "";
   }
 
   onButtonToDeleteChange(event) {
@@ -66,6 +68,7 @@ class SettingDisp extends Component {
 
   onDeleteButtonClick() {
     this.props.deleteButtonClick(this.state.buttonToDelete);
+    this.state.buttonToDelete = "";
   }
 
   onSaveButtonClick() {
@@ -86,6 +89,7 @@ class SettingDisp extends Component {
     });
 
     // console.log('stateObj:', stateObj);
+    console.log(stateObj);
 
     $.post({
       url: '/api/state',
