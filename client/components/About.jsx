@@ -28,22 +28,22 @@ const styles = {
 
 const tilesData = [
   {
-    img: '../assets/swick_jb.jpg',
+    img: '../assets/devteam/swick_jb.jpg',
     title: 'Jeff Bernstein',
     subtitle: 'Lead Software Engineer',
   },
   {
-    img: '../assets/swick_jh.png',
+    img: '../assets/devteam/swick_jh.png',
     title: 'Jason Holtkamp',
     subtitle: 'Lead Software Engineer',
   },
   {
-    img: '../assets/swick_pk.jpg',
+    img: '../assets/devteam/swick_pk.jpg',
     title: 'Patrik Korzinski',
     subtitle: 'Product Owner/Software Engineer',
   },
   {
-    img: '../assets/swick_rv.jpg',
+    img: '../assets/devteam/swick_rv.jpg',
     title: 'Roni Vegh',
     subtitle: 'Scrum Master/Software Engineer',
   },

@@ -23,8 +23,8 @@ const App = () => (
       </Paper>
 
       <div className="logo">
-        <img className="rotatingImage" src="logo_gfx.png" alt="S" />
-        <img className="logoText" src="logo_text.png" alt="swick" />
+        <img className="rotatingImage" src="./assets/logo/logo_gfx.png" alt="S" />
+        <img className="logoText" src="./assets/logo/logo_text.png" alt="swick" />
       </div>
 
       <SearchBarContainer className="SearchBar" />
