@@ -146,7 +146,7 @@ module.exports = {
         db.Button.destroy({
           where: {
             UserId: foundUser.id,
-            buttonName: buttons.map(button => button.buttonName),
+            // buttonName: buttons.map(button => button.buttonName),
           },
         })
         .then(() => db.Button.bulkCreate(buttons))
@@ -156,7 +156,7 @@ module.exports = {
         db.InterestList.destroy({
           where: {
             UserId: foundUser.id,
-            interestName: interests.map(interest => interest.interestName),
+            // interestName: interests.map(interest => interest.interestName),
           },
         })
         .then(() => db.InterestList.bulkCreate(interests))
