@@ -70,7 +70,6 @@ export default class DialogExampleCustomWidth extends React.Component {
       <FlatButton
         label="Close"
         primary
-        keyboardFocused
         onTouchTap={this.handleClose}
       />,
     ];
@@ -83,7 +82,8 @@ export default class DialogExampleCustomWidth extends React.Component {
         <Dialog
           title="about"
           actions={actions}
-          modal
+          modal={false}
+          onRequestClose={this.handleClose}
           contentStyle={customContentStyle}
           open={this.state.open}
           autoScrollBodyContent

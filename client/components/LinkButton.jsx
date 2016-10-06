@@ -21,7 +21,7 @@ class LinkButton extends Component {
 
   onMouseMove() {
     if (this.state.primed) {
-      setTimeout(url => window.open(url, '_blank'), 20, this.props.urls[this.state.index]);
+      setTimeout(url => window.open(url, '_blank'), 350, this.props.urls[this.state.index]);
 
       this.setState({ index: this.state.index + 1 });
 
