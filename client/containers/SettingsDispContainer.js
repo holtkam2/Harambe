@@ -26,8 +26,8 @@ const mapDispatchToProps = dispatch => ({
   },
 
   deleteButtonClick: (buttonToDelete) => {
-    dispatch(deleteButton(buttonToDelete))
-  }
+    dispatch(deleteButton(buttonToDelete));
+  },
 
 });
 

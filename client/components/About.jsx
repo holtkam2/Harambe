@@ -141,7 +141,7 @@ export default class DialogExampleCustomWidth extends React.Component {
                     title={tile.title}
                     subtitle={tile.subtitle}
                   >
-                    <img src={tile.img} alt=""/>
+                    <img src={tile.img} alt="" />
                   </GridTile>
                 ))}
               </GridList>

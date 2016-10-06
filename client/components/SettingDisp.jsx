@@ -40,7 +40,7 @@ class SettingDisp extends Component {
 
   onAddURLClick() {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
-    this.state.URLName = "";
+    this.state.URLName = '';
   }
 
   onInterestNameChange(event) {
@@ -59,16 +59,16 @@ class SettingDisp extends Component {
     // Name makes sense as such
     // eslint-disable-next-line new-cap
     this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
-    this.state.RSSFeedURL = "";
+    this.state.RSSFeedURL = '';
   }
 
   onButtonToDeleteChange(event) {
-    this.setState({ buttonToDelete: event.target.value })
+    this.setState({ buttonToDelete: event.target.value });
   }
 
   onDeleteButtonClick() {
     this.props.deleteButtonClick(this.state.buttonToDelete);
-    this.state.buttonToDelete = "";
+    this.state.buttonToDelete = '';
   }
 
   onSaveButtonClick() {
@@ -204,6 +204,7 @@ SettingDisp.propTypes = {
   RSSFeedURL: PropTypes.str,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
+  deleteButtonClick: PropTypes.func,
 };
 
 export default SettingDisp;

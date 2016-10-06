@@ -5,6 +5,7 @@ const addButtonClick = (state = {
   },
 }, action) => {
   const newState = { ...state };
+  const buttonToDelete = action.payload;
   switch (action.type) {
     case 'ADD_BUTTON_CLICK':
       newState.buttons[action.payload] = [];
@@ -23,7 +24,6 @@ const addButtonClick = (state = {
       return newState;
 
     case 'DELETE_BUTTON':
-      var buttonToDelete = action.payload;
       delete newState.buttons[buttonToDelete];
       return newState;
 
