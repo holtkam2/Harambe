@@ -47,7 +47,8 @@ class SearchBar extends Component {
         <ReactCSSTransitionGroup
           transitionName="welcome"
           transitionAppear
-          transitionAppearTimeout={2500}>
+          transitionAppearTimeout={2500}
+        >
           <div>Hello, {this.state.userName}</div>
         </ReactCSSTransitionGroup>
         <form className="input-group" onSubmit={this.onFormSubmit}>
