@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SettingsDisp from '../components/SettingsDisp.jsx';
-import { addButton, addURL, deleteButton } from '../actions/index';
+import { addButton, addURL, deleteButton, selectRSSfeed } from '../actions/index';
 
 const mapDispatchToProps = dispatch => ({
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   },
 
   selectRSSfeed: (selection) => {
-    console.log(selection)
+    dispatch(selectRSSfeed(selection))
   },
 
 });
