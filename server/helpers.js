@@ -30,9 +30,8 @@ const createUser = (user) => {
     firstName: user.givenName,
     lastName: user.surname,
     isAdmin: false,
+    interests: ['', ''],
   });
-  db.User.setButton([]);
-  db.User.setInterestLists([]);
 };
 
 module.exports = {
