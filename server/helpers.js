@@ -89,9 +89,13 @@ module.exports = {
   },
 
   saveState: (req, res) => {
+    // console.log('req.body', req.body);
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
-        foundUser.update({ interests: req.body.interests })
+        const interests = Object.keys(req.body.interests)
+          .map(interestKey => req.body.interests[interestKey]);
+
+        foundUser.update({ interests })
           .then(() => console.log('user updated'))
           .catch(error => res.status(500).send(error));
 
