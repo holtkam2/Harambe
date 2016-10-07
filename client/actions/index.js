@@ -25,20 +25,6 @@ export function addURL(Button, URL) {
   };
 }
 
-export function addInterest(interestName) {
-  return {
-    type: 'ADD_INTEREST_CLICK',
-    payload: interestName,
-  };
-}
-
-export function addRSSFeedToInterest(RSSFeedURL, interestName) {
-  return {
-    type: 'ADD_RSSFEED_TO_INTEREST',
-    payload: [RSSFeedURL, interestName],
-  };
-}
-
 export function updateStateFromServer() {
   return (dispatch) => {
     $.get('api/state')

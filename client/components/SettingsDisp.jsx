@@ -18,10 +18,6 @@ class SettingsDisp extends Component {
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
     this.onAddURLClick = this.onAddURLClick.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.onInterestNameChange = this.onInterestNameChange.bind(this);
-    this.onRSSFeedNameChange = this.onRSSFeedNameChange.bind(this);
-    this.onInterestInputBoxClick = this.onInterestInputBoxClick.bind(this);
-    this.onRSSFeedURLClick = this.onRSSFeedURLClick.bind(this);
     this.onButtonToDeleteChange = this.onButtonToDeleteChange.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
   }
@@ -41,25 +37,6 @@ class SettingsDisp extends Component {
   onAddURLClick() {
     this.props.addURLClick(this.state.buttonName, this.state.URLName);
     this.state.URLName = '';
-  }
-
-  onInterestNameChange(event) {
-    this.setState({ interestName: event.target.value });
-  }
-
-  onRSSFeedNameChange(event) {
-    this.setState({ RSSFeedURL: event.target.value });
-  }
-
-  onInterestInputBoxClick() {
-    this.props.interestNameClick(this.state.interestName);
-  }
-
-  onRSSFeedURLClick() {
-    // Name makes sense as such
-    // eslint-disable-next-line new-cap
-    this.props.RSSFeedURLClick(this.state.RSSFeedURL, this.state.interestName);
-    this.state.RSSFeedURL = '';
   }
 
   onButtonToDeleteChange(event) {
@@ -112,7 +89,7 @@ class SettingsDisp extends Component {
     const {
       // no-unused-vars max-len
       // eslint-disable-next-line
-      addButtonClick, addURLClick, active, buttonName, URLName, state, interestName, RSSFeedURL, interestNameClick, RSSFeedURLClick, handleClose, handleOpen, toggleSettings, buttonToDelete, deleteButtonClick,
+      addButtonClick, addURLClick, active, buttonName, URLName, state, handleClose, handleOpen, toggleSettings, buttonToDelete, deleteButtonClick,
     } = this.props;
 
     const actions = [
@@ -160,23 +137,7 @@ class SettingsDisp extends Component {
             />
             <RaisedButton primary onClick={this.onAddURLClick}>add</RaisedButton>
           </div>
-          <div>
-            <h5>configure a new feed</h5>
-            <TextField
-              hintText="feed name"
-              onChange={this.onInterestNameChange}
-              value={this.state.interestName}
-            />
-            <RaisedButton primary onClick={this.onInterestInputBoxClick}>create</RaisedButton>
-          </div>
-          <div>
-            <TextField
-              hintText="rss url"
-              onChange={this.onRSSFeedNameChange}
-              value={this.state.RSSFeedURL}
-            />
-            <RaisedButton primary onClick={this.onRSSFeedURLClick}>add</RaisedButton>
-          </div>
+
           <div>
             <h5>delete a button</h5>
             <TextField
@@ -186,6 +147,19 @@ class SettingsDisp extends Component {
             />
             <RaisedButton primary onClick={this.onDeleteButtonClick}>delete</RaisedButton>
           </div>
+          <div>
+            <h5>select up to two RSS feeds</h5>
+            <RaisedButton onClick = {() => { this.props.selectRSSfeed("news") }}>news</RaisedButton>
+            <RaisedButton onClick = {() => { this.props.selectRSSfeed("US stocks") }}>US stocks</RaisedButton>
+            <RaisedButton onClick = {() => { this.props.selectRSSfeed("tech news") }}>tech news</RaisedButton>
+            <RaisedButton onClick = {() => { this.props.selectRSSfeed("finance news") }}>finance news</RaisedButton>
+            <RaisedButton onClick = {() => { this.props.selectRSSfeed("sports") }}>sports</RaisedButton>
+          </div>
+          <div>
+            <h5>confirm RSS feed selections</h5>
+            <RaisedButton>submit</RaisedButton>
+          </div>
+
         </Dialog>
       </div>
     );
@@ -198,13 +172,10 @@ SettingsDisp.propTypes = {
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
   toggleSettings: PropTypes.func,
-  interestNameClick: PropTypes.func,
-  RSSFeedURLClick: PropTypes.func,
+
   // eslint-disable-next-line react/forbid-prop-types
   state: PropTypes.object,
   URLName: PropTypes.string,
-  interestName: PropTypes.string,
-  RSSFeedURL: PropTypes.string,
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
   deleteButtonClick: PropTypes.func,
