@@ -106,10 +106,10 @@ export default class DialogExampleCustomWidth extends React.Component {
           <div>
             <h4>about the dev team</h4>
             <div className="aboutP">
-              Swick was built by Jeff Bernstein, <a href ="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href ="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href ="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
+              Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
 
             </div>
-            <div> </div>
+            <div />
             <div style={styles.root}>
               <GridList
                 cellHeight={250}
@@ -130,7 +130,7 @@ export default class DialogExampleCustomWidth extends React.Component {
             <div>
               <h4>technology</h4>
               <div className="aboutP">
-                Swick was built using ReactJS with Redux for the user interface, NodeJS and Express for the back end, and PostgreSQL for the database. It uses IBM Watson machine learning to analyze and find significant news based on a user's interest list. Have any ideas for new features? Submit a pull request <a href ="https://github.com/HRR18-Harambe/Harambe">here.</a>
+                Swick was built using ReactJS with Redux for the user interface, NodeJS and Express for the back end, and PostgreSQL for the database. It uses IBM Watson machine learning to analyze and find significant news based on a user's interest list. Have any ideas for new features? Submit a pull request <a href="https://github.com/HRR18-Harambe/Harambe">here.</a>
               </div>
             </div>
           </div>

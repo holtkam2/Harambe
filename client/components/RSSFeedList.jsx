@@ -3,19 +3,15 @@ import React, { PropTypes } from 'react';
 
 const RSSFeedList = ({ rssFeed }) => (
   <div className="RSSFeedList">
-    <div className="marquee marquee-speed-slow" data-marquee=
-      {
+    <div
+      className="marquee marquee-speed-slow" data-marquee={
         rssFeed.map(feed => feed.text).join(' * ')
-      }>
-    </div>
-    <div className="marquee" data-marquee=
-      {
+      }
+    /><div
+      className="marquee" data-marquee={
         rssFeed.map(feed => feed.text).join(' * ')
-      }>
-
-
-    </div>
-  </div>
+      }
+    /></div>
 );
 
 RSSFeedList.propTypes = {
