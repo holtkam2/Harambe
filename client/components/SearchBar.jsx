@@ -3,6 +3,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Delay from 'react-delay';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import WelcomeBarContainer from '../containers/welcomeBarContainer';
@@ -45,15 +46,19 @@ class SearchBar extends Component {
 
     return (
       <div className="searchBar">
-        <ReactCSSTransitionGroup
-          transitionName="welcome"
-          transitionAppear
-          transitionAppearTimeout={3000}
-          transitionEnterTimeout={3000}
-          transitionLeaveTimeout={3000}
+        <Delay
+          wait={1000}
         >
-          <WelcomeBarContainer />
-        </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup
+            transitionName="welcome"
+            transitionAppear
+            transitionAppearTimeout={3000}
+            transitionEnterTimeout={3000}
+            transitionLeaveTimeout={3000}
+          >
+            <WelcomeBarContainer />
+          </ReactCSSTransitionGroup>
+        </Delay>
         <form className="input-group" onSubmit={this.onFormSubmit}>
           <TextField
             hintText="what do you want to know?"
