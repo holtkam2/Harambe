@@ -112,12 +112,12 @@ class WelcomeBar extends Component {
     if (this.state.unixTime < this.state.currentWeather.sys.sunrise) {
       time = new Date(this.state.currentWeather.sys.sunrise * 1000);
       // eslint-disable-next-line prefer-template
-      time = `{time.getHours()}:${('0' + time.getMinutes()).slice(-2)}`;
+      time = `${time.getHours()}:${('0' + time.getMinutes()).slice(-2)}`;
       condition += `, sunrise at ${time}`;
     } else if (this.state.unixTime < this.state.currentWeather.sys.sunset) {
       time = new Date(this.state.currentWeather.sys.sunset * 1000);
       // eslint-disable-next-line prefer-template
-      time = `{time.getHours()}:${('0' + time.getMinutes()).slice(-2)}`;
+      time = `${time.getHours()}:${('0' + time.getMinutes()).slice(-2)}`;
       condition += `, sunset at ${time}`;
     }
 
