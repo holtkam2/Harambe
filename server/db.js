@@ -16,13 +16,17 @@ const User = db.define('User', {
   firstName: Sequelize.STRING,
   LastName: Sequelize.STRING,
   isAdmin: Sequelize.BOOLEAN,
-});
-
-const InterestList = db.define('InterestList', {
-  interestName: Sequelize.STRING,
   // the name is set by Sequelize:
   // eslint-disable-next-line new-cap
-  RSSFeeds: Sequelize.ARRAY(Sequelize.STRING),
+  interests: Sequelize.ARRAY(Sequelize.STRING),
+});
+
+const Interest = db.define('Interest', {
+  interestName: { type: Sequelize.STRING, unique: true },
+  // the name is set by Sequelize:
+  // eslint-disable-next-line new-cap
+  RSSFeedURLs: Sequelize.ARRAY(Sequelize.STRING),
+  RSSFeedAggregate: Sequelize.STRING,
 });
 
 const Button = db.define('Button', {
@@ -33,13 +37,11 @@ const Button = db.define('Button', {
 });
 
 Button.belongsTo(User);
-InterestList.belongsTo(User);
 
 User.hasMany(Button);
-User.hasMany(InterestList);
 
 // sync all tables
-[Test, User, Button, InterestList]
+[Test, User, Button, Interest]
   .forEach(table => table.sync({ logging: false }));
 // [User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
 //   .forEach(table =>
@@ -47,4 +49,4 @@ User.hasMany(InterestList);
 //       .then(syncedTable => console.log(`${syncedTable} successfully synced`))
 //       .catch(err => console.error(err)));
 
-module.exports = { Test, User, Button, InterestList };
+module.exports = { Test, User, Button, Interest };

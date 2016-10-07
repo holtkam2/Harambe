@@ -69,64 +69,51 @@ module.exports = {
 
   getState: (req, res) => {
     console.log('getState');
-    // const state = getUser(req.user.username);
-    // if (!state) {
-    //   res.sendStatus(204);
-    // } else {
-    //   res.status(200).json(state);
-    // }
-    db.User.find({ where: { userName: req.user.username } })
+    db.User.find({ where: { userName: /*req.user.username*/ 'jeffrey.bernstein++Harambe@gmail.com' } })
       .then((foundUser) => {
         const result = {};
 
-        // refresh all Buttons
         db.Button.findAll({ where: { UserId: foundUser.id } })
-        .then((buttonKeys) => {
-          result.user = {
-            firstName: foundUser.firstName,
-            lastName: foundUser.lastName,
-            userName: foundUser.userName,
-          };
-          result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
-            // console.log(buttonKey.buttonName, buttonKey.links);
-            // we are using the reduce to build up properties:
-            // eslint-disable-next-line no-param-reassign
-            buttons[buttonKey.buttonName] = buttonKey.links;
-            return buttons;
-          }, {});
-        })
-        .then(() => {
-          db.InterestList.findAll({ where: { UserId: foundUser.id } })
-            .then((interestKeys) => {
-              result.interests = interestKeys.reduce((interests, interestKey) => {
-                // console.log(interestKey.interestName, interestKey.RSSFeeds);
-                // we are using the reduce to build up properties:
-                // eslint-disable-next-line no-param-reassign
-                interests[interestKey.interestName] = interestKey.RSSFeeds;
-                return interests;
-              }, {});
-            })
-            .then(() => res.status(200).json(result));
-        })
-        .catch(error => res.status(500).send(error));
+          .then((buttonKeys) => {
+            result.user = {
+              firstName: foundUser.firstName,
+              lastName: foundUser.lastName,
+              userName: foundUser.userName,
+            };
+
+            result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
+              // console.log(buttonKey.buttonName, buttonKey.links);
+              // we are using the reduce to build up properties:
+              // eslint-disable-next-line no-param-reassign
+              buttons[buttonKey.buttonName] = buttonKey.links;
+              return buttons;
+            }, {});
+          })
+          .then(() => {
+            db.Interest.findAll({ where: { interestName: { $in: foundUser.interests } } })
+              .then((interestKeys) => {
+                result.interests = interestKeys.reduce((interests, interestKey) => {
+                  // console.log(interestKey.interestName, interestKey.RSSFeeds);
+                  // we are using the reduce to build up properties:
+                  // eslint-disable-next-line no-param-reassign
+                  interests[interestKey.interestName] = interestKey.RSSFeedAggregate;
+                  return interests;
+                }, {});
+              })
+              .then(() => res.status(200).json(result));
+          })
+          .catch(error => res.status(500).send(error));
       })
       .catch(error => res.status(404).send(error));
-
-      /* .then((result) => {
-        if (!result) {
-          res.sendStatus(204);
-        } else {
-          res.status(200).json(result);
-        }
-        console.log('found user ', result);
-        // return result;
-      });*/
   },
 
   saveState: (req, res) => {
-    db.User.find({ where: { userName: req.user.username } })
+    db.User.find({ where: { userName: /*req.user.username*/ 'jeffrey.bernstein++Harambe@gmail.com' } })
       .then((foundUser) => {
-        // convert object into array
+        foundUser.update({ interests: req.body.interests })
+          .then(() => console.log('user updated'))
+          .catch(error => res.status(500).send(error));
+
         const buttons = Object.keys(req.body.buttons)
           .map(buttonKey => ({
             UserId: foundUser.id,
@@ -134,32 +121,13 @@ module.exports = {
             links: req.body.buttons[buttonKey],
           }));
 
-        // convert object into array
-        const interests = Object.keys(req.body.interests)
-          .map(interestKey => ({
-            UserId: foundUser.id,
-            interestName: interestKey,
-            RSSFeeds: req.body.interests[interestKey],
-          }));
-
         // refresh all Buttons
         db.Button.destroy({
           where: {
             UserId: foundUser.id,
-            // buttonName: buttons.map(button => button.buttonName),
           },
         })
         .then(() => db.Button.bulkCreate(buttons))
-        .catch(error => res.status(500).send(error));
-
-        // refresh all InterestLists
-        db.InterestList.destroy({
-          where: {
-            UserId: foundUser.id,
-            // interestName: interests.map(interest => interest.interestName),
-          },
-        })
-        .then(() => db.InterestList.bulkCreate(interests))
         .then(() => res.status(202).send('haha'))
         .catch(error => res.status(500).send(error));
       })
