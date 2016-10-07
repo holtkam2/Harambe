@@ -69,7 +69,7 @@ module.exports = {
 
   getState: (req, res) => {
     console.log('getState');
-    db.User.find({ where: { userName: /*req.user.username*/ 'jeffrey.bernstein++Harambe@gmail.com' } })
+    db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {};
 
@@ -108,7 +108,7 @@ module.exports = {
   },
 
   saveState: (req, res) => {
-    db.User.find({ where: { userName: /*req.user.username*/ 'jeffrey.bernstein++Harambe@gmail.com' } })
+    db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         foundUser.update({ interests: req.body.interests })
           .then(() => console.log('user updated'))
