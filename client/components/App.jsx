@@ -1,6 +1,7 @@
 import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Delay from 'react-delay';
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import Paper from 'material-ui/Paper';
@@ -26,8 +27,9 @@ const App = () => (
         <img className="rotatingImage" src="./assets/logo/logo_gfx.png" alt="S" />
         <img className="logoText" src="./assets/logo/logo_text.png" alt="swick" />
       </div>
-
-      <SearchBarContainer className="SearchBar" />
+      <Delay wait={500}>
+        <SearchBarContainer className="SearchBar" />
+      </Delay>
       <div className="ButtonListContainer">
         <ButtonListContainer />
       </div>
