@@ -1,30 +1,28 @@
+/* global $, _ */
+
 const path = require('path');
 const db = require('./db');
 
-  // getAllUsers: (req, res) => {
-  //   db.User.findAll({})
-  //     .then(result => res.status(200).json(result))
-  //     .catch(error => res.status(404).send(error));
-  // },
+// YQL query urls for rss feeds
+const financeUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fbusiness_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const financeMW = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.marketwatch.com%2Fmarketwatch%2Fbulletins'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const financeReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FhotStocksNews'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+let financeNews = [];
 
+const techTechCrunch = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.feedburner.com%2FTechCrunch%2F%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const techEngadget = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'www.engadget.com%2Frss-full.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const techGizmodo = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.gawker.com%2Fgizmodo%2Ffull%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+let techNews = [];
 
-  // deleteUser: (req, res) => {
-  //   db.User.destroy({ where: { userName: req.params.username } })
-  //     .then(() => res.sendStatus(204))
-  //     .catch(error => res.status(404).send(error));
-  // },
+const newsUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fnews.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const newsReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FtopNews%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const newsAP = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fhosted.ap.org%2Flineups%2FTOPHEADS.rss%3FSITE%3DAP%26SECTION%3DHOME'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+let news = [];
 
-// user.belongsToMany(button)
-// button.belongsToMany(user)
-
-// user.create()...
-// button.create()...
-// button.create()...
-
-// // save them... and then:
-// user.setbuttons([button1, button2]).then(function() {
-//   // saved!
-// })
+const sportsUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fsports_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const sportsAP = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fhosted.ap.org%2Flineups%2FSPORTSHEADS.rss%3FSITE%3DAP%26SECTION%3DHOME'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+const sportsReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FsportsNews%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+let sportsNews = [];
 
 const createUser = (user) => {
   db.User.create({
@@ -36,22 +34,6 @@ const createUser = (user) => {
   db.User.setButton([]);
   db.User.setInterestLists([]);
 };
-
-// const getUser = (username) => {
-//   db.User.find({ where: { userName: username } })
-//     .then((result) => {
-//       console.log('found user ', username);
-//       return result;
-//     });
-// };
-
-// const saveToUser = (state) => {
-//   db.User.find({ where: { userName: state.username } })
-//     .then((result) => {
-//       console.log('updating user, ', result);
-//       // update what needs updating, leave rest alone
-//     });
-// };
 
 module.exports = {
   getSlash: (req, res) => {
@@ -132,6 +114,101 @@ module.exports = {
         .catch(error => res.status(500).send(error));
       })
       .catch(error => res.status(404).send(error));
+  },
+
+  // Update functions for rss feeds
+  updateFinance: () => {
+    financeNews = [];
+    $.getJSON(financeUpi, (upi) => {
+      let alternate = true;
+      _.each(upi.query.results.rss, (element) => {
+        if (alternate) {
+          financeNews.push(element.channel.item.title);
+          alternate = false;
+        } else {
+          alternate = true;
+        }
+      });
+      $.getJSON(financeMW, (mw) => {
+        _.each(mw.query.results.rss, (element) => {
+          financeNews.push(element.channel.item.title);
+        });
+        $.getJSON(financeReuters, (reuters) => {
+          _.each(reuters.query.results.rss, (element) => {
+            financeNews.push(element.channel.item.title);
+          });
+        });
+      });
+    });
+  },
+
+  updateTech: () => {
+    techNews = [];
+    $.getJSON(techTechCrunch, (techcrunch) => {
+      _.each(techcrunch.query.results.rss, (element) => {
+        techNews.push(element.channel.item.title);
+      });
+      $.getJSON(techEngadget, (engadget) => {
+        _.each(engadget.query.results.rss, (element) => {
+          techNews.push(element.channel.item.title);
+        });
+        $.getJSON(techGizmodo, (gizmodo) => {
+          _.each(gizmodo.query.results.rss, (element) => {
+            techNews.push(element.channel.item.title);
+          });
+        });
+      });
+    });
+  },
+
+  updateNews: () => {
+    news = [];
+    $.getJSON(newsUpi, (upi) => {
+      let alternate = true;
+      _.each(upi.query.results.rss, (element) => {
+        if (alternate) {
+          news.push(element.channel.item.title);
+          alternate = false;
+        } else {
+          alternate = true;
+        }
+      });
+      $.getJSON(newsReuters, (reuters) => {
+        _.each(reuters.query.results.rss, (element) => {
+          news.push(element.channel.item.title);
+        });
+        $.getJSON(newsAP, (ap) => {
+          _.each(ap.query.results.rss, (element) => {
+            news.push(element.channel.item.title);
+          });
+        });
+      });
+    });
+  },
+
+  updateSports: () => {
+    sportsNews = [];
+    $.getJSON(sportsUpi, (upi) => {
+      let alternate = true;
+      _.each(upi.query.results.rss, (element) => {
+        if (alternate) {
+          sportsNews.push(element.channel.item.title);
+          alternate = false;
+        } else {
+          alternate = true;
+        }
+      });
+      $.getJSON(sportsReuters, (reuters) => {
+        _.each(reuters.query.results.rss, (element) => {
+          sportsNews.push(element.channel.item.title);
+        });
+        $.getJSON(sportsAP, (ap) => {
+          _.each(ap.query.results.rss, (element) => {
+            sportsNews.push(element.channel.item.title);
+          });
+        });
+      });
+    });
   },
 
   // Testing functions
