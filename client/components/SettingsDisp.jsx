@@ -12,7 +12,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings';
 class SettingsDisp extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonName: '', URLName: '', open: false };
+    this.state = { buttonName: '', URLName: '', open: false, };
     this.onInputChange = this.onInputChange.bind(this);
     this.onURLInputChange = this.onURLInputChange.bind(this);
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
@@ -20,6 +20,12 @@ class SettingsDisp extends Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onButtonToDeleteChange = this.onButtonToDeleteChange.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
+    this.onRssFeedSelection = this.onRssFeedSelection.bind(this);
+  }
+
+  onRssFeedSelection(selection) {
+    this.props.selectRSSfeed(selection);
+    this.forceUpdate();
   }
 
   onInputChange(event) {
@@ -149,15 +155,16 @@ class SettingsDisp extends Component {
           </div>
           <div>
             <h5>select up to two RSS feeds</h5>
-            <RaisedButton onClick = {() => { this.props.selectRSSfeed("news") }}>news</RaisedButton>
-            <RaisedButton onClick = {() => { this.props.selectRSSfeed("US stocks") }}>US stocks</RaisedButton>
-            <RaisedButton onClick = {() => { this.props.selectRSSfeed("tech news") }}>tech news</RaisedButton>
-            <RaisedButton onClick = {() => { this.props.selectRSSfeed("finance news") }}>finance news</RaisedButton>
-            <RaisedButton onClick = {() => { this.props.selectRSSfeed("sports") }}>sports</RaisedButton>
+            <RaisedButton onClick = {() => { this.onRssFeedSelection("news") }}>news</RaisedButton>
+            <RaisedButton onClick = {() => { this.onRssFeedSelection("US stocks") }}>US stocks</RaisedButton>
+            <RaisedButton onClick = {() => { this.onRssFeedSelection("tech news") }}>tech news</RaisedButton>
+            <RaisedButton onClick = {() => { this.onRssFeedSelection("finance news") }}>finance news</RaisedButton>
+            <RaisedButton onClick = {() => { this.onRssFeedSelection("sports") }}>sports</RaisedButton>
           </div>
           <div>
-            <h5>confirm RSS feed selections</h5>
-            <RaisedButton>submit</RaisedButton>
+            <h5>current selection:</h5>
+            <div>{this.props.currentSelection[0]}</div>
+            <div>{this.props.currentSelection[1]}</div>
           </div>
 
         </Dialog>
@@ -172,7 +179,6 @@ SettingsDisp.propTypes = {
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
   toggleSettings: PropTypes.func,
-
   // eslint-disable-next-line react/forbid-prop-types
   state: PropTypes.object,
   URLName: PropTypes.string,

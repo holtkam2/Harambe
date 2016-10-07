@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   active: state.toggle,
+  currentSelection: state.RSSFeedList,
   state,
 });
 
