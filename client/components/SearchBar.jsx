@@ -46,19 +46,19 @@ class SearchBar extends Component {
 
     return (
       <div className="searchBar">
-        <Delay
-          wait={1000}
-        >
-          <ReactCSSTransitionGroup
-            transitionName="welcome"
-            transitionAppear
-            transitionAppearTimeout={3000}
-            transitionEnterTimeout={3000}
-            transitionLeaveTimeout={3000}
-          >
-            <WelcomeBarContainer />
-          </ReactCSSTransitionGroup>
-        </Delay>
+        <div className="welcomeBar">
+          <Delay wait={1000}>
+            <ReactCSSTransitionGroup
+              transitionName="welcome"
+              transitionAppear
+              transitionAppearTimeout={3000}
+              transitionEnterTimeout={3000}
+              transitionLeaveTimeout={3000}
+            >
+              <WelcomeBarContainer />
+            </ReactCSSTransitionGroup>
+          </Delay>
+        </div>
         <form className="input-group" onSubmit={this.onFormSubmit}>
           <TextField
             hintText="what do you want to know?"
