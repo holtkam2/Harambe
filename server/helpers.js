@@ -2,6 +2,7 @@
 
 const path = require('path');
 const db = require('./db');
+const requestify = require('requestify');
 
 // YQL query urls for rss feeds
 const financeUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fbusiness_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
@@ -23,6 +24,113 @@ const sportsUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.
 const sportsAP = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fhosted.ap.org%2Flineups%2FSPORTSHEADS.rss%3FSITE%3DAP%26SECTION%3DHOME'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 const sportsReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FsportsNews%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 let sportsNews = [];
+
+// Update functions for rss feeds
+const updateFinance = () => {
+  financeNews = [];
+  requestify.get(financeUpi).then((upi) => {
+    let titles = JSON.parse(upi.body).query.results.rss;
+    let alternate = true;
+    titles.forEach((element) => {
+      if (alternate) {
+        financeNews.push(element.channel.item.title);
+        alternate = false;
+      } else {
+        alternate = true;
+      }
+    });
+    requestify.get(financeMW).then((mw) => {
+      titles = JSON.parse(mw.body).query.results.rss;
+      titles.forEach((element) => {
+        financeNews.push(element.channel.item.title);
+      });
+      requestify.get(financeReuters).then((reuters) => {
+        titles = JSON.parse(reuters.body).query.results.rss;
+        titles.forEach((element) => {
+          financeNews.push(element.channel.item.title);
+        });
+      });
+    });
+  });
+};
+
+const updateTech = () => {
+  techNews = [];
+  requestify.get(techTechCrunch).then((techcrunch) => {
+    let titles = JSON.parse(techcrunch.body).query.results.rss;
+    titles.forEach((element) => {
+      techNews.push(element.channel.item.title);
+    });
+    requestify.get(techEngadget).then((engadget) => {
+      titles = JSON.parse(engadget.body).query.results.rss;
+      titles.forEach((element) => {
+        techNews.push(element.channel.item.title);
+      });
+      requestify.get(techGizmodo).then((gizmodo) => {
+        titles = JSON.parse(gizmodo.body).query.results.rss;
+        titles.forEach((element) => {
+          techNews.push(element.channel.item.title);
+        });
+      });
+    });
+  });
+};
+
+const updateNews = () => {
+  news = [];
+  requestify.get(newsUpi).then((upi) => {
+    let titles = JSON.parse(upi.body).query.results.rss;
+    let alternate = true;
+    titles.forEach((element) => {
+      if (alternate) {
+        news.push(element.channel.item.title);
+        alternate = false;
+      } else {
+        alternate = true;
+      }
+    });
+    requestify.get(newsAP).then((ap) => {
+      titles = JSON.parse(ap.body).query.results.rss;
+      titles.forEach((element) => {
+        news.push(element.channel.item.title);
+      });
+      requestify.get(newsReuters).then((reuters) => {
+        titles = JSON.parse(reuters.body).query.results.rss;
+        titles.forEach((element) => {
+          news.push(element.channel.item.title);
+        });
+      });
+    });
+  });
+};
+
+const updateSports = () => {
+  sportsNews = [];
+  requestify.get(sportsUpi).then((upi) => {
+    let titles = JSON.parse(upi.body).query.results.rss;
+    let alternate = true;
+    titles.forEach((element) => {
+      if (alternate) {
+        sportsNews.push(element.channel.item.title);
+        alternate = false;
+      } else {
+        alternate = true;
+      }
+    });
+    requestify.get(sportsAP).then((ap) => {
+      titles = JSON.parse(ap.body).query.results.rss;
+      titles.forEach((element) => {
+        sportsNews.push(element.channel.item.title);
+      });
+      requestify.get(sportsReuters).then((reuters) => {
+        titles = JSON.parse(reuters.body).query.results.rss;
+        titles.forEach((element) => {
+          sportsNews.push(element.channel.item.title);
+        });
+      });
+    });
+  });
+};
 
 const createUser = (user) => {
   db.User.create({
@@ -119,107 +227,16 @@ module.exports = {
       .catch(error => res.status(404).send(error));
   },
 
-  // Update functions for rss feeds
-  updateFinance: () => {
-    financeNews = [];
-    $.getJSON(financeUpi, (upi) => {
-      let alternate = true;
-      _.each(upi.query.results.rss, (element) => {
-        if (alternate) {
-          financeNews.push(element.channel.item.title);
-          alternate = false;
-        } else {
-          alternate = true;
-        }
-      });
-      $.getJSON(financeMW, (mw) => {
-        _.each(mw.query.results.rss, (element) => {
-          financeNews.push(element.channel.item.title);
-        });
-        $.getJSON(financeReuters, (reuters) => {
-          _.each(reuters.query.results.rss, (element) => {
-            financeNews.push(element.channel.item.title);
-          });
-        });
-      });
-    });
-  },
-
-  updateTech: () => {
-    techNews = [];
-    $.getJSON(techTechCrunch, (techcrunch) => {
-      _.each(techcrunch.query.results.rss, (element) => {
-        techNews.push(element.channel.item.title);
-      });
-      $.getJSON(techEngadget, (engadget) => {
-        _.each(engadget.query.results.rss, (element) => {
-          techNews.push(element.channel.item.title);
-        });
-        $.getJSON(techGizmodo, (gizmodo) => {
-          _.each(gizmodo.query.results.rss, (element) => {
-            techNews.push(element.channel.item.title);
-          });
-        });
-      });
-    });
-  },
-
-  updateNews: () => {
-    news = [];
-    $.getJSON(newsUpi, (upi) => {
-      let alternate = true;
-      _.each(upi.query.results.rss, (element) => {
-        if (alternate) {
-          news.push(element.channel.item.title);
-          alternate = false;
-        } else {
-          alternate = true;
-        }
-      });
-      $.getJSON(newsReuters, (reuters) => {
-        _.each(reuters.query.results.rss, (element) => {
-          news.push(element.channel.item.title);
-        });
-        $.getJSON(newsAP, (ap) => {
-          _.each(ap.query.results.rss, (element) => {
-            news.push(element.channel.item.title);
-          });
-        });
-      });
-    });
-  },
-
-  updateSports: () => {
-    sportsNews = [];
-    $.getJSON(sportsUpi, (upi) => {
-      let alternate = true;
-      _.each(upi.query.results.rss, (element) => {
-        if (alternate) {
-          sportsNews.push(element.channel.item.title);
-          alternate = false;
-        } else {
-          alternate = true;
-        }
-      });
-      $.getJSON(sportsReuters, (reuters) => {
-        _.each(reuters.query.results.rss, (element) => {
-          sportsNews.push(element.channel.item.title);
-        });
-        $.getJSON(sportsAP, (ap) => {
-          _.each(ap.query.results.rss, (element) => {
-            sportsNews.push(element.channel.item.title);
-          });
-        });
-      });
-    });
-  },
-
   updateAll: () => {
+    updateNews();
+    updateFinance();
+    updateTech();
+    updateSports();
     setInterval(() => {
-      this.updateNews();
-      this.updateFinance();
-      this.updateTech();
-      this.updateSports();
+      updateNews();
+      updateFinance();
+      updateTech();
+      updateSports();
     }, 900000);
   },
 
