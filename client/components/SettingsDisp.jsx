@@ -96,10 +96,6 @@ class SettingsDisp extends Component {
     this.setState({ open: false });
   }
 
-  handleChange = (val) => {
-    this.setState({ value: val });
-  };
-
   render() {
     const {
       // no-unused-vars max-len
@@ -134,13 +130,14 @@ class SettingsDisp extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
           autoScrollBodyContent
+          repositionOnUpdate={false}
         >
           <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
+            // value={this.state.value}
+            // onChange={this.handleChange}
             inkBarStyle={styles}
           >
-            <Tab label="configure buttons" value="a">
+            <Tab label="configure buttons">
               <div>
                 <h5>configure a new button</h5>
                 <TextField
@@ -169,7 +166,7 @@ class SettingsDisp extends Component {
                 <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>delete</RaisedButton>
               </div>
             </Tab>
-            <Tab label="configure feeds" value="b">
+            <Tab label="configure feeds">
               <div>
                 <h5>select up to two RSS feeds</h5>
                 <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>news</RaisedButton>

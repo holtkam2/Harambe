@@ -62,13 +62,9 @@ body {
 }
 
 .settingsPanel {
-  position: fixed;
-  bottom: 75px;
-  left: 75px;
+  position: absolute;
+  top: 200px;
   margin: auto;
-  width: 75%;
-  padding: 10px;
-  z-index:100;
 }
 
 .rssF1 {
@@ -373,7 +369,9 @@ input:checked + .slider:before {
 
 .aboutP {
   margin: 0 auto;
-  width: 98%;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  width: 95%;
 }
 
 .welcome-appear {
