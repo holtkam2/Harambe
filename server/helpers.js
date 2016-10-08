@@ -160,7 +160,14 @@ module.exports = {
     console.log('getState');
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
-        const result = {};
+        const result = {
+          RSSFeeds: {
+            financeNews,
+            techNews,
+            news,
+            sportsNews,
+          },
+        };
 
         db.Button.findAll({ where: { UserId: foundUser.id } })
           .then((buttonKeys) => {
