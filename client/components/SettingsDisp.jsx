@@ -8,11 +8,16 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
+import { Tabs, Tab } from 'material-ui/Tabs';
+
+const styles = {
+  backgroundColor: '#009900',
+};
 
 class SettingsDisp extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonName: '', URLName: '', open: false };
+    this.state = { buttonName: '', URLName: '', open: false, value: 'a' };
     this.onInputChange = this.onInputChange.bind(this);
     this.onURLInputChange = this.onURLInputChange.bind(this);
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
@@ -91,6 +96,10 @@ class SettingsDisp extends Component {
     this.setState({ open: false });
   }
 
+  handleChange = (val) => {
+    this.setState({ value: val });
+  };
+
   render() {
     const {
       // no-unused-vars max-len
@@ -126,47 +135,56 @@ class SettingsDisp extends Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent
         >
-          <div>
-            <h5>configure a new button</h5>
-            <TextField
-              hintText="button name"
-              onChange={this.onInputChange}
-              value={this.state.buttonName}
-            />
-            <RaisedButton primary onTouchTap={this.onAddButtonClick}>create</RaisedButton>
-          </div>
-          <div>
-            <TextField
-              hintText="url"
-              onChange={this.onURLInputChange}
-              value={this.state.URLName}
-            />
-            <RaisedButton primary onTouchTap={this.onAddURLClick}>add</RaisedButton>
-          </div>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            inkBarStyle={styles}
+          >
+            <Tab label="configure buttons" value="a">
+              <div>
+                <h5>configure a new button</h5>
+                <TextField
+                  hintText="button name"
+                  onChange={this.onInputChange}
+                  value={this.state.buttonName}
+                />
+                <RaisedButton primary onTouchTap={this.onAddButtonClick}>create</RaisedButton>
+              </div>
+              <div>
+                <TextField
+                  hintText="url"
+                  onChange={this.onURLInputChange}
+                  value={this.state.URLName}
+                />
+                <RaisedButton primary onTouchTap={this.onAddURLClick}>add</RaisedButton>
+              </div>
 
-          <div>
-            <h5>delete a button</h5>
-            <TextField
-              hintText="button name"
-              onChange={this.onButtonToDeleteChange}
-              value={this.state.buttonToDelete}
-            />
-            <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>delete</RaisedButton>
-          </div>
-          <div>
-            <h5>select up to two RSS feeds</h5>
-            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>news</RaisedButton>
-            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('tech'); }}>tech</RaisedButton>
-            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>sports</RaisedButton>
-            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>finance</RaisedButton>
-            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>stocks</RaisedButton>
-          </div>
-          <div>
-            <h5>current selection:</h5>
-            <div>{this.props.currentSelection[0]}</div>
-            <div>{this.props.currentSelection[1]}</div>
-          </div>
-
+              <div>
+                <h5>delete a button</h5>
+                <TextField
+                  hintText="button name"
+                  onChange={this.onButtonToDeleteChange}
+                  value={this.state.buttonToDelete}
+                />
+                <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>delete</RaisedButton>
+              </div>
+            </Tab>
+            <Tab label="configure feeds" value="b">
+              <div>
+                <h5>select up to two RSS feeds</h5>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>news</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('tech'); }}>tech</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>sports</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>finance</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>stocks</RaisedButton>
+              </div>
+              <div>
+                <h5>current selection:</h5>
+                <div>{this.props.currentSelection[0]}</div>
+                <div>{this.props.currentSelection[1]}</div>
+              </div>
+            </Tab>
+          </Tabs>
         </Dialog>
       </div>
     );
