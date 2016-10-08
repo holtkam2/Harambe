@@ -162,10 +162,10 @@ module.exports = {
       .then((foundUser) => {
         const result = {
           RSSFeeds: {
-            financeNews,
-            techNews,
             news,
-            sportsNews,
+            finance: financeNews,
+            tech: techNews,
+            sports: sportsNews,
           },
         };
 
