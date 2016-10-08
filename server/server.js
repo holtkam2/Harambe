@@ -7,6 +7,7 @@ const parser = require('body-parser');
 const helmet = require('helmet');
 // router
 const router = require('./routes');
+const helpers = require('./helpers');
 // Stormpath for auth
 const stormpath = require('express-stormpath');
 
@@ -41,6 +42,7 @@ app.on('stormpath.ready', () => {
 
   app.listen(app.get('port'));
   console.log(`Harambe is listening on port ${app.get('port')}!`);
+  helpers.updateAll();
 });
 
 module.exports = app;

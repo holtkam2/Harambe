@@ -12,7 +12,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings';
 class SettingsDisp extends Component {
   constructor(props) {
     super(props);
-    this.state = { buttonName: '', URLName: '', open: false, };
+    this.state = { buttonName: '', URLName: '', open: false };
     this.onInputChange = this.onInputChange.bind(this);
     this.onURLInputChange = this.onURLInputChange.bind(this);
     this.onAddButtonClick = this.onAddButtonClick.bind(this);
@@ -114,7 +114,7 @@ class SettingsDisp extends Component {
     return (
       <div>
         <div className="settingsButton">
-          <IconButton onClick={this.handleOpen}>
+          <IconButton onTouchTap={this.handleOpen}>
             <SettingsIcon />
           </IconButton>
         </div>
@@ -133,7 +133,7 @@ class SettingsDisp extends Component {
               onChange={this.onInputChange}
               value={this.state.buttonName}
             />
-            <RaisedButton primary onClick={this.onAddButtonClick}>create</RaisedButton>
+            <RaisedButton primary onTouchTap={this.onAddButtonClick}>create</RaisedButton>
           </div>
           <div>
             <TextField
@@ -141,7 +141,7 @@ class SettingsDisp extends Component {
               onChange={this.onURLInputChange}
               value={this.state.URLName}
             />
-            <RaisedButton primary onClick={this.onAddURLClick}>add</RaisedButton>
+            <RaisedButton primary onTouchTap={this.onAddURLClick}>add</RaisedButton>
           </div>
 
           <div>
@@ -151,15 +151,15 @@ class SettingsDisp extends Component {
               onChange={this.onButtonToDeleteChange}
               value={this.state.buttonToDelete}
             />
-            <RaisedButton primary onClick={this.onDeleteButtonClick}>delete</RaisedButton>
+            <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>delete</RaisedButton>
           </div>
           <div>
             <h5>select up to two RSS feeds</h5>
-            <RaisedButton onClick = {() => { this.onRssFeedSelection("news") }}>news</RaisedButton>
-            <RaisedButton onClick = {() => { this.onRssFeedSelection("US stocks") }}>US stocks</RaisedButton>
-            <RaisedButton onClick = {() => { this.onRssFeedSelection("tech news") }}>tech news</RaisedButton>
-            <RaisedButton onClick = {() => { this.onRssFeedSelection("finance news") }}>finance news</RaisedButton>
-            <RaisedButton onClick = {() => { this.onRssFeedSelection("sports") }}>sports</RaisedButton>
+            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>news</RaisedButton>
+            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('tech'); }}>tech</RaisedButton>
+            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>sports</RaisedButton>
+            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>finance</RaisedButton>
+            <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>stocks</RaisedButton>
           </div>
           <div>
             <h5>current selection:</h5>
@@ -185,6 +185,9 @@ SettingsDisp.propTypes = {
   handleClose: PropTypes.func,
   handleOpen: PropTypes.func,
   deleteButtonClick: PropTypes.func,
+  selectRSSfeed: PropTypes.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  currentSelection: PropTypes.array,
 };
 
 export default SettingsDisp;
