@@ -12,7 +12,7 @@ class WelcomeBar extends Component {
       currentPosition: {
         lat: 53.5261,
         lng: 1.6255 },
-      currentCity: 'Earth',
+      currentCity: 'Penistone, UK',
       currentWeather: null,
       currentCondition: '',
     };
@@ -37,21 +37,21 @@ class WelcomeBar extends Component {
     setTimeout(() => {
       const geocodingAPI = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.currentPosition.lat},${this.state.currentPosition.lng}&key=AIzaSyAiUpvQQKjSDsz3HYjQp0CagTPNcQGboHk`;
       const weatherAPI = `http://api.openweathermap.org/data/2.5/weather?lat=${this.state.currentPosition.lat}&lon=${this.state.currentPosition.lng}&appid=74302259ae8bfa3d6e5e2e87672e62de`;
-      $.getJSON(geocodingAPI, (json) => {
-        if (json.status === 'OK') {
+      $.getJSON(geocodingAPI, (geo) => {
+        if (geo.status === 'OK') {
          // Doublecheck result 0
-          const r = json.results[0];
+          const r = geo.results[0];
          // look locality tag to get city name
           for (let i = 0, len = r.address_components.length; i < len; i += 1) {
             const ac = r.address_components[i];
             if (ac.types.indexOf('locality') >= 0) this.setState({ currentCity: ac.short_name });
           }
         }
-      });
-      $.getJSON(weatherAPI, (json) => {
-        this.setState({ currentWeather: json });
-        console.log('WEATHER', this.state.currentWeather);
-        this.conditions();
+        $.getJSON(weatherAPI, (weather) => {
+          this.setState({ currentWeather: weather });
+          console.log('WEATHER', this.state.currentWeather);
+          this.conditions();
+        });
       });
     }, 500);
   }
