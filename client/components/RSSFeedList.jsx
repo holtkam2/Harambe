@@ -5,17 +5,17 @@ const RSSFeedList = ({ rssFeed }) => (
   <div className="RSSFeedList">
     <div
       className="marquee marquee-speed-slow" data-marquee={
-        rssFeed.map(feed => feed.text).join(' * ')
+        rssFeed.first.map(feed => feed.text).join(' * ')
       }
     /><div
       className="marquee" data-marquee={
-        rssFeed.map(feed => feed.text).join(' * ')
+        rssFeed.second.map(feed => feed.text).join(' * ')
       }
     /></div>
 );
 
 RSSFeedList.propTypes = {
-  rssFeed: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rssFeed: PropTypes.objectOf(PropTypes.array),
 };
 
 export default RSSFeedList;

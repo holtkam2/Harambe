@@ -91,16 +91,23 @@ export default class DialogExampleCustomWidth extends React.Component {
           <div>
             <h4>about the app</h4>
             <div className="aboutP">
-            Swick is an app that can help you get to the content that you need on the internet much faster. Set up buttons to open several tabs with a single click. Configure RSS feeds to get info streamed to your home page, and recieve notifications when there is relevent breaking news.
+            Swick is an app that can help you get to the content that you need
+            on the internet much faster. Set up buttons to open several tabs
+            with a single click.Configure RSS feeds to get info streamed to your
+            home page, and recieve notifications when there is relevent breaking news.
             </div>
           </div>
           <div>
             <h4>how to use Swick</h4>
             <div className="aboutP">
-            To configure a new button, open the settings panel and give it a name. Then, enter all the URLs that you want to open as new tabs when the button is clicked.
+            To configure a new button, open the settings panel and give it a name.
+            Then, enter all the URLs that you want to open as new tabs when the button is clicked.
             </div>
             <div className="aboutP">
-            To configure a new feed to stream at the top of your page, start by giving it a name in the settings panel. Then add RSS feeds url's to it and Swick will automatically compile and process them to display them as one. Click save to make sure it's there the next time you log in.
+            To configure a new feed to stream at the top of your page, start by
+            giving it a name in the settings panel.Then add RSS feeds url's to
+            it and Swick will automatically compile and process them to display
+            them as one. Click save to make sure it's there the next time you log in.
             </div>
           </div>
           <div>

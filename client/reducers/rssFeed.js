@@ -1,6 +1,9 @@
-const rssFeed = (state = [{ key: 1, text: 'Salesforce\'s Twitter Buyout May be Stymied by Investor Pressure' },
-{ key: 2, text: 'AT&T \'NetBonding\' With Cloud Leaders Amazon, IBM' },
-{ key: 3, text: 'Twitter Plunges 19%: More Downside Possible' }], action) => {
+const rssFeed = (state = { first: [{ text: 'Salesforce\'s Twitter Buyout May be Stymied by Investor Pressure' },
+{ text: 'AT&T \'NetBonding\' With Cloud Leaders Amazon, IBM' },
+{ text: 'Twitter Plunges 19%: More Downside Possible' }],
+second: [{ text: 'first news thingy' },
+{ text: 'second news right here get it while it\'s hot' },
+{ text: 'so this has to be here to... Saalalalalalalalslsalsldllalslfalslf asdlkajfjh jdflewhkjsdf wepjsd sdkjhpwdjksjdhpwdjhsk jdhf !!!!' }] }, action) => {
   switch (action.type) {
     case 'READ_ALL_RSS':
       return state;

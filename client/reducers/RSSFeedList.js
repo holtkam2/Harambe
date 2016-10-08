@@ -1,8 +1,8 @@
-const RSSFeedList = (state = ["news", "sports"], action) => {
+const RSSFeedList = (state = ['news', 'sports'], action) => {
+  const newState = state;
   switch (action.type) {
 
     case 'ADD_RSS_SELECTION':
-      const newState = state;
       newState.shift();
       newState.push(action.payload);
       return newState;

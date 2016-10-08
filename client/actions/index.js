@@ -55,7 +55,6 @@ export function selectRSSfeed(selection) {
   return {
     type: 'ADD_RSS_SELECTION',
     payload: selection,
-  }
+  };
 }
-
 

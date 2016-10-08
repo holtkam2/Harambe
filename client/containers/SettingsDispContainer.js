@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   },
 
   selectRSSfeed: (selection) => {
-    dispatch(selectRSSfeed(selection))
+    dispatch(selectRSSfeed(selection));
   },
 
 });
