@@ -47,7 +47,8 @@ body {
 }
 
 .input-group-btn {
-  bottom: 0;
+  bottom: 5px;
+  vertical-align: bottom;
 }
 
 .settingsButton {
