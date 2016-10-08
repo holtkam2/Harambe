@@ -49,6 +49,7 @@
     "redux-thunk": "^2.1.0",
     "requestify": "^0.2.3",
     "sequelize": "^3.24.3",
+    "watson-developer-cloud": "^2.4.6",
     "webpack": "^1.13.2"
   },
   "babel": {

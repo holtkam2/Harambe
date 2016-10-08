@@ -1,9 +1,17 @@
 /* global $, _ */
-
-
 const path = require('path');
 const db = require('./db');
 const requestify = require('requestify');
+const watson = require('watson-developer-cloud');
+
+// Not implemented yet in this version, still in testing
+// eslint-disable-next-line no-unused-vars
+const toneAnalyzer = watson.tone_analyzer({
+  username: process.env.WATSON.username,
+  password: process.env.WATSON.password,
+  version: 'v3',
+  version_date: '2016-05-19',
+});
 
 // YQL query urls for rss feeds
 const financeUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fbusiness_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
