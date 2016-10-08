@@ -31,7 +31,6 @@ class SettingsDisp extends Component {
 
   onRssFeedSelection(selection) {
     this.props.selectRSSfeed(selection);
-
   }
 
   onInputChange(event) {

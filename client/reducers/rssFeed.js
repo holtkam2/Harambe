@@ -1,8 +1,8 @@
 const rssFeed = (state = {
-  sports: ["asd"],
+  sports: ['asd'],
   tech: ["asd'asd"],
-  news: ["asdasdasd"],
-  finance: ["asddddasdasd"],
+  news: ['asdasdasd'],
+  finance: ['asddddasdasd'],
 }, action) => {
   switch (action.type) {
     case 'GET_STATE_FROM_SERVER':

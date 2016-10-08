@@ -8,7 +8,7 @@ class RSSFeedList extends Component {
 
   render() {
     const { rssFeed, chosenRssFeed1, chosenRssFeed2 } = this.props;
-console.log(chosenRssFeed1, '==============================================')
+    console.log(chosenRssFeed1, '==============================================');
     return (
     <div className="RSSFeedList">
     <div
@@ -24,7 +24,7 @@ console.log(chosenRssFeed1, '==============================================')
       }
     /></div>
 
-    )
+    );
   }
 }
 // const RSSFeedList = ({ rssFeed, chosenRssFeed1, chosenRssFeed2 }) => (

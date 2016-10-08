@@ -1,5 +1,5 @@
 /* global $, _ */
-"use strict"
+
 
 const path = require('path');
 const db = require('./db');
