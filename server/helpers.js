@@ -175,6 +175,7 @@ module.exports = {
             finance: financeNews,
             tech: techNews,
             sports: sportsNews,
+            stocks: ['Stocks is a VIP feature!'],
           },
         };
 
