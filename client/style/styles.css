@@ -1,3 +1,5 @@
+/* General styling */
+
 html {
   height: 100%;
   width: 100%;
@@ -7,65 +9,67 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif";
 }
 
-.buttonList {
-  margin: auto;
-  width: 100%;
-  border: 3px solid blue;
-  padding: 10px;
+/* LOGO */
+
+.logo {
+  height: 61px;
+  width: 140px;
+  top: 61px;
+  left: 0;
+  z-index: 1;
 }
+
+.swick {
+  background: url('assets/logo/swick_logo.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+.rotatingImage {
+  -webkit-animation: spin 4s linear infinite; 
+  -moz-animation: spin 4s linear infinite; 
+  animation: spin 4s linear infinite;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 50px;
+  width: 50px;
+  margin-top: 7px;
+}
+
+.logoText {
+  width: 80px;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+
+/* HEADER/RSS FEEDS
+   RSS FEED ANIMATION AT BOTTOM */
 
 .RSSFeedList {
   margin: auto;
   width: 100%;
   overflow: hidden;
   padding: 10px;
-}
-
-.notificationList {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-}
-
-.searchBar {
-  font-size: 24;
-  text-align:center;
-  position: absolute;
-  top: 32%;
-}
-
-.welcomeBar {
-  height: 60px;
-}
-
-.input-group {
-  width: 60%;
-  position: relative;
-  top: 28%;
-  margin: 10 auto;
-}
-
-.input-group-btn {
-  bottom: 5px;
-  vertical-align: bottom;
-}
-
-.settingsButton {
-  float: right;
-  position: fixed;
-  bottom: 10;
-  left: 20;
-}
-
-.settings {
-  text-align: center;
-}
-
-.settingsPanel {
-  position: absolute;
-  top: 200px;
-  margin: auto;
 }
 
 .rssF1 {
@@ -112,70 +116,54 @@ body {
  }
 }
 
-/* The switch - the box around the slider */
-.switch {
+.notificationList {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+/* SEARCH/WELCOME BAR */
+
+.searchBar {
+  font-size: 24;
+  text-align:center;
+  position: absolute;
+  top: 32%;
+}
+
+.welcomeBar {
+  height: 60px;
+}
+
+.input-group {
+  width: 60%;
   position: relative;
-  display: inline-block;
-  width: 48px;
-  height: 27px;
+  top: 28%;
+  margin: 10 auto;
 }
 
-/* Hide default HTML checkbox */
-.switch input {display:none;}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.input-group-btn {
+  bottom: 5px;
+  vertical-align: bottom;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 21px;
-  width: 21px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+.welcome-appear {
+  opacity: 0.01;
 }
 
-input:checked + .slider {
-  background-color: #000000;
+.welcome-appear.welcome-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #000000;
-}
+/* WORKFLOW BUTTONS */
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(21px);
-  -ms-transform: translateX(21px);
-  transform: translateX(21px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 27px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.UISlider {
-  float: left;
-  position: fixed;
-  bottom: 10;
-  right: 24;
+.buttonList {
+  margin: auto;
+  width: 100%;
+  border: 3px solid blue;
+  padding: 10px;
 }
 
 .ButtonListContainer {
@@ -202,6 +190,49 @@ input:checked + .slider:before {
   display: inline-block;
 }
 
+/* SETTINGS/SETTINGS DISPLAY */
+
+.settingsButton {
+  float: right;
+  position: fixed;
+  bottom: 10;
+  left: 20;
+}
+
+.settings {
+  text-align: center;
+}
+
+.settingsPanel {
+  position: absolute;
+  top: 200px;
+  margin: auto;
+}
+
+/* ABOUT DISPLAY */
+
+.AboutBTN {
+  position: absolute;
+  bottom: 10px;
+  left: 48%;
+}
+
+.aboutP {
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  width: 95%;
+}
+
+/* THEME TOGGLE SWITCHER */
+
+.UISlider {
+  float: left;
+  position: fixed;
+  bottom: 10;
+  right: 24;
+}
+
 .RSSHolder {
   height: 61px;
   z-index: 10;
@@ -209,33 +240,7 @@ input:checked + .slider:before {
   overflow: hidden;
 }
 
-.setPadding {
-  margin: 15px;
-}
-
-.listenBox {
-  height: 45px;
-  width: 45px;
-  float: right;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-.logo {
-  height: 61px;
-  width: 140px;
-  top: 61px;
-  left: 0;
-  z-index: 1;
-}
-
-.swick {
-  background: url('assets/logo/swick_logo.png');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 80%;
-}
+/* THE GREAT UNKNOW/AKA RSS FEED ANIMATIONS */
 
 .rssF12 {
  height: 50px;
@@ -279,109 +284,6 @@ input:checked + .slider:before {
  -webkit-transform: translateX(-100%); /* Firefox bug fix */
  transform: translateX(-100%);
  }
-}
-
-/* WebKit and Opera browsers */
-@-webkit-keyframes spinner {
-  from { -webkit-transform: rotateY(0deg);    }
-  to   { -webkit-transform: rotateY(-360deg); }
-}
-
-/* all other browsers */
-@keyframes spinner {
-  from {
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-  }
-  to {
-    -moz-transform: rotateY(-360deg);
-    -ms-transform: rotateY(-360deg);
-    transform: rotateY(-360deg);
-  }
-}
-
-#stage {
-  margin: 1em auto;
-  -webkit-perspective: 1200px;
-  -moz-perspective: 1200px;
-  -ms-perspective: 1200px;
-  perspective: 1200px;
-}
-
-#spinner {
-  -webkit-animation-name: spinner;
-  -webkit-animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 2s;
-
-  animation-name: spinner;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.rotatingImage {
-  -webkit-animation: spin 4s linear infinite; 
-  -moz-animation: spin 4s linear infinite; 
-  animation: spin 4s linear infinite;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 50px;
-  width: 50px;
-  margin-top: 7px;
-}
-
-.logoText {
-  width: 80px;
-}
-
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(-360deg);
-  }
-}
-
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-  }
-}
-
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-    transform: rotate(-360deg);
-  }
-}
-
-.AboutBTN {
-  position: absolute;
-  bottom: 10px;
-  left: 48%;
-}
-
-.aboutP {
-  margin: 0 auto;
-  padding-top: 15px;
-  padding-bottom: 5px;
-  width: 95%;
-}
-
-.welcome-appear {
-  opacity: 0.01;
-}
-
-.welcome-appear.welcome-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
 }
 
 .marquee {

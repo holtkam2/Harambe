@@ -20,8 +20,8 @@ class WelcomeBar extends Component {
 
   componentWillMount() {
     this.getLocation();
-    // this.conditions();
   }
+
 // dynamic greeting functions
   getLocation() {
     if (navigator.geolocation) {
@@ -49,7 +49,6 @@ class WelcomeBar extends Component {
         }
         $.getJSON(weatherAPI, (weather) => {
           this.setState({ currentWeather: weather });
-          console.log('WEATHER', this.state.currentWeather);
           this.conditions();
         });
       });
@@ -58,7 +57,6 @@ class WelcomeBar extends Component {
 
   greeting() {
     this.state.currentTime = new Date();
-    console.log('TIME', this.state.currentTime);
     const currentHour = this.state.currentTime.getHours();
     let greetingPhrase = '';
     // Randomizer for a 'Hello'

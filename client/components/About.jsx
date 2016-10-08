@@ -1,12 +1,12 @@
+/* eslint-disable max-len */
+
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import Dialog from 'material-ui/Dialog';
-// import Subheader from 'material-ui/Subheader';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui/svg-icons/action/info-outline';
-// import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const inkBarStyle = {
   backgroundColor: 'blue',

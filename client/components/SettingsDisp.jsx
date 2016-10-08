@@ -76,9 +76,6 @@ class SettingsDisp extends Component {
       stateObj.interests[key] = value;
     });
 
-    // console.log('stateObj:', stateObj);
-    // console.log(stateObj);
-
     $.post({
       url: '/api/state',
       data: JSON.stringify(stateObj),
