@@ -214,6 +214,15 @@ module.exports = {
     });
   },
 
+  updateAll: () => {
+    setInterval(() => {
+      this.updateNews();
+      this.updateFinance();
+      this.updateTech();
+      this.updateSports();
+    }, 900000);
+  },
+
   // Testing functions
   getAllTests: (req, res) => {
     db.Test.findAll({})
