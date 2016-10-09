@@ -8,7 +8,6 @@ const watson = require('watson-developer-cloud');
 
 // Not implemented yet in this version, still in testing
 // eslint-disable-next-line no-unused-vars
-console.log('ENV', process.env);
 const toneAnalyzer = watson.tone_analyzer({
   username: process.env.WATSONUSERNAME,
   password: process.env.WATSONPASSWORD,

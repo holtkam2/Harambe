@@ -125,6 +125,10 @@ body {
 
 /* SEARCH/WELCOME BAR */
 
+.center {
+  /* make sure that the center components keep formatting at different resolutions */
+}
+
 .searchBar {
   font-size: 24;
   text-align:center;
@@ -171,7 +175,7 @@ body {
   text-align: center;
   white-space: nowrap;
   margin: auto;
-  top: 56%;
+  top: 60%;
   position: absolute;
   left: 0;
   right: 0;
