@@ -38,9 +38,11 @@ app.use('/', router);
 app.use(express.static(`${__dirname}/../client`));
 
 app.on('stormpath.ready', () => {
+  // eslint-disable-next-line no-console
   console.log('Stormpath Ready!');
 
   app.listen(app.get('port'));
+  // eslint-disable-next-line no-console
   console.log(`Harambe is listening on port ${app.get('port')}!`);
   helpers.updateAll();
 });

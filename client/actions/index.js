@@ -32,6 +32,7 @@ export function updateStateFromServer() {
       dispatch(gotState(res));
     })
     .catch((err) => {
+      // eslint-disable-next-line no-console
       console.error(err);
     });
   };

@@ -9,7 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import RSSFeedList from './RSSFeedList';
+// import RSSFeedList from './RSSFeedList';
 
 const styles = {
   backgroundColor: '#009900',

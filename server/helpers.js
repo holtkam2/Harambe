@@ -155,10 +155,11 @@ const createUser = (user) => {
 
 module.exports = {
   getSlash: (req, res) => {
-    console.log('HERE', req.user);
+    // console.log('HERE', req.user);
     db.User.find({ where: { userName: req.user.username } })
       .then((result) => {
         if (result) {
+          // eslint-disable-next-line no-console
           console.log('user found, serving up some hot & fresh html');
         } else {
           createUser(req.user);
@@ -168,7 +169,7 @@ module.exports = {
   },
 
   getState: (req, res) => {
-    console.log('getState');
+    // console.log('getState');
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {
@@ -223,6 +224,7 @@ module.exports = {
           .map(interestKey => req.body.interests[interestKey]);
 
         foundUser.update({ interests })
+          // eslint-disable-next-line no-console
           .then(() => console.log('user updated'))
           .catch(error => res.status(500).send(error));
 
