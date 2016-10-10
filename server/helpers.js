@@ -173,6 +173,7 @@ module.exports = {
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {
+          interests: foundUser.interests,
           RSSFeeds: {
             news,
             finance: financeNews,
@@ -181,16 +182,15 @@ module.exports = {
             stocks: ['Stocks is a VIP feature!'],
             clear: [''],
           },
+          user: {
+            firstName: foundUser.firstName,
+            lastName: foundUser.lastName,
+            userName: foundUser.userName,
+          },
         };
 
         db.Button.findAll({ where: { UserId: foundUser.id } })
           .then((buttonKeys) => {
-            result.user = {
-              firstName: foundUser.firstName,
-              lastName: foundUser.lastName,
-              userName: foundUser.userName,
-            };
-
             result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
               // console.log(buttonKey.buttonName, buttonKey.links);
               // we are using the reduce to build up properties:
@@ -198,19 +198,8 @@ module.exports = {
               buttons[buttonKey.buttonName] = buttonKey.links;
               return buttons;
             }, {});
-          })
-          .then(() => {
-            db.Interest.findAll({ where: { interestName: { $in: foundUser.interests } } })
-              .then((interestKeys) => {
-                result.interests = interestKeys.reduce((interests, interestKey) => {
-                  // console.log(interestKey.interestName, interestKey.RSSFeeds);
-                  // we are using the reduce to build up properties:
-                  // eslint-disable-next-line no-param-reassign
-                  interests[interestKey.interestName] = interestKey.RSSFeedAggregate;
-                  return interests;
-                }, {});
-              })
-              .then(() => res.status(200).json(result));
+
+            res.status(200).json(result);
           })
           .catch(error => res.status(500).send(error));
       })
