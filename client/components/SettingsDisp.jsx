@@ -66,6 +66,7 @@ class SettingsDisp extends Component {
       },
       buttons: {},
       interests: {},
+      RSSfeeds: [],
     };
     // Please rename 'AddButtonClick' to 'buttons' or something
     _.each(this.props.state.addButtonClick.buttons, (value, key) => {
@@ -75,6 +76,10 @@ class SettingsDisp extends Component {
     _.each(this.props.state.RSSFeedList, (value, key) => {
       stateObj.interests[key] = value;
     });
+
+    stateObj.RSSfeeds.push(this.props.currentSelection[0], this.props.currentSelection[1]);
+
+    console.log(stateObj);
 
     $.post({
       url: '/api/state',
@@ -171,6 +176,7 @@ class SettingsDisp extends Component {
                 <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>sports</RaisedButton>
                 <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>finance</RaisedButton>
                 <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>stocks</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('clear'); }}>clear</RaisedButton>
               </div>
               <div>
                 <h5>current selection:</h5>

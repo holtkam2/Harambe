@@ -179,6 +179,7 @@ module.exports = {
             tech: techNews,
             sports: sportsNews,
             stocks: ['Stocks is a VIP feature!'],
+            clear: [''],
           },
         };
 

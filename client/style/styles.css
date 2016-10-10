@@ -295,7 +295,7 @@ body {
   text-align: left;
 }
 .marquee.marquee-speed-drowsy:before {
-  animation-duration: 30s;
+  animation-duration: 100s;
 }
 .marquee.marquee-speed-slow:before {
   animation-duration: 20s;
@@ -561,8 +561,8 @@ body {
   overflow: hidden;
 }
 .marquee.marquee-speed-drowsy:before {
-  -webkit-animation-duration: 30s;
-          animation-duration: 30s;
+  -webkit-animation-duration: 100s;
+          animation-duration: 100s;
 }
 .marquee.marquee-speed-slow:before {
   -webkit-animation-duration: 20s;
