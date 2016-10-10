@@ -111,6 +111,8 @@ class SettingsDisp extends Component {
         primary
         onTouchTap={this.onSaveButtonClick}
       />,
+      // eslint bug?:
+      // eslint-disable-next-line react/jsx-indent
       <FlatButton
         label="close"
         primary
