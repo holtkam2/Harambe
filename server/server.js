@@ -8,6 +8,7 @@ const helmet = require('helmet');
 // router
 const router = require('./routes');
 const helpers = require('./helpers');
+const Queries = require('./queries');
 // Stormpath for auth
 const stormpath = require('express-stormpath');
 

@@ -33,9 +33,11 @@ const App = () => (
           <ButtonListContainer />
         </div>
       </div>
-      <SettingsDispContainer />
-      <About />
-      <ThemeButton />
+      <Paper className="bottomNav" zDepth={1}>
+        <SettingsDispContainer />
+        <About />
+        <ThemeButton />
+      </Paper>
     </div>
   </MuiThemeProvider>
 );

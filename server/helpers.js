@@ -61,6 +61,7 @@ const updateFinance = () => {
         titles.forEach((element) => {
           financeNews.push(element.channel.item.title);
         });
+        console.log('Updated finance');
       });
     });
   });
@@ -83,6 +84,7 @@ const updateTech = () => {
         titles.forEach((element) => {
           techNews.push(element.channel.item.title);
         });
+        console.log('Updated tech');
       });
     });
   });
@@ -111,6 +113,7 @@ const updateNews = () => {
         titles.forEach((element) => {
           news.push(element.channel.item.title);
         });
+        console.log('Updated news');
       });
     });
   });
@@ -139,6 +142,7 @@ const updateSports = () => {
         titles.forEach((element) => {
           sportsNews.push(element.channel.item.title);
         });
+        console.log('Updated sports');
       });
     });
   });
@@ -170,7 +174,7 @@ module.exports = {
   },
 
   getState: (req, res) => {
-    // console.log('getState');
+    console.log('getState called');
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {
