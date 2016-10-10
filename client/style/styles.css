@@ -194,6 +194,15 @@ body {
   display: inline-block;
 }
 
+/* SOMETHING TO COMBINE THE FORCES OF THE BUTTONS IN THE FOOTER */
+
+.bottomNav {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:65px;   /* Height of the footer */
+}
+
 /* SETTINGS/SETTINGS DISPLAY */
 
 .settingsButton {
@@ -233,7 +242,7 @@ body {
 .UISlider {
   float: left;
   position: fixed;
-  bottom: 10;
+  bottom: 12;
   right: 24;
 }
 
