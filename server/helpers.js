@@ -51,12 +51,12 @@ const updateFinance = () => {
         alternate = true;
       }
     });
-    requestify.get(queries.financeMW).then((mw) => {
+    return requestify.get(queries.financeMW).then((mw) => {
       titles = JSON.parse(mw.body).query.results.rss;
       titles.forEach((element) => {
         financeNews.push(element.channel.item.title);
       });
-      requestify.get(queries.financeReuters).then((reuters) => {
+      return requestify.get(queries.financeReuters).then((reuters) => {
         titles = JSON.parse(reuters.body).query.results.rss;
         titles.forEach((element) => {
           financeNews.push(element.channel.item.title);
@@ -64,6 +64,9 @@ const updateFinance = () => {
         console.log('Updated finance');
       });
     });
+  })
+  .catch((error) => {
+    console.log('FINANCE GET ERROR', error);
   });
 };
 
@@ -74,12 +77,12 @@ const updateTech = () => {
     titles.forEach((element) => {
       techNews.push(element.channel.item.title);
     });
-    requestify.get(queries.techEngadget).then((engadget) => {
+    return requestify.get(queries.techEngadget).then((engadget) => {
       titles = JSON.parse(engadget.body).query.results.rss;
       titles.forEach((element) => {
         techNews.push(element.channel.item.title);
       });
-      requestify.get(queries.techGizmodo).then((gizmodo) => {
+      return requestify.get(queries.techGizmodo).then((gizmodo) => {
         titles = JSON.parse(gizmodo.body).query.results.rss;
         titles.forEach((element) => {
           techNews.push(element.channel.item.title);
@@ -87,6 +90,9 @@ const updateTech = () => {
         console.log('Updated tech');
       });
     });
+  })
+  .catch((error) => {
+    console.log('TECH GET ERROR', error);
   });
 };
 
@@ -103,12 +109,12 @@ const updateNews = () => {
         alternate = true;
       }
     });
-    requestify.get(queries.newsAP).then((ap) => {
+    return requestify.get(queries.newsAP).then((ap) => {
       titles = JSON.parse(ap.body).query.results.rss;
       titles.forEach((element) => {
         news.push(element.channel.item.title);
       });
-      requestify.get(queries.newsReuters).then((reuters) => {
+      return requestify.get(queries.newsReuters).then((reuters) => {
         titles = JSON.parse(reuters.body).query.results.rss;
         titles.forEach((element) => {
           news.push(element.channel.item.title);
@@ -116,6 +122,9 @@ const updateNews = () => {
         console.log('Updated news');
       });
     });
+  })
+  .catch((error) => {
+    console.log('NEWS GET ERROR', error);
   });
 };
 
@@ -132,12 +141,12 @@ const updateSports = () => {
         alternate = true;
       }
     });
-    requestify.get(queries.sportsAP).then((ap) => {
+    return requestify.get(queries.sportsAP).then((ap) => {
       titles = JSON.parse(ap.body).query.results.rss;
       titles.forEach((element) => {
         sportsNews.push(element.channel.item.title);
       });
-      requestify.get(queries.sportsReuters).then((reuters) => {
+      return requestify.get(queries.sportsReuters).then((reuters) => {
         titles = JSON.parse(reuters.body).query.results.rss;
         titles.forEach((element) => {
           sportsNews.push(element.channel.item.title);
@@ -145,6 +154,9 @@ const updateSports = () => {
         console.log('Updated sports');
       });
     });
+  })
+  .catch((error) => {
+    console.log('SPORTS GET ERROR', error);
   });
 };
 
