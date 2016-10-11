@@ -15,6 +15,11 @@ const styles = {
   backgroundColor: '#009900',
 };
 
+const customContentStyle = {
+  minWidth: '600px',
+  maxWidth: '600px',
+};
+
 class SettingsDisp extends Component {
   constructor(props) {
     super(props);
@@ -135,6 +140,7 @@ class SettingsDisp extends Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent
           repositionOnUpdate={false}
+          contentStyle={customContentStyle}
         >
           <Tabs
             // value={this.state.value}

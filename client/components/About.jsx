@@ -12,6 +12,11 @@ const inkBarStyle = {
   backgroundColor: 'blue',
 };
 
+const customContentStyle = {
+  minWidth: '600px',
+  maxWidth: '900px',
+};
+
 const styles = {
   root: {
     display: 'flex',
@@ -84,7 +89,7 @@ export default class DialogExampleCustomWidth extends React.Component {
           actions={actions}
           modal={false}
           onRequestClose={this.handleClose}
-          // contentStyle={customContentStyle}
+          contentStyle={customContentStyle}
           open={this.state.open}
           autoScrollBodyContent
         >
