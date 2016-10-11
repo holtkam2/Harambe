@@ -16,7 +16,7 @@ const SentiBar = ({ SentiBarState }) => (
 );
 
 SentiBar.propTypes = {
-  SentiBarState: PropTypes.objectOf(PropTypes.array),
+  SentiBarState: PropTypes.objectOf(PropTypes.number),
 };
 
 export default SentiBar;

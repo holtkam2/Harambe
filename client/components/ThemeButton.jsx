@@ -37,8 +37,8 @@ class ThemeButton extends Component {
         <div>
           <Snackbar
             open={this.state.toggled}
-            message="toggle between light and dark themes coming soon"
-            autoHideDuration={2000}
+            message="toggle between light and dark themes is a VIP feature"
+            autoHideDuration={1500}
             onRequestClose={this.handleToggle}
           />
         </div>

@@ -321,7 +321,7 @@ module.exports = {
             finance: financeNews,
             tech: techNews,
             sports: sportsNews,
-            stocks: ['Stocks is a VIP feature!'],
+            stocks: ['customizable stocks feed is a VIP feature'],
             clear: [''],
           },
           user: {
