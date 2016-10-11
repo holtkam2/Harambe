@@ -11,6 +11,7 @@ import SearchBarContainer from '../containers/searchBarContainer';
 import ButtonListContainer from '../containers/ButtonListContainer';
 import About from '../components/About';
 import ThemeButton from '../components/ThemeButton.jsx';
+import Senti from '../containers/Senti';
 
 injectTapEventPlugin();
 
@@ -31,6 +32,9 @@ const App = () => (
         </Delay>
         <div className="ButtonListContainer">
           <ButtonListContainer />
+        </div>
+        <div className="Sentiment">
+          <Senti />
         </div>
       </div>
       <Paper className="bottomNav" zDepth={1}>
