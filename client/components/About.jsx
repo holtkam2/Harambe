@@ -92,32 +92,43 @@ export default class DialogExampleCustomWidth extends React.Component {
             <Tab label="about swick">
               <div>
                 <div className="aboutP">
-                Swick is an app that can help you get to the content that you need
-                on the internet much faster. Set up buttons to open several tabs
-                with a single click.Configure RSS feeds to get info streamed to your
-                home page, and recieve notifications when there is relevent breaking news.
+                  <p>
+                    Swick is an app that can help you get to the content you need on the internet much faster.
+                  </p>
+                  <p>
+                    Set up your own buttons to open several tabs with a single click. Configure interest feeds to get the latest info aggregated and streamed to your home page.
+                  </p>
+                  <p>
+                    Also, get friendly greeting dependant on time of day, and your location. This also allows for an overview of your local weather, as well as time of sunset/sunrise depending on current time of day.
+                  </p>
+                  <p>
+                    The SentiBar close to the bottom of the page uses machine learning to analyze the content of financial and global news over the last hour and displays it in a dynamic infographic.
+                  </p>
+                  <p>
+                    And there is still so much more coming! But we are careful to not add anything distracting or that doesn't add actual value or insight for the user. Clean and efficient is the approach to style.
+                  </p>
                 </div>
               </div>
             </Tab>
-            <Tab label="how to use swick">
+            <Tab label="how to use">
               <div>
                 <div className="aboutP">
-                To configure a new button, open the settings panel and give it a name.
-                Then, enter all the URLs that you want to open as new tabs when the button is clicked.
-                </div>
-                <div className="aboutP">
-                To configure a new feed to stream at the top of your page, start by
-                giving it a name in the settings panel.Then add RSS feeds url's to
-                it and Swick will automatically compile and process them to display
-                them as one. Click save to make sure it's there the next time you log in.
+                  <p>
+                    To configure a new button or edit an existing one, open the settings panel and input a name. Then, enter all the URLs that you want to open as new tabs when the button is clicked, and save the button.
+                    To delete an existing button, just enter the name of the button and hit delete.
+                  </p>
+                  <p>
+                    To configure which interest feeds are streamed at the top of your homepage, just select the 'configure feeds' tab, and select any two that you want displayed. 'Clear' is an option for a nice and quiet environment. The current selection displays the current feeds of course.
+                  </p>
                 </div>
               </div>
             </Tab>
-            <Tab label="about dev team">
+            <Tab label="dev team">
               <div>
                 <div className="aboutP">
+                  <p>
                   Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
-
+                  </p>
                 </div>
                 <div />
                 <div style={styles.root}>
@@ -139,10 +150,33 @@ export default class DialogExampleCustomWidth extends React.Component {
                 </div>
               </div>
             </Tab>
+            <Tab label="SentiBar">
+              <div>
+                <div className="aboutP">
+                  <p>
+                    The SentiBar is our current implementation making use of the power of IBM's Watson. It's a multicolored bar at the bottom of the homepage that displays a dynamic representation of Watson's emotion analysis of a very large amount of financial and global news from the past hour. It's neat, unobtrusive, and adds a splash of color to your experience.
+                  </p>
+                  <p>
+                    The information currently displayed represent a percentage breakdown by color of Watson's analysis. <a style={{ color: 'red' }}>Red</a> represents anger, <a style={{ color: 'purple' }}>purple</a> represents disgust, <a style={{ color: 'green' }}>green</a> represents fear, <a style={{ color: 'yellow' }}>yellow</a> represents joy, and <a style={{ color: 'blue' }}>blue</a> represents sadness. The accuracy and value of this information at this stage of the implementation is a little limited, but can still offer interesting insights.
+                  </p>
+                </div>
+              </div>
+            </Tab>
             <Tab label="technology">
               <div>
                 <div className="aboutP">
-                  Swick was built using ReactJS with Redux for the user interface, NodeJS and Express for the back end, and PostgreSQL for the database. It uses IBM Watson machine learning to analyze and find significant news based on a user's interest list. Have any ideas for new features? Submit a pull request <a href="https://github.com/HRR18-Harambe/Harambe">here.</a>
+                  <p>
+                    Swick was built using ReactJS with Redux for the user interface, with Material UI design. Back end is NodeJS and Express, with PostgreSQL for the database. Authentication is handled through Stormpath.
+                  </p>
+                  <p>
+                    We're using Yahoo Query Language to filter and aggregate the interest feeds, Google maps for geolocation through HTML5, and Dark Sky API and OpenWeatherMap API for weather insights.
+                  </p>
+                  <p>
+                    We also use IBM Watson to analyze financial and global news to find interesting insights using machine learning/neural networks, and present them to the user in a helpful and unobtrusive way. This is where a lot of work happens to improve value and accuracy.
+                  </p>
+                  <p>
+                    Have any ideas for new features? Contact us, or submit a pull request <a href="https://github.com/HRR18-Harambe/swick">here.</a>
+                  </p>
                 </div>
               </div>
             </Tab>
