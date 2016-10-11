@@ -25,6 +25,10 @@ module.exports = {
 
   mwCommentary: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.marketwatch.com%2Fmarketwatch%2Fcommentary%2F'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
+  mwSW: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.marketwatch.com%2Fmarketwatch%2FStockstoWatch%2F'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+
+  mwNewsletters: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.marketwatch.com%2Fmarketwatch%2Fnewslettersandresearch%2F'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+
   // Reuters seems to have the best/longest descriptions included in their RSS feeds
   reutersHotStocks: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FhotStocksNews'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
@@ -55,4 +59,8 @@ module.exports = {
   reutersUSDollar: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FUSdollarreportNews'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
   reutersUSMarkets: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Fnews%2Fusmarkets'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+
+  // Some more feeds for watson to eat
+
+
 };

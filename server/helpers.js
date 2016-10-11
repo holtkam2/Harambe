@@ -16,29 +16,66 @@ const toneAnalyzer = watson.tone_analyzer({
 });
 
 // YQL query urls for rss feeds
-// const financeUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fbusiness_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const financeMW = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.marketwatch.com%2Fmarketwatch%2Fbulletins'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const financeReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FhotStocksNews'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 let financeNews = [];
 let financeUpdateCount = 0;
 
-// const techTechCrunch = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.feedburner.com%2FTechCrunch%2F%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const techEngadget = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'www.engadget.com%2Frss-full.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const techGizmodo = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.gawker.com%2Fgizmodo%2Ffull%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 let techNews = [];
 let techUpdateCount = 0;
 
-// const newsUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fnews.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const newsReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FtopNews%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const newsAP = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fhosted.ap.org%2Flineups%2FTOPHEADS.rss%3FSITE%3DAP%26SECTION%3DHOME'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 let news = [];
 let newsUpdateCount = 0;
 
-// const sportsUpi = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Frss.upi.com%2Fnews%2Fsports_news.rss'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const sportsAP = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fhosted.ap.org%2Flineups%2FSPORTSHEADS.rss%3FSITE%3DAP%26SECTION%3DHOME'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// const sportsReuters = "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.title%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Freuters%2FsportsNews%3Fformat%3Dxml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 let sportsNews = [];
 let sportsUpdateCount = 0;
+
+// function to serve tasty info to Watson
+let finNews = [];
+let watsonFin = [];
+
+const popFinNews = () => {
+  finNews = [];
+  watsonFin = [];
+  Promise.all([
+    queries.financeBodyUpi,
+    queries.mwTopStories,
+    queries.mwCommentary,
+    queries.mwSW,
+    queries.mwNewsletters,
+    queries.reutersHotStocks,
+    queries.reutersWealth,
+    queries.reutersBusiness,
+    queries.reutersBankruptcy,
+    queries.reutersBonds,
+    queries.reutersDeals,
+    queries.reutersEconomy,
+    queries.reutersHedgefunds,
+    queries.reutersIPOs,
+    queries.reutersMergersAcquisitions,
+    queries.reutersRegulatory,
+    queries.reutersSummit,
+    queries.reutersUSDollar,
+    queries.reutersUSMarkets,
+    // queries.reutersGlobalMarkets,
+  ].map(src => requestify.get(src)))
+    .then((results) => {
+      const [feed0, feed1, feed2, feed3, feed4, feed5, feed6,
+        feed7, feed8, feed9, feed10, feed11, feed12, feed13,
+        feed14, feed15, feed16, feed17, feed18] = results.map(result =>
+        JSON.parse(result.body).query.results.rss);
+      finNews = Array.from(new Set([...feed0, ...feed1, ...feed2,
+        ...feed3, ...feed4, ...feed5, ...feed6, ...feed7, ...feed8,
+        ...feed9, ...feed10, ...feed11, ...feed12, ...feed13,
+        ...feed14, ...feed15, ...feed16, ...feed17, ...feed18]
+        .map(element => element.channel.item.description)));
+      // console.log('NEWS', finNews);
+    })
+    .then(() => {
+      finNews.map((element) => {
+        watsonFin.push(element.substring(0, element.indexOf('<')));
+      });
+      console.log('CLEANED', watsonFin.join('. '));
+    });
+};
 
 // Update functions for rss feeds
 const updateFinance = () => {
@@ -231,6 +268,13 @@ module.exports = {
             lastName: foundUser.lastName,
             userName: foundUser.userName,
           },
+          docEmotions: {
+            anger: 0.57912,
+            disgust: 0.085289,
+            fear: 0.007593,
+            joy: 0.312947,
+            sadness: 0.015051,
+          },
         };
 
         db.Button.findAll({ where: { UserId: foundUser.id } })
@@ -283,6 +327,7 @@ module.exports = {
   },
 
   updateAll: () => {
+    popFinNews();
     updateNews();
     updateFinance();
     updateTech();
