@@ -1,6 +1,6 @@
 # Project Name
 
-Harambe
+SWICK
 
 ## Team
 
@@ -21,15 +21,23 @@ Harambe
 
 ## Usage
 
+Swick is an app that can help you get to the content you need on the internet much faster.
+Set up your own buttons to open several tabs with a single click. Configure interest feeds to get the latest info aggregated and streamed to your home page. Also, get friendly greeting dependant on time of day, and your location. This also allows for an overview of your local weather, as well as time of sunset/sunrise depending on current time of day.
+The SentiBar close to the bottom of the page uses machine learning to analyze the content of financial and global news over the last hour and displays it in a dynamic infographic.
+And there is still so much more coming! But we are careful to not add anything distracting or that doesn't add actual value or insight for the user. Clean and efficient is the approach to style.
 
 ## Requirements
 
+`node 6.6.0` and `npm`
 
 ## Development
 
 
 ### Installing Dependencies
 
+```
+npm install
+```
 
 ### Tasks
 
