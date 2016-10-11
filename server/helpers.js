@@ -23,40 +23,58 @@ let sportsUpdateCount = 0;
 let finNews = [];
 let watsonFin = [];
 
-// Some fun Watson functionality that we use
-// eslint-disable-next-line no-unused-vars
-const toneAnalyzer = watson.tone_analyzer({
-  username: process.env.WATSON_TONE_USERNAME,
-  password: process.env.WATSON_TONE_PASSWORD,
-  version: 'v3',
-  version_date: '2016-05-19',
-});
+let docSentiment = {};
+let docEmotions = {};
 
-// eslint-disable-next-line no-unused-vars
-const alchemyLanguage = watson.alchemy_language({
-  api_key: process.env.WATSON_ALCHEMY_APIKEY,
-});
+const watsonCall = () => {
+  // Some fun Watson functionality that we use
+  // eslint-disable-next-line no-unused-vars
+  const toneAnalyzer = watson.tone_analyzer({
+    username: process.env.WATSON_TONE_USERNAME,
+    password: process.env.WATSON_TONE_PASSWORD,
+    version: 'v3',
+    version_date: '2016-05-19',
+  });
 
-// How to set parameters: http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/?node#methods
-const parameters = {
-  text: watsonFin,
+  // eslint-disable-next-line no-unused-vars
+  const alchemyLanguage = watson.alchemy_language({
+    api_key: process.env.WATSON_ALCHEMY_APIKEY,
+  });
+
+  // How to set parameters: http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/?node#methods
+  const parameters = {
+    text: watsonFin,
+  };
+
+  alchemyLanguage.emotion(parameters, (err, response) => {
+    if (err) {
+      console.log('alchemyLanguage.emotion error:', err);
+    } else {
+      docEmotions = response.docEmotions;
+      console.log(JSON.stringify(response, null, 2));
+    }
+  });
+
+  alchemyLanguage.sentiment(parameters, (err, response) => {
+    if (err) {
+      console.log('alchemyLanguage.emotion error:', err);
+    } else {
+      docSentiment = response.docSentiment;
+      console.log(JSON.stringify(response, null, 2));
+    }
+  });
 };
 
-alchemyLanguage.emotion(parameters, (err, response) => {
-  if (err) {
-    console.log('error:', err);
-  } else {
-    console.log(JSON.stringify(response, null, 2));
-  }
-});
+const repeatGet = src =>
+  requestify.get(src)
+    .then((result) => {
+      if (JSON.parse(result.body).query.results !== null) {
+        return result;
+      }
 
-alchemyLanguage.sentiment(parameters, (err, response) => {
-  if (err) {
-    console.log('error:', err);
-  } else {
-    console.log(JSON.stringify(response, null, 2));
-  }
-});
+      return repeatGet(src);
+    });
+
 
 // function to aggregate tasty info for Watson
 const popFinNews = () => {
@@ -89,7 +107,7 @@ const popFinNews = () => {
     queries.wsjBusiness,
     // Somehow the next one breaks everyhting...
     // queries.reutersGlobalMarkets,
-  ].map(src => requestify.get(src)))
+  ].map(src => repeatGet(src)))
     .then((results) => {
       const [feed0, feed1, feed2, feed3, feed4, feed5, feed6,
         feed7, feed8, feed9, feed10, feed11, feed12, feed13,
@@ -113,7 +131,11 @@ const popFinNews = () => {
           watsonFin.push(element.substring(0, element.indexOf('<')));
         }
       });
-    });
+
+      watsonCall();
+      console.log('watsonFin:', watsonFin);
+    })
+    .catch(error => console.log('popFinNews error:', error));
 };
 
 // Update functions for rss feeds
@@ -307,18 +329,8 @@ module.exports = {
             lastName: foundUser.lastName,
             userName: foundUser.userName,
           },
-          docEmotions: {
-            anger: 0.57912,
-            disgust: 0.085289,
-            fear: 0.007593,
-            joy: 0.312947,
-            sadness: 0.015051,
-          },
-          docSentiment: {
-            mixed: 1,
-            score: -0.103141,
-            type: 'negative',
-          },
+          docEmotions,
+          docSentiment,
         };
 
         db.Button.findAll({ where: { UserId: foundUser.id } })
@@ -331,6 +343,7 @@ module.exports = {
               return buttons;
             }, {});
 
+            console.log('result from getState:', JSON.stringify(result, null, '   '));
             res.status(200).json(result);
           })
           .catch(error => res.status(500).send(error));
