@@ -106,7 +106,12 @@ const popFinNews = () => {
     .then(() => {
       // eslint-disable-next-line array-callback-return
       finNews.map((element) => {
-        watsonFin.push(element.substring(0, element.indexOf('<')));
+        // Needs to ignore the first element as it is frequently a '<p>'
+        if (element.indexOf('<') < 1) {
+          watsonFin.push(element);
+        } else {
+          watsonFin.push(element.substring(0, element.indexOf('<')));
+        }
       });
     });
 };
