@@ -93,6 +93,9 @@ export default class DialogExampleCustomWidth extends React.Component {
           open={this.state.open}
           autoScrollBodyContent
         >
+          <a href="http://hackreactor.com/remote-beta">
+            <img style={{ position: 'fixed', top: '0', right: '0', border: '0' }} src="http://i.imgur.com/x86kKmF.png" alt="Built at Hack Reactor Remote" />
+          </a>
           <Tabs inkBarStyle={inkBarStyle}>
             <Tab label="about swick">
               <div>
