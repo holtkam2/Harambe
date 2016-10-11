@@ -132,7 +132,7 @@ export default class DialogExampleCustomWidth extends React.Component {
               <div>
                 <div className="aboutP">
                   <p>
-                  Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
+                    Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
                   </p>
                 </div>
                 <div />
