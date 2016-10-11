@@ -26,6 +26,7 @@ const App = () => (
         <img className="rotatingImage" src="./assets/logo/logo_gfx.png" alt="S" />
         <img className="logoText" src="./assets/logo/logo_text.png" alt="swick" />
       </div>
+
       <div className="center">
         <Delay wait={500}>
           <SearchBarContainer className="SearchBar" />
@@ -33,11 +34,12 @@ const App = () => (
         <div className="ButtonListContainer">
           <ButtonListContainer />
         </div>
+      </div>
+
+      <Paper className="bottomNav" zDepth={1}>
         <div className="Sentiment">
           <Senti />
         </div>
-      </div>
-      <Paper className="bottomNav" zDepth={1}>
         <SettingsDispContainer />
         <About />
         <ThemeButton />

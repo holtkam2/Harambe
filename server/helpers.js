@@ -314,6 +314,11 @@ module.exports = {
             joy: 0.312947,
             sadness: 0.015051,
           },
+          docSentiment: {
+            mixed: 1,
+            score: -0.103141,
+            type: 'negative',
+          },
         };
 
         db.Button.findAll({ where: { UserId: foundUser.id } })

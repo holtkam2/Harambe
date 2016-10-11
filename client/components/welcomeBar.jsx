@@ -23,6 +23,7 @@ class WelcomeBar extends Component {
   }
 
 // dynamic greeting functions
+// need to be moved to back-end
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -39,9 +40,9 @@ class WelcomeBar extends Component {
       const weatherAPI = `http://api.openweathermap.org/data/2.5/weather?lat=${this.state.currentPosition.lat}&lon=${this.state.currentPosition.lng}&appid=74302259ae8bfa3d6e5e2e87672e62de`;
 
 // Dark sky API (migrating to it)
-// `https://api.darksky.net/forecast/a407aac352fe8c5bc2d9253d6274dbc5/${this.state.currentPosition.lat},${this.state.currentPosition.lng}`
+// `https://api.darksky.net/forecast/{APIKEY}/${this.state.currentPosition.lat},${this.state.currentPosition.lng}`
 // Openweather API (being left behind)
-// `http://api.openweathermap.org/data/2.5/weather?lat=${this.state.currentPosition.lat}&lon=${this.state.currentPosition.lng}&appid=74302259ae8bfa3d6e5e2e87672e62de`
+// `http://api.openweathermap.org/data/2.5/weather?lat=${this.state.currentPosition.lat}&lon=${this.state.currentPosition.lng}&appid={APIKEY}`
 
       $.getJSON(geocodingAPI, (geo) => {
         if (geo.status === 'OK') {
