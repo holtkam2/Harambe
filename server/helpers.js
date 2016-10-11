@@ -384,7 +384,6 @@ module.exports = {
   },
 
   updateAll: () => {
-    popFinNews();
     updateNews();
     updateFinance();
     updateTech();
@@ -395,6 +394,13 @@ module.exports = {
       updateTech();
       updateSports();
     }, 900000);
+  },
+
+  updateWatson: () => {
+    popFinNews();
+    setInterval(() => {
+      popFinNews();
+    }, 3600000);
   },
 
   // Testing functions
