@@ -7,14 +7,6 @@ const requestify = require('requestify');
 const watson = require('watson-developer-cloud');
 const queries = require('./queries');
 
-// eslint-disable-next-line no-unused-vars
-const toneAnalyzer = watson.tone_analyzer({
-  username: process.env.WATSONUSERNAME,
-  password: process.env.WATSONPASSWORD,
-  version: 'v3',
-  version_date: '2016-05-19',
-});
-
 // YQL query urls for rss feeds
 let financeNews = [];
 let financeUpdateCount = 0;
@@ -28,10 +20,45 @@ let newsUpdateCount = 0;
 let sportsNews = [];
 let sportsUpdateCount = 0;
 
-// function to serve tasty info to Watson
 let finNews = [];
 let watsonFin = [];
 
+// Some fun Watson functionality that we use
+// eslint-disable-next-line no-unused-vars
+const toneAnalyzer = watson.tone_analyzer({
+  username: process.env.WATSON_TONE_USERNAME,
+  password: process.env.WATSON_TONE_PASSWORD,
+  version: 'v3',
+  version_date: '2016-05-19',
+});
+
+// eslint-disable-next-line no-unused-vars
+const alchemyLanguage = watson.alchemy_language({
+  api_key: process.env.WATSON_ALCHEMY_APIKEY,
+});
+
+// How to set parameters: http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/?node#methods
+const parameters = {
+  text: watsonFin,
+};
+
+alchemyLanguage.emotion(parameters, (err, response) => {
+  if (err) {
+    console.log('error:', err);
+  } else {
+    console.log(JSON.stringify(response, null, 2));
+  }
+});
+
+alchemyLanguage.sentiment(parameters, (err, response) => {
+  if (err) {
+    console.log('error:', err);
+  } else {
+    console.log(JSON.stringify(response, null, 2));
+  }
+});
+
+// function to aggregate tasty info for Watson
 const popFinNews = () => {
   finNews = [];
   watsonFin = [];
@@ -55,25 +82,32 @@ const popFinNews = () => {
     queries.reutersSummit,
     queries.reutersUSDollar,
     queries.reutersUSMarkets,
+    queries.sciDailyBus,
+    queries.sciDailyTop,
+    queries.sciDailyTech,
+    queries.wsjMarkets,
+    queries.wsjBusiness,
+    // Somehow the next one breaks everyhting...
     // queries.reutersGlobalMarkets,
   ].map(src => requestify.get(src)))
     .then((results) => {
       const [feed0, feed1, feed2, feed3, feed4, feed5, feed6,
         feed7, feed8, feed9, feed10, feed11, feed12, feed13,
-        feed14, feed15, feed16, feed17, feed18] = results.map(result =>
+        feed14, feed15, feed16, feed17, feed18, feed19,
+        feed20, feed21, feed22, feed23] = results.map(result =>
         JSON.parse(result.body).query.results.rss);
       finNews = Array.from(new Set([...feed0, ...feed1, ...feed2,
         ...feed3, ...feed4, ...feed5, ...feed6, ...feed7, ...feed8,
         ...feed9, ...feed10, ...feed11, ...feed12, ...feed13,
-        ...feed14, ...feed15, ...feed16, ...feed17, ...feed18]
+        ...feed14, ...feed15, ...feed16, ...feed17, ...feed18,
+        ...feed19, ...feed20, ...feed21, ...feed22, ...feed23]
         .map(element => element.channel.item.description)));
-      // console.log('NEWS', finNews);
     })
     .then(() => {
+      // eslint-disable-next-line array-callback-return
       finNews.map((element) => {
         watsonFin.push(element.substring(0, element.indexOf('<')));
       });
-      console.log('CLEANED', watsonFin.join('. '));
     });
 };
 

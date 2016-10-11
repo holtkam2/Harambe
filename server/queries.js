@@ -61,6 +61,13 @@ module.exports = {
   reutersUSMarkets: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.reuters.com%2Fnews%2Fusmarkets'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
   // Some more feeds for watson to eat
+  sciDailyBus: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'https%3A%2F%2Frss.sciencedaily.com%2Fbusiness_industry.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
+  sciDailyTop: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'https%3A%2F%2Frss.sciencedaily.com%2Ftop.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 
+  sciDailyTech: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'https%3A%2F%2Frss.sciencedaily.com%2Ftop%2Ftechnology.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+
+  wsjMarkets: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fwww.wsj.com%2Fxml%2Frss%2F3_7031.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
+
+  wsjBusiness: "https://query.yahooapis.com/v1/public/yql?q=select%20channel.item.description%20from%20xml%20where%20url%20%3D%20'http%3A%2F%2Fwww.wsj.com%2Fxml%2Frss%2F3_7014.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",
 };

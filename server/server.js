@@ -37,13 +37,6 @@ app.use(helmet());
 app.use('/', router);
 app.use(express.static(`${__dirname}/../client`));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  // or res.header("Access-Control-Allow-Origin", "localhost");
-  res.header('Access-Control-Allow-Headers', '*');
-  next();
-});
-
 app.on('stormpath.ready', () => {
   // eslint-disable-next-line no-console
   console.log('Stormpath Ready!');
