@@ -6,7 +6,7 @@ const should = require('chai').should();
 const request = require('supertest');
 
 // Watson, stormpath, google maps, openweather, darksky, yql
-describe('integration tests', () => {
+xdescribe('integration tests', () => {
   describe('watson api', () => {
     it('api key working', (done) => {
       request()
@@ -20,7 +20,7 @@ describe('integration tests', () => {
     });
   });
 
-  describe('stormpath api', () => {
+  xdescribe('stormpath api', () => {
     it('api key working', (done) => {
       request()
         .get()
@@ -33,7 +33,7 @@ describe('integration tests', () => {
     });
   });
 
-  describe('google geocoding api', () => {
+  xdescribe('google geocoding api', () => {
     it('api key working', (done) => {
       request()
         .get()
@@ -46,7 +46,7 @@ describe('integration tests', () => {
     });
   });
 
-  describe('openweather api', () => {
+  xdescribe('openweather api', () => {
     it('api key working', (done) => {
       request()
         .get()
@@ -59,7 +59,7 @@ describe('integration tests', () => {
     });
   });
 
-  describe('darksky api', () => {
+  xdescribe('darksky api', () => {
     it('api key working', (done) => {
       request()
         .get()
@@ -72,7 +72,7 @@ describe('integration tests', () => {
     });
   });
 
-  describe('yahoo query language api', () => {
+  xdescribe('yahoo query language api', () => {
     it('api key working', (done) => {
       request()
         .get()
