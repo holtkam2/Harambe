@@ -1,6 +1,4 @@
-# Project Name
-
-SWICK
+# SWICK
 
 ## Team
 
@@ -31,6 +29,7 @@ And there is still so much more coming! But we are careful to not add anything d
 
 `node 6.7.0` and `npm`
 need to put a `.env` file in root with the below structure
+run `npm start`
 ```
 PORT=
 STORMPATH_CLIENT_APIKEY_ID=

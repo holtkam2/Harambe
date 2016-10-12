@@ -1,11 +1,7 @@
-# Project Name #
+# SWICK #
 
-  SWICK
+## SWICK - The Ultimate Homepage and Webportal ##
 
-## Heading ##
-  SWICK - The Ultimate Homepage and Webportal
-
-## Sub-Heading ##
   Swick is an app that can help you get to the content you need on the internet much faster, it's a workflow optimizer.
 
 ## Summary ##
