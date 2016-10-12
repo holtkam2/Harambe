@@ -29,6 +29,23 @@ And there is still so much more coming! But we are careful to not add anything d
 ## Requirements
 
 `node 6.6.0` and `npm`
+need to put a `.env` file in root with the below structure
+```
+PORT=
+STORMPATH_CLIENT_APIKEY_ID=
+STORMPATH_CLIENT_APIKEY_SECRET=
+STORMPATH_APPLICATION_HREF='https://api.stormpath.com/v1/applications/'
+DATABASE_URL='postgres://'
+WATSON_TONE_URL=
+WATSON_TONE_PASSWORD=
+WATSON_TONE_USERNAME=
+WATSON_ALCHEMY_URL=https://gateway-a.watsonplatform.net/calls
+WATSON_ALCHEMY_APIKEY=
+DARKSKY_APIKEY=
+DARKSKY_URL=https://api.darksky.net/forecast/
+YQL_APIKEY=
+YQL_SECRET=
+```
 
 ## Development
 
