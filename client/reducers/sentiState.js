@@ -8,7 +8,6 @@ const sentiState = (state = {
   switch (action.type) {
     case 'GET_STATE_FROM_SERVER':
       return action.payload.docEmotions;
-
     default:
       return state;
   }
