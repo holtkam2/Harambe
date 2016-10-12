@@ -1,4 +1,4 @@
-const RSSFeedList = (state = ['news', 'sports'], action) => {
+const RSSFeedList = (state = ['clear', 'clear'], action) => {
   const newState = [...state];
   switch (action.type) {
     case 'SET_INITIAL_STATE':

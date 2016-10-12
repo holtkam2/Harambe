@@ -11,9 +11,9 @@ class WelcomeBar extends Component {
     this.state = {
       currentTime: null,
       currentPosition: {
-        lat: 53.5261,
-        lng: 1.6255 },
-      currentCity: 'Penistone, UK',
+        lat: 37.7837008,
+        lng: -122.4111604 },
+      currentCity: 'Hack Reactor',
       currentWeather: null,
       currentCondition: '',
     };
