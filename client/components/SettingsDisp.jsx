@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+// For Material UI styling, not used in current implementation
 // import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
@@ -9,8 +10,8 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import { Tabs, Tab } from 'material-ui/Tabs';
-// import RSSFeedList from './RSSFeedList';
 
+// Custom styling for Material UI elements as per documentation
 const styles = {
   backgroundColor: '#009900',
 };
@@ -34,6 +35,7 @@ class SettingsDisp extends Component {
     this.onRssFeedSelection = this.onRssFeedSelection.bind(this);
   }
 
+  // Event handlers for all settings interactions
   onRssFeedSelection(selection) {
     this.props.selectRSSfeed(selection);
   }
@@ -84,17 +86,15 @@ class SettingsDisp extends Component {
 
     stateObj.RSSfeeds.push(this.props.currentSelection[0], this.props.currentSelection[1]);
 
-    console.log(stateObj);
-
     $.post({
       url: '/api/state',
       data: JSON.stringify(stateObj),
-      // success: success,
       contentType: 'application/json',
       dataType: 'json',
     });
   }
 
+  // Event handlers
   handleOpen = () => {
     this.setState({ open: true });
   }
@@ -143,8 +143,6 @@ class SettingsDisp extends Component {
           contentStyle={customContentStyle}
         >
           <Tabs
-            // value={this.state.value}
-            // onChange={this.handleChange}
             inkBarStyle={styles}
           >
             <Tab label="configure buttons">
@@ -155,7 +153,9 @@ class SettingsDisp extends Component {
                   onChange={this.onInputChange}
                   value={this.state.buttonName}
                 />
-                <RaisedButton primary onTouchTap={this.onAddButtonClick}>create</RaisedButton>
+                <RaisedButton primary onTouchTap={this.onAddButtonClick}>
+                  create
+                </RaisedButton>
               </div>
               <div>
                 <TextField
@@ -163,7 +163,9 @@ class SettingsDisp extends Component {
                   onChange={this.onURLInputChange}
                   value={this.state.URLName}
                 />
-                <RaisedButton primary onTouchTap={this.onAddURLClick}>add</RaisedButton>
+                <RaisedButton primary onTouchTap={this.onAddURLClick}>
+                  add
+                </RaisedButton>
               </div>
 
               <div>
@@ -173,18 +175,32 @@ class SettingsDisp extends Component {
                   onChange={this.onButtonToDeleteChange}
                   value={this.state.buttonToDelete}
                 />
-                <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>delete</RaisedButton>
+                <RaisedButton primary onTouchTap={this.onDeleteButtonClick}>
+                  delete
+                </RaisedButton>
               </div>
             </Tab>
             <Tab label="configure feeds">
               <div>
                 <h5>select up to two RSS feeds</h5>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>news</RaisedButton>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('tech'); }}>tech</RaisedButton>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>sports</RaisedButton>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>finance</RaisedButton>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>stocks</RaisedButton>
-                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('clear'); }}>clear</RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('news'); }}>
+                  news
+                </RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('tech'); }}>
+                  tech
+                </RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('sports'); }}>
+                  sports
+                </RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('finance'); }}>
+                  finance
+                </RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('stocks'); }}>
+                  stocks
+                </RaisedButton>
+                <RaisedButton onTouchTap={() => { this.onRssFeedSelection('clear'); }}>
+                  clear
+                </RaisedButton>
               </div>
               <div>
                 <h5>current selection:</h5>
@@ -205,6 +221,7 @@ SettingsDisp.propTypes = {
   buttonName: PropTypes.string,
   addURLClick: PropTypes.func,
   toggleSettings: PropTypes.func,
+  // Need to update to be objectOf
   // eslint-disable-next-line react/forbid-prop-types
   state: PropTypes.object,
   URLName: PropTypes.string,
@@ -212,6 +229,7 @@ SettingsDisp.propTypes = {
   handleOpen: PropTypes.func,
   deleteButtonClick: PropTypes.func,
   selectRSSfeed: PropTypes.func,
+  // Need to update to be objectOf
   // eslint-disable-next-line react/forbid-prop-types
   currentSelection: PropTypes.array,
 };

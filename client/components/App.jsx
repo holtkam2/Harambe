@@ -3,6 +3,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Delay from 'react-delay';
 import Paper from 'material-ui/Paper';
+// Next two imports are for the theme switcher, in development
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import SettingsDispContainer from '../containers/SettingsDispContainer';
