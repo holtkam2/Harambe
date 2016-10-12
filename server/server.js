@@ -45,7 +45,9 @@ app.on('stormpath.ready', () => {
   // eslint-disable-next-line no-console
   console.log(`Harambe is listening on port ${app.get('port')}!`);
   helpers.updateAll();
+  setInterval(helpers.updateAll, 900000);
   helpers.updateWatson();
+  setInterval(helpers.updateWatson, 3600000);
 });
 
 module.exports = app;

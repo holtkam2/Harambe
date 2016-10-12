@@ -9,17 +9,9 @@ const queries = require('./queries');
 
 // YQL query urls for rss feeds
 let financeNews = [];
-let financeUpdateCount = 0;
-
 let techNews = [];
-let techUpdateCount = 0;
-
 let news = [];
-let newsUpdateCount = 0;
-
 let sportsNews = [];
-let sportsUpdateCount = 0;
-
 let finNews = [];
 let watsonFin = [];
 
@@ -48,7 +40,7 @@ const watsonCall = () => {
 
   alchemyLanguage.emotion(parameters, (err, response) => {
     if (err) {
-      console.log('alchemyLanguage.emotion error:', err);
+      console.error('alchemyLanguage.emotion error:', err);
     } else {
       docEmotions = response.docEmotions;
       console.log(JSON.stringify(response, null, 2));
@@ -57,7 +49,7 @@ const watsonCall = () => {
 
   alchemyLanguage.sentiment(parameters, (err, response) => {
     if (err) {
-      console.log('alchemyLanguage.emotion error:', err);
+      console.error('alchemyLanguage.emotion error:', err);
     } else {
       docSentiment = response.docSentiment;
       console.log(JSON.stringify(response, null, 2));
@@ -133,157 +125,23 @@ const popFinNews = () => {
       });
 
       watsonCall();
-      console.log('watsonFin:', watsonFin);
+      // console.log('watsonFin:', watsonFin);
     })
-    .catch(error => console.log('popFinNews error:', error));
+    .catch(error => console.error('popFinNews error:', error));
 };
 
 // Update functions for rss feeds
-const updateFinance = () => {
-  financeNews = [];
-  requestify.get(queries.financeUpi).then((upi) => {
-    let titles = JSON.parse(upi.body).query.results.rss;
-    let alternate = true;
-    titles.forEach((element) => {
-      if (alternate) {
-        financeNews.push(element.channel.item.title);
-        alternate = false;
-      } else {
-        alternate = true;
-      }
-    });
-    return requestify.get(queries.financeMW).then((mw) => {
-      titles = JSON.parse(mw.body).query.results.rss;
-      titles.forEach((element) => {
-        financeNews.push(element.channel.item.title);
-      });
-      return requestify.get(queries.financeReuters).then((reuters) => {
-        titles = JSON.parse(reuters.body).query.results.rss;
-        titles.forEach((element) => {
-          financeNews.push(element.channel.item.title);
-        });
-        console.log('Updated finance');
-        financeUpdateCount = 0;
-      });
-    });
-  })
-  .catch(() => {
-    if (financeUpdateCount < 20) {
-      updateFinance();
-    } else {
-      financeUpdateCount += 1;
-    }
-    console.log('FINANCE GET ERROR');
-  });
-};
-
-const updateTech = () => {
-  techNews = [];
-  requestify.get(queries.techTechCrunch).then((techcrunch) => {
-    let titles = JSON.parse(techcrunch.body).query.results.rss;
-    titles.forEach((element) => {
-      techNews.push(element.channel.item.title);
-    });
-    return requestify.get(queries.techEngadget).then((engadget) => {
-      titles = JSON.parse(engadget.body).query.results.rss;
-      titles.forEach((element) => {
-        techNews.push(element.channel.item.title);
-      });
-      return requestify.get(queries.techGizmodo).then((gizmodo) => {
-        titles = JSON.parse(gizmodo.body).query.results.rss;
-        titles.forEach((element) => {
-          techNews.push(element.channel.item.title);
-        });
-        console.log('Updated tech');
-        techUpdateCount = 0;
-      });
-    });
-  })
-  .catch(() => {
-    if (techUpdateCount < 20) {
-      updateTech();
-    } else {
-      techUpdateCount += 1;
-    }
-    console.log('TECH GET ERROR');
-  });
-};
-
-const updateNews = () => {
-  news = [];
-  requestify.get(queries.newsUpi).then((upi) => {
-    let titles = JSON.parse(upi.body).query.results.rss;
-    let alternate = true;
-    titles.forEach((element) => {
-      if (alternate) {
-        news.push(element.channel.item.title);
-        alternate = false;
-      } else {
-        alternate = true;
-      }
-    });
-    return requestify.get(queries.newsAP).then((ap) => {
-      titles = JSON.parse(ap.body).query.results.rss;
-      titles.forEach((element) => {
-        news.push(element.channel.item.title);
-      });
-      return requestify.get(queries.newsReuters).then((reuters) => {
-        titles = JSON.parse(reuters.body).query.results.rss;
-        titles.forEach((element) => {
-          news.push(element.channel.item.title);
-        });
-        console.log('Updated news');
-        newsUpdateCount = 0;
-      });
-    });
-  })
-  .catch(() => {
-    if (newsUpdateCount < 20) {
-      updateNews();
-    } else {
-      newsUpdateCount += 1;
-    }
-    console.log('NEWS GET ERROR');
-  });
-};
-
-const updateSports = () => {
-  sportsNews = [];
-  requestify.get(queries.sportsUpi).then((upi) => {
-    let titles = JSON.parse(upi.body).query.results.rss;
-    let alternate = true;
-    titles.forEach((element) => {
-      if (alternate) {
-        sportsNews.push(element.channel.item.title);
-        alternate = false;
-      } else {
-        alternate = true;
-      }
-    });
-    return requestify.get(queries.sportsAP).then((ap) => {
-      titles = JSON.parse(ap.body).query.results.rss;
-      titles.forEach((element) => {
-        sportsNews.push(element.channel.item.title);
-      });
-      return requestify.get(queries.sportsReuters).then((reuters) => {
-        titles = JSON.parse(reuters.body).query.results.rss;
-        titles.forEach((element) => {
-          sportsNews.push(element.channel.item.title);
-        });
-        console.log('Updated sports');
-        sportsUpdateCount = 0;
-      });
-    });
-  })
-  .catch(() => {
-    if (sportsUpdateCount < 20) {
-      updateSports();
-    } else {
-      sportsUpdateCount += 1;
-    }
-    console.log('SPORTS GET ERROR');
-  });
-};
+const updateFeeds = querySources =>
+  Promise.all(querySources.map(src => repeatGet(src)))
+    .then((results) => {
+      const [feed0, feed1, feed2] = results.map(result =>
+        JSON.parse(result.body).query.results.rss);
+      // console.log(Array.from(new Set([...feed0, ...feed1, ...feed2]
+      //   .map(element => element.channel.item.title))));
+      return Array.from(new Set([...feed0, ...feed1, ...feed2]
+        .map(element => element.channel.item.title)));
+    })
+    .catch(error => console.error('updateFeeds error!!!!!!!!!!!!!!!!!!!:', error));
 
 const createUser = (user) => {
   db.User.create({
@@ -315,7 +173,7 @@ module.exports = {
   },
 
   getState: (req, res) => {
-    console.log('getState called');
+    // console.log('getState called');
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {
@@ -347,7 +205,7 @@ module.exports = {
               return buttons;
             }, {});
 
-            console.log('result from getState:', JSON.stringify(result, null, '   '));
+            // console.log('result from getState:', JSON.stringify(result, null, '   '));
             res.status(200).json(result);
           })
           .catch(error => res.status(500).send(error));
@@ -388,23 +246,18 @@ module.exports = {
   },
 
   updateAll: () => {
-    updateNews();
-    updateFinance();
-    updateTech();
-    updateSports();
-    setInterval(() => {
-      updateNews();
-      updateFinance();
-      updateTech();
-      updateSports();
-    }, 900000);
+    updateFeeds([queries.financeUpi, queries.financeMW, queries.financeReuters])
+      .then((results) => { financeNews = results; });
+    updateFeeds([queries.techTechCrunch, queries.techEngadget, queries.techGizmodo])
+      .then((results) => { techNews = results; });
+    updateFeeds([queries.sportsUpi, queries.sportsAP, queries.sportsReuters])
+      .then((results) => { sportsNews = results; });
+    updateFeeds([queries.newsUpi, queries.newsAP, queries.newsReuters])
+      .then((results) => { news = results; });
   },
 
   updateWatson: () => {
     popFinNews();
-    setInterval(() => {
-      popFinNews();
-    }, 3600000);
   },
 
   // Testing functions
