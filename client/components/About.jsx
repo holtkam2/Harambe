@@ -104,7 +104,7 @@ export default class DialogExampleCustomWidth extends React.Component {
               <div>
                 <div className="aboutP">
                   <p>
-                    Swick is an app that can help you get to the content you need on the internet much faster.
+                    Swick is an app that can help you get to the content you need on the internet much faster. Or as we like to say, swick is the ultimate homepage and web portal.
                   </p>
                   <p>
                     Set up your own buttons to open several tabs with a single click. Configure interest feeds to get the latest info aggregated and streamed to your home page.
