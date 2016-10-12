@@ -8,6 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui/svg-icons/action/info-outline';
 
+// Custom styling for Material UI elements as per documentation
 const inkBarStyle = {
   backgroundColor: 'blue',
 };
@@ -31,6 +32,7 @@ const styles = {
   },
 };
 
+// Data to populate dev team info
 const tilesData = [
   {
     img: '../assets/devteam/swick_jb.jpg',
@@ -54,9 +56,10 @@ const tilesData = [
   },
 ];
 
-/**
+/*
  The dialog width has been set to occupy the 80% width of browser
- through the `contentStyle` property. */
+ through the `contentStyle` property.
+*/
 export default class DialogExampleCustomWidth extends React.Component {
   state = {
     open: false,
@@ -93,7 +96,7 @@ export default class DialogExampleCustomWidth extends React.Component {
           open={this.state.open}
           autoScrollBodyContent
         >
-          <a href="http://hackreactor.com/remote-beta">
+          <a href="http://hackreactor.com/remote-beta" target="_blank" rel="noopener noreferrer">
             <img style={{ position: 'fixed', top: '0', right: '0', border: '0' }} src="http://i.imgur.com/x86kKmF.png" alt="Built at Hack Reactor Remote" />
           </a>
           <Tabs inkBarStyle={inkBarStyle}>
@@ -135,7 +138,7 @@ export default class DialogExampleCustomWidth extends React.Component {
               <div>
                 <div className="aboutP">
                   <p>
-                    Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
+                    Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp" target="_blank" rel="noopener noreferrer">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski" target="_blank" rel="noopener noreferrer">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh" target="_blank" rel="noopener noreferrer">Roni Vegh</a> as their thesis project for Hack Reactor.
                   </p>
                 </div>
                 <div />
@@ -183,7 +186,7 @@ export default class DialogExampleCustomWidth extends React.Component {
                     We also use IBM Watson to analyze financial and global news to find interesting insights using machine learning/neural networks, and present them to the user in a helpful and unobtrusive way. This is where a lot of work happens to improve value and accuracy.
                   </p>
                   <p>
-                    Have any ideas for new features? Contact us, or submit a pull request <a href="https://github.com/HRR18-Harambe/swick">here.</a>
+                    Have any ideas for new features? Contact us, or submit a pull request <a href="https://github.com/HRR18-Harambe/swick" target="_blank" rel="noopener noreferrer">here.</a>
                   </p>
                 </div>
               </div>
