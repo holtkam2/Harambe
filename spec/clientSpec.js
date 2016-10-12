@@ -1,9 +1,11 @@
-const assert = require('chai').assert;
-const expect = require('chai').expect;
-const should = require('chai').should();
-const request = require('supertest');
+import React from 'react';
+import { expect } from 'chai';
+import { shallow, mount, render } from 'enzyme';
+import ThemeButton from '../client/components/ThemeButton.jsx';
 
-// Some interesting unit tests can happen here or we can import enzyme and test react components in a better way.
 describe('front end tests', () => {
-
+  it ('should have a SettingsDisp component', () => {
+    let wrapper = shallow(<ThemeButton />)
+    expect(wrapper).to.exist;
+  })
 });
