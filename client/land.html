@@ -27,7 +27,17 @@
   <meta name="msapplication-square310x310logo" content="assets/favicon/mstile-310x310.png" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link href="//cdn.muicss.com/mui-0.9.1/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.1/js/mui.min.js"></script>
 <style type="text/css">
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
 
 *{
     box-sizing: border-box;
@@ -180,10 +190,15 @@ a{
 </head>
 
 <body>
+  <header class="mui-appbar mui--z1">
   <div class="logo" style="margin: 10px;">
     <img class="rotatingImage" src="./assets/logo/logo_gfx.png" alt="S" />
     <img class="logoText" src="./assets/logo/logo_text.png" alt="swick" />
   </div>
+  <div>
+  <a href="/">Sign up / Log in</a>
+  </div>
+  </header>
   <div class="welcomeWrapper">
                     <div class="intro">
                         <h1>Swick</h1>
