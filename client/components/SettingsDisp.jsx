@@ -13,7 +13,7 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 
 // Custom styling for Material UI elements as per documentation
 const styles = {
-  backgroundColor: '#009900',
+  backgroundColor: 'blue',
 };
 
 const customContentStyle = {
