@@ -11,6 +11,7 @@ const stormpath = require('express-stormpath');
 
 // Main routes
 router.get('/', stormpath.loginRequired, helper.getSlash);
+router.get('/landing', helper.getLand);
 
 router.get('/api/state', stormpath.loginRequired, helper.getState);
 router.post('/api/state', stormpath.loginRequired, helper.saveState);

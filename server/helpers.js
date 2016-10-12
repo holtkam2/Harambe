@@ -310,6 +310,10 @@ module.exports = {
     res.sendFile('index.html', { root: path.resolve(__dirname, '../client') });
   },
 
+  getLand: (req, res) => {
+    res.sendFile('land.html', { root: path.resolve(__dirname, '../client') });
+  },
+
   getState: (req, res) => {
     console.log('getState called');
     db.User.find({ where: { userName: req.user.username } })
