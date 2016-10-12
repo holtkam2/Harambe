@@ -125,7 +125,6 @@ const popFinNews = () => {
       });
 
       watsonCall();
-      // console.log('watsonFin:', watsonFin);
     })
     .catch(error => console.error('popFinNews error:', error));
 };
@@ -136,8 +135,6 @@ const updateFeeds = querySources =>
     .then((results) => {
       const [feed0, feed1, feed2] = results.map(result =>
         JSON.parse(result.body).query.results.rss);
-      // console.log(Array.from(new Set([...feed0, ...feed1, ...feed2]
-      //   .map(element => element.channel.item.title))));
       return Array.from(new Set([...feed0, ...feed1, ...feed2]
         .map(element => element.channel.item.title)));
     })
@@ -155,7 +152,6 @@ const createUser = (user) => {
 
 module.exports = {
   getSlash: (req, res) => {
-    // console.log('HERE', req.user);
     db.User.find({ where: { userName: req.user.username } })
       .then((result) => {
         if (result) {
@@ -173,7 +169,6 @@ module.exports = {
   },
 
   getState: (req, res) => {
-    // console.log('getState called');
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const result = {
@@ -198,14 +193,12 @@ module.exports = {
         db.Button.findAll({ where: { UserId: foundUser.id } })
           .then((buttonKeys) => {
             result.buttons = buttonKeys.reduce((buttons, buttonKey) => {
-              // console.log(buttonKey.buttonName, buttonKey.links);
               // we are using the reduce to build up properties:
               // eslint-disable-next-line no-param-reassign
               buttons[buttonKey.buttonName] = buttonKey.links;
               return buttons;
             }, {});
 
-            // console.log('result from getState:', JSON.stringify(result, null, '   '));
             res.status(200).json(result);
           })
           .catch(error => res.status(500).send(error));
@@ -214,7 +207,6 @@ module.exports = {
   },
 
   saveState: (req, res) => {
-    // console.log('req.body', req.body);
     db.User.find({ where: { userName: req.user.username } })
       .then((foundUser) => {
         const interests = Object.keys(req.body.interests)

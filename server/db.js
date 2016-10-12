@@ -37,16 +37,10 @@ const Button = db.define('Button', {
 });
 
 Button.belongsTo(User);
-
 User.hasMany(Button);
 
 // sync all tables
 [Test, User, Button, Interest]
   .forEach(table => table.sync({ logging: false }));
-// [User, UserButtons, UserInterests, InterestList, RSSFeed, Button, Link]
-//   .forEach(table =>
-//     table.sync({ force: true })
-//       .then(syncedTable => console.log(`${syncedTable} successfully synced`))
-//       .catch(err => console.error(err)));
 
 module.exports = { Test, User, Button, Interest };

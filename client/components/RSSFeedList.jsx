@@ -30,21 +30,6 @@ class RSSFeedList extends Component {
     );
   }
 }
-// const RSSFeedList = ({ rssFeed, chosenRssFeed1, chosenRssFeed2 }) => (
-//   <div className="RSSFeedList">
-//     <div
-//       className="marquee marquee-speed-drowsy" data-marquee={
-//         // JSON.stringify(rssFeed[chosenRssFeed1])
-//         rssFeed[chosenRssFeed1].map(feed => feed).join(' * ')
-//         // .map(feed => feed).join(' * ')
-//       }
-//     /><div
-//       className="marquee marquee-speed-drowsy" data-marquee={
-//          // JSON.stringify(rssFeed[chosenRssFeed2])
-//         rssFeed[chosenRssFeed2].map(feed => feed).join(' * ')
-//       }
-//     /></div>
-// );
 
 RSSFeedList.propTypes = {
   rssFeed: PropTypes.objectOf(PropTypes.array),
