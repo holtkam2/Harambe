@@ -15,7 +15,9 @@ class ButtonList extends Component {
     return (
       <div className="NavButtonContainer">
         {buttonNames.map(name => (
-          <div key={name} className="NavButton"><LinkButton name={name} urls={buttons[name]} /></div>
+          <div key={name} className="NavButton">
+            <LinkButton name={name} urls={buttons[name]} />
+          </div>
         ))}
       </div>
     );
@@ -23,9 +25,7 @@ class ButtonList extends Component {
 }
 
 ButtonList.propTypes = {
-  buttonListState: PropTypes.shape({
-    buttons: React.PropTypes.obj,
-  }),
+  buttonListState: PropTypes.shape({ buttons: React.PropTypes.obj }),
   updateStateFromServer: PropTypes.func,
 };
 

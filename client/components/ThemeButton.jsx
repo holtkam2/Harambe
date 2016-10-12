@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+// Next two imports are for the theme switcher, in development
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import Toggle from 'material-ui/Toggle';
 import Snackbar from 'material-ui/Snackbar';
 
+// Custom styling for Material UI elements as per documentation
 const styles = {
   toggle: {
     marginBottom: 7,
@@ -17,6 +19,7 @@ class ThemeButton extends Component {
     this.state = { toggled: false };
   }
 
+  // Event handlers
   handleToggle = () => {
     if (this.state.toggled === false) {
       this.setState({ toggled: true });

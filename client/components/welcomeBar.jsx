@@ -7,6 +7,7 @@ import Delay from 'react-delay';
 class WelcomeBar extends Component {
   constructor(props) {
     super(props);
+    // Hardcode location, as google geocode api seems to fail occasionaly
     this.state = {
       currentTime: null,
       currentPosition: {
@@ -46,16 +47,13 @@ class WelcomeBar extends Component {
 
       $.getJSON(geocodingAPI, (geo) => {
         if (geo.status === 'OK') {
-         // Doublecheck result 0
           const r = geo.results[0];
-         // look locality tag to get city name
           for (let i = 0, len = r.address_components.length; i < len; i += 1) {
             const ac = r.address_components[i];
             if (ac.types.indexOf('locality') >= 0) this.setState({ currentCity: ac.short_name });
           }
         }
         $.getJSON(weatherAPI, (weather) => {
-          console.log('WEATHER', weather);
           this.setState({ currentWeather: weather });
           this.conditions();
         });
@@ -67,7 +65,7 @@ class WelcomeBar extends Component {
     this.state.currentTime = new Date();
     const currentHour = this.state.currentTime.getHours();
     let greetingPhrase = '';
-    // Randomizer for a 'Hello'
+    // Randomizer for a 'Hello', not used in current version.
     // const helloChance = Math.floor((Math.random() * 4));
     if (currentHour <= 11 && currentHour >= 4) {
       greetingPhrase = 'Good morning, ';
@@ -154,6 +152,7 @@ class WelcomeBar extends Component {
 }
 
 WelcomeBar.propTypes = {
+  // need to refactor to be objectOf
   // eslint-disable-next-line react/forbid-prop-types
   welcomeBarState: PropTypes.object,
   firstName: PropTypes.string,
