@@ -25,6 +25,158 @@
   <meta name="msapplication-square150x150logo" content="assets/favicon/mstile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="assets/favicon/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="assets/favicon/mstile-310x310.png" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<style type="text/css">
+
+*{
+    box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif";
+    color: #333;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.clearfix:after{
+    clear: both;
+    display: block;
+    content: ' ';
+    height: 0;
+}
+
+
+/*-------UNIVERSAL------------*/
+.button{
+    display: block;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 auto;
+    color: #9BC73C;
+    border: 1px solid #9BC73C;
+    font-weight: lighter;
+}
+
+.button:hover{
+    background-color: #9BC73C;
+    color: white;
+}
+
+
+
+  .intro, .team, .about{
+    min-height: 350px;
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 100px;
+}
+
+.about{
+    background-color: rgba(248, 248, 248, 0.95);
+}
+
+.about p{
+    font-size:  20px;
+    line-height: 150%;
+    padding: 0 60px;
+}
+
+.intro h1, .authWrapper h1{
+    font-size: 92px;
+    color: #F26248;
+    text-transform: uppercase;
+    font-family: 'Baloo Tamma', cursive;
+    text-align: center;
+}
+
+.intro h2{
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.team h3, .about h3{
+    font-size: 52px;
+    text-transform: uppercase;
+    color: #9BC73C;
+    margin-bottom: 60px;
+    font-weight: 700;
+}
+
+.team h5{
+    font-size: 20px;
+    margin: 10px 0 5px;
+    font-weight: 700;
+}
+
+.team h6{
+    font-weight: 500;
+}
+
+.team p{
+    font-weight: lighter;
+    margin: 15px 0;
+}
+
+.teamUl{
+    width: 80%;
+    margin: 35px auto;
+}
+
+.teamUl li{
+    float: left;
+    width: 25%;
+    padding: 20px;
+}
+
+.teamUl img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+</style>
 </head>
 
 <body>
@@ -32,15 +184,54 @@
     <img class="rotatingImage" src="./assets/logo/logo_gfx.png" alt="S" />
     <img class="logoText" src="./assets/logo/logo_text.png" alt="swick" />
   </div>
-  <div style="text-align: center">
-    <h1>SWICK</h1>
-  </div>
-  <div class="aboutP">
-    <p>
-      Swick was built by Jeff Bernstein, <a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a>, <a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a>, and <a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a> as their thesis project for Hack Reactor.
-    </p>
-  </div>
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-around;"><div style="display: flex; flex-wrap: wrap; margin: -2px -2px 5px; width: 100%; height: 270px; overflow-x: auto;"><div style="box-sizing: border-box; padding: 2px; width: 25%; height: 254px;"><div cols="1" rows="1" style="position: relative; display: block; height: 100%; overflow: hidden;"><img src="../assets/devteam/swick_jb.jpg" alt="" style="height: 100%; transform: translateX(-50%); position: relative; left: 50%;"><div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 68px; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center;"><div style="flex-grow: 1; margin-left: 16px; margin-right: 0px; color: rgb(255, 255, 255); overflow: hidden;"><div style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Jeff Bernstein</div><div style="font-size: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Lead Software Engineer</div></div></div></div></div><div style="box-sizing: border-box; padding: 2px; width: 25%; height: 254px;"><div cols="1" rows="1" style="position: relative; display: block; height: 100%; overflow: hidden;"><img src="../assets/devteam/swick_jh.png" alt="" style="height: 100%; transform: translateX(-50%); position: relative; left: 50%;"><div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 68px; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center;"><div style="flex-grow: 1; margin-left: 16px; margin-right: 0px; color: rgb(255, 255, 255); overflow: hidden;"><div style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Jason Holtkamp</div><div style="font-size: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Lead Software Engineer</div></div></div></div></div><div style="box-sizing: border-box; padding: 2px; width: 25%; height: 254px;"><div cols="1" rows="1" style="position: relative; display: block; height: 100%; overflow: hidden;"><img src="../assets/devteam/swick_pk.jpg" alt="" style="height: 100%; transform: translateX(-50%); position: relative; left: 50%;"><div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 68px; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center;"><div style="flex-grow: 1; margin-left: 16px; margin-right: 0px; color: rgb(255, 255, 255); overflow: hidden;"><div style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Patrik Korzinski</div><div style="font-size: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Product Owner/Software Engineer</div></div></div></div></div><div style="box-sizing: border-box; padding: 2px; width: 25%; height: 254px;"><div cols="1" rows="1" style="position: relative; display: block; height: 100%; overflow: hidden;"><img src="../assets/devteam/swick_rv.jpg" alt="" style="height: 100%; transform: translateX(-50%); position: relative; left: 50%;"><div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 68px; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center;"><div style="flex-grow: 1; margin-left: 16px; margin-right: 0px; color: rgb(255, 255, 255); overflow: hidden;"><div style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Roni Vegh</div><div style="font-size: 12px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Scrum Master/Software Engineer</div></div></div></div></div></div></div>
+  <div class="welcomeWrapper">
+                    <div class="intro">
+                        <h1>Swick</h1>
+                        <h2>Swick is an app that can help you get to the content you need on the internet much faster. Or as we like to say, swick is the ultimate homepage and web portal.</h2>
+                    </div>
+                    <div id="about" class="about">
+                        <h3><i class="fa fa-info" aria-hidden="true"></i> About </h3>
+                        <div>
+                  <p>
+                    Set up your own buttons to open several tabs with a single click.Configure interest feeds to get the latest info aggregated and streamed to your home page.
+                  </p>
+                  <p>
+                    Also, get friendly greeting dependant on time of day, and your location.This also allows for an overview of your local weather, as well as time of sunset/sunrise depending on current time of day.
+                  </p>
+                  <p>
+                    The SentiBar close to the bottom of the page uses machine learning to analyze the content of financial and global news over the last hour and displays it in a dynamic infographic.
+                  </p>
+                  <p>
+                    And there is still so much more coming! But we are careful to not add anything distracting or that doesn't add actual value or insight for the user.Clean and efficient is the approach to style.
+                  </p>
+                        </div>
+                    </div>
+                    <div id="team" class="team">
+                        <h3><i class="fa fa-users" aria-hidden="true"></i> Meet the Team</h3>
+                        <ul class="teamUl clearfix">
+                            <li>
+                                <img src="../assets/devteam/swick_jb.jpg" alt=""/>
+                                <h5>Jeff Bernstein</h5>
+                                <h6>Lead Software Engineer</h6>
+                            </li>
+                            <li>
+                                <img src="../assets/devteam/swick_jh.png" alt=""/>
+                                <h5><a href="https://www.linkedin.com/in/jasonholtkamp">Jason Holtkamp</a></h5>
+                                <h6>Lead Software Engineer</h6>
+                            </li>
+                            <li>
+                                <img src="../assets/devteam/swick_pk.jpg" alt=""/>
+                                <h5><a href="https://www.linkedin.com/in/pkorzinski?authType=NAME_SEARCH&authToken=VG6I&locale=en_US&trk=tyah&trkInfo=clickedVertical%3Amynetwork%2CclickedEntityId%3A128986459%2CauthType%3ANAME_SEARCH%2Cidx%3A1-1-1%2CtarId%3A1475780559139%2Ctas%3APatrik%20Korzins">Patrik Korzinski</a></h5>
+                                <h6>Product Owner/Software Engineer</h6>
+                            </li>
+                            <li>
+                                <img src="../assets/devteam/swick_rv.jpg" alt=""/>
+                                <h5><a href="https://www.linkedin.com/in/ronivegh">Roni Vegh</a></h5>
+                                <h6>Scrum Master/Software Engineer</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 </body>
 
 </html>
