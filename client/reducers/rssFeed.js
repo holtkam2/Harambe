@@ -9,7 +9,6 @@ const rssFeed = (state = {
     case 'GET_STATE_FROM_SERVER':
       action.payload.RSSFeeds.tech.splice(40);
       return action.payload.RSSFeeds;
-
     default:
       return state;
   }

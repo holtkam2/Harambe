@@ -1,4 +1,7 @@
-const currentUser = (state = { userName: false, firstName: false }, action) => {
+const currentUser = (state = {
+  userName: false,
+  firstName: false,
+}, action) => {
   switch (action.type) {
     case 'GET_STATE_FROM_SERVER':
       return {
